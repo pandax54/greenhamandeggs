@@ -1,0 +1,22 @@
+{
+  "name": "Foodfy-HamAndEggs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "dev": "npm-run-all -p nodemon browsersync",
+    "start": "node src/server.js",
+    "nodemon": "nodemon src/server.js",
+    "browsersync": "browser-sync start --proxy http://localhost:5000 --files 'public, views'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "browser-sync": "^2.26.7",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "method-override": "^3.0.0",
+    "nunjucks": "^3.2.1"
+  }
+}
