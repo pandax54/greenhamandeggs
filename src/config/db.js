@@ -1,9 +1,9 @@
 const { Pool } = require("pg");
 
 module.exports = new Pool({
-    user: "zcidxrfl",
+    user: "fernandapenna",
     password: "",
-    host: "motty.db.elephantsql.com",
+    host: "localhost",
     port: 5432,
-    database: "zcidxrfl"
+    database: "hamandeggs"
 });
