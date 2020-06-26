@@ -1,7 +1,7 @@
 const Recipe = require('../models/Recipe');
-
-// const LoadService = require('../services/LoadProductService');
-const user = require('../validator/user');
+const User = require('../models/User')
+const LoadService = require('../services/LoadRecipeService');
+// const user = require('../validator/user');
 
 
 
@@ -9,8 +9,28 @@ const user = require('../validator/user');
 module.exports = {
     async index(req, res) {
 
-        return res.send("hello")
-        // return res.render("user/register")
+        let recipes = await LoadService.load('recipes')
+
+        // let recipes = await Recipe.findAll()
+
+        return res.json(recipes)
     },
+    // async show(req, res) {
+
+    //     try {
+
+    //         //let product = await Product.find(id)
+    //         let product = await LoadService.load('product', { where: { id: req.params.id } })
+
+    //         if (!product) return res.send("Product not found!")
+
+
+    //         return res.render('products/show', { product, files: product.files })
+
+    //     } catch (error) {
+    //         console.error(error)
+    //     }
+
+    // },
 
 }

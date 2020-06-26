@@ -11,8 +11,13 @@ module.exports = {
     async index(req, res) {
 
         // pegar o id do usuário que está logado do session
+        //let product = await Product.find(id)
+        let users = await User.findAll()
 
-        return res.send("user working")
+        if (!users) return res.send("Users not found!")
+
+
+        return res.json(users)
     },
     async post(req, res) {
 
@@ -39,17 +44,5 @@ module.exports = {
         } catch (error) {
             console.error(error)
         }
-    },
-    async show(req, res) {
-
-        try {
-            // a parte de validação foi removida e colocar em validators -> user.js
-            const { user } = req
-
-            return res.render("user/index", { user })
-
-        } catch (error) {
-            console.error(error)
-        }
-    },
+    }
 }

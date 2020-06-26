@@ -1,4 +1,5 @@
-const LoadService = require('../services/LoadProductService');
+const LoadService = require('../services/LoadRecipeService');
+
 
 module.exports = {
 
@@ -6,17 +7,14 @@ module.exports = {
 
         try {
 
-            // const lastAdded = await Promise.all(productsPromise)
-
             const recipes = await LoadService.load('recipes')
-            const lastAdded = products.filter((recipe, index) => index > 8 ? false : true)   // pegar apenas os primeiros produtos
+            // let recipes = await Recipe.findAll()
+            const lastAdded = recipes.filter((recipe, index) => index > 10 ? false : true)   // pegar apenas os primeiros produtos
 
-            return res.render("home/index", { products: lastAdded })
+            return res.render("index", { recipes: lastAdded })
 
         } catch (error) {
             console.error(error)
         }
-
     }
-
 }

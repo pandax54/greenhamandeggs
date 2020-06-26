@@ -1,16 +1,18 @@
 const express = require('express')
-// const HomeController = require('../app/controllers/HomeController');
 const routes = express.Router();
+
+const HomeController = require('../app/controllers/HomeController');
 
 const users = require('./users');
 routes.use('/users', users)
 
+const recipes = require("./recipes")
+routes.use("/recipes", recipes)
 
 
-// alias
-routes.get('/', function (req, res) {
-    return res.send("It's working")
-})
+
+// Home
+routes.get('/', HomeController.index)
 
 
 

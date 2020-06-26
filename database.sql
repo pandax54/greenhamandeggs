@@ -13,30 +13,16 @@ CREATE TABLE "users" (
   "email" text UNIQUE NOT NULL,
   "password" text NOT NULL,
   "is_admin" BOOLEAN NOT NULL DEFAULT false,
+  "about" text,
+  "instagram" text,
+  "twitter" text,
+  "profile_image" text,
   "created_at" timestamp DEFAULT (now()),
   "updated_at" timestamp DEFAULT (now()),
   "reset_token" text,
   "reset_token_expires" text
 );
 
-CREATE TABLE "profile_image" (
-    "id" SERIAL PRIMARY KEY,
-    "chef_id" int NOT NULL,
-    "name" text,
-    "path" text NOT NULL
-
-)
-
-CREATE TABLE "chefs" (
-    "id" SERIAL PRIMARY KEY,
-    "user_id" int NOT NULL,
-    "about" text,
-    "instagram" text,
-    "twitter" text,
-    "profile_image_id" integer,
-    "created_at" timestamp DEFAULT (now()),
-    "updated_at" timestamp DEFAULT (now())
-);
 CREATE TABLE "diet_restriction" (
   "id" SERIAL PRIMARY KEY,
   "name" text NOT NULL
@@ -59,7 +45,7 @@ CREATE TABLE "difficulties" (
 CREATE TABLE "recipes" (
   "id" SERIAL PRIMARY KEY,
   "title" text NOT NULL,
-  "chef_id" int,
+  "user_id" int,
   "serving_size" text,
   "cooking_time" int,
   "difficulty_id" int, 
@@ -102,7 +88,7 @@ CREATE TABLE "products" (
 -- tabela de pedidos
 CREATE TABLE "orders" (
   "id" SERIAL PRIMARY KEY,
-  "buyer_id" int NOT NULL,
+  "user_id" int NOT NULL,
   "product_id" int NOT NULL,
   "price" int NOT NULL,
   "quantity" int DEFAULT 0,
@@ -114,13 +100,11 @@ CREATE TABLE "orders" (
 
 
 ALTER TABLE "files" ADD FOREIGN KEY ("recipe_id") REFERENCES "recipes" ("id");
-ALTER TABLE "profile_image" ADD FOREIGN KEY ("chef_id") REFERENCES "chefs" ("id");
-ALTER TABLE "chefs" ADD FOREIGN KEY ("user_id") REFERENCES "users" ("id");
 ALTER TABLE "product_image" ADD FOREIGN KEY ("product_id") REFERENCES "products" ("id");
 ALTER TABLE "products" ADD FOREIGN KEY ("category_id") REFERENCES "categories" ("id");
 ALTER TABLE "orders" ADD FOREIGN KEY ("buyer_id") REFERENCES "users" ("id");
 ALTER TABLE "orders" ADD FOREIGN KEY ("product_id") REFERENCES "products" ("id");
-ALTER TABLE "recipes" ADD FOREIGN KEY ("chef_id") REFERENCES "chefs" ("id");
+ALTER TABLE "recipes" ADD FOREIGN KEY ("user_id") REFERENCES "users" ("id");
 ALTER TABLE "recipes" ADD FOREIGN KEY ("difficulty_id") REFERENCES "difficulties" ("id");
 ALTER TABLE "recipes" ADD FOREIGN KEY ("diet_restriction_id") REFERENCES "diet_restriction" ("id");
 ALTER TABLE "recipes" ADD FOREIGN KEY ("meal_type_id") REFERENCES "meal_type" ("id");
@@ -213,3 +197,34 @@ ALTER SEQUENCE recipes_id_seq RESTART WITH 1;
 ALTER SEQUENCE chefs_id_seq RESTART WITH 1;
 ALTER SEQUENCE recipe_files_id_seq RESTART WITH 1;
 ALTER SEQUENCE files_id_seq RESTART WITH 1;
+
+
+----------------------------------------------
+DELETE FROM recipes;
+DELETE FROM users;
+DELETE FROM files;
+
+-- restart sequence auto_increment from tables ids
+ALTER SEQUENCE recipes_id_seq RESTART WITH 1;
+ALTER SEQUENCE users_id_seq RESTART WITH 1;
+ALTER SEQUENCE files_id_seq RESTART WITH 1;
+
+
+----------
+https://www.postgresql.org/docs/current/arrays.html#ARRAYS-INPUT
+INSERT INTO sal_emp
+    VALUES ('Bill',
+    '{10000, 10000, 10000, 10000}',
+    '{{"meeting", "lunch"}, {"meeting"}}');
+ERROR:  multidimensional arrays must have array expressions with matching dimensions
+The ARRAY constructor syntax can also be used:
+
+INSERT INTO sal_emp
+    VALUES ('Bill',
+    ARRAY[10000, 10000, 10000, 10000],
+    ARRAY[['meeting', 'lunch'], ['training', 'presentation']]);
+
+INSERT INTO sal_emp
+    VALUES ('Carol',
+    ARRAY[20000, 25000, 25000, 25000],
+    ARRAY[['breakfast', 'consulting'], ['meeting', 'lunch']]);
