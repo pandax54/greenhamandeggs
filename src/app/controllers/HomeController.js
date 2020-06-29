@@ -1,4 +1,4 @@
-const LoadService = require('../services/LoadRecipeService');
+const LoadRecipeService = require('../services/LoadRecipeService');
 
 
 module.exports = {
@@ -7,7 +7,7 @@ module.exports = {
 
         try {
 
-            const recipes = await LoadService.load('recipes')
+            const recipes = await LoadRecipeService.load('recipes')
             // let recipes = await Recipe.findAll()
             const lastAdded = recipes.filter((recipe, index) => index > 10 ? false : true)   // pegar apenas os primeiros produtos
 

@@ -177,12 +177,6 @@ ALTER TABLE "session" ADD CONSTRAINT "session_pkey" PRIMARY KEY ("sid") NOT DEFE
 CREATE INDEX "IDX_session_expire" ON "session" ("expire");
 
 
-
-
-
-
-
-
 -- restart to run seed.js
 DELETE FROM users;
 DELETE FROM recipes;

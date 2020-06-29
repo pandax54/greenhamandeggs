@@ -1,6 +1,6 @@
 const Recipe = require('../models/Recipe');
 const User = require('../models/User')
-const LoadService = require('../services/LoadRecipeService');
+const LoadRecipeService = require('../services/LoadRecipeService');
 // const user = require('../validator/user');
 
 
@@ -9,7 +9,7 @@ const LoadService = require('../services/LoadRecipeService');
 module.exports = {
     async index(req, res) {
 
-        let recipes = await LoadService.load('recipes')
+        let recipes = await LoadRecipeService.load('recipes')
 
         // let recipes = await Recipe.findAll()
 

@@ -15,4 +15,97 @@ h1 {
     font-style: normal;
 }
 
+.container header {
+  position: relative;
+}
 
+div.container.header.home div.img-cover {
+  background-position: center; /* Center the image */
+  height: 500px;
+  z-index: -1;
+}
+
+nav.primary ul {
+  display: flex;
+  padding: 8px 0;
+  width: 100%;
+  background-color: rgba(0,0,0, .5);
+}
+
+div.header--menu {
+  display: flex;
+  flex-grow: 1;
+  width: 90%;
+  /* margin-right: 200px; */
+  align-items: center;
+  justify-content: center;
+  
+}
+
+div.header--menu--links {
+  display: flex;
+  font-family: 'Roboto';
+  font-weight: 500;
+  letter-spacing: 0.7px;
+  font-size: 16px;
+  margin-right: 80px;
+}
+
+.search input {
+  width: 253px;
+  height: 35px;
+  border-radius: 99px;
+  opacity: 0.7;
+  /* background-color: #234A59; */
+}
+
+.search input::placeholder {
+  padding-left: 24px;
+  font-size: 14px;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+  color: #234A59;
+  /* color: white; */
+}
+
+div.header--menu li {
+  padding-left: 60px;
+}
+
+nav.primary ul div.logo {
+  padding-left: 100px ;
+}
+
+nav.primary ul a {
+  color: white;
+  letter-spacing: 0.4px;
+}
+
+.cover-info {
+  text-align: center;
+  margin: 0 auto;
+  height: 300px;
+}
+
+.cover-info h1 {
+  margin: 150px auto 10px;
+  font-family: Adobe Garamond Pro;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 44px;
+  letter-spacing: 0.04em;
+  color: #F7F6F6;
+  filter: brightness(2);
+}
+
+.cover-info h3 {
+  font-family: Adobe Garamond Pro;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  letter-spacing: 0.7px;
+  line-height: 29px;
+  color: #F7F6F6;
+}

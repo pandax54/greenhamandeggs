@@ -1,3 +1,5 @@
+// pg_ctl -D /usr/local/var/postgres start
+
 const { Pool } = require("pg");
 
 module.exports = new Pool({

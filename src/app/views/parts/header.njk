@@ -3,23 +3,33 @@
     <div class="container">
         <a href="/">
             <div class="logo">
-                <h1>Launchstore</h1>
-                <h2>COMPRA E VENDA</h2>
+                <img src="/assets/logo-nav.png" alt="logo">
             </div>
         </a>
 
         <form class="search" action="/products/search" method="GET">
-            <input type="text" name="filter" placeholder="Buscar por produtos..." {% if search.term %} value="{{search.term}}" {% endif %}>
+            <input type="text" name="filter" placeholder="<i class='icon-search'></i> Buscar por produtos..." {% if search.term %} value="{{search.term}}" {% endif %}>
         </form>
 
         <nav class="primary">
             <ul>
-                <li>
-                    <a href="/ads/create">
-                        <i class="material-icons">add</i>
-                        Novo anúncio
-                    </a>
-                </li>
+                <div class="link-menu">
+                    <li>
+                        <a href="/ads/create">
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/ads/create">
+                            About
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/ads/create">
+                            Novo anúncio
+                        </a>
+                    </li>
+                </div>
                 <li class="dropdown-container">
                     <a href="/accounts">
                         <i class="material-icons">account_circle</i>
@@ -47,16 +57,22 @@
                         </ul>
                     {% endif %}
 
-                <li class="cart"> 
-                    <a href="/cart">
-                        <i class="material-icons">shopping_cart</i>
-                        {% if (session.cart) and (session.cart.total.quantity > 0) %}
-                            <span id="cart-status-info">{{ session.cart.total.quantity}}</span>
-                        {% endif %}
-                    </a>
-                </li>
-            </ul>
-        </nav>
+                    <li>
+                        <form class="search" action="/products/search" method="GET">
+                            <input type="text" name="filter" placeholder="Buscar por produtos..." {% if search.term %} value="{{search.term}}" {% endif %}>
+                        </form>
+                    </li>
 
-    </div>
-</header>
+                    <li >
+                        <a href="/cart">
+                            <i class="material-icons">shopping_cart</i>
+                            {% if (session.cart) and (session.cart.total.quantity > 0) %}
+                                <span id="cart-status-info">{{ session.cart.total.quantity}}</span>
+                            {% endif %}
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>

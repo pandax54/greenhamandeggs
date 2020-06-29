@@ -33,7 +33,7 @@ module.exports = {
         const minutes = date.getMinutes();
 
         // yyyy-mm-dd
-        console.log(`${year}-${month}-${day}`)
+        // console.log(`${year}-${month}-${day}`)
 
         // return `${year}-${month}-${day}`
         // I want options to show the data, so I am gonna create an object

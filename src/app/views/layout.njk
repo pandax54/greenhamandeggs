@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        {% include "parts/styles.njk" %}
+        {# {% include "parts/styles.njk" %} #}
         {% block header %}
             <title>Layout Page</title>
         {% endblock %}
+        {% include "parts/styles.njk" %}
     </head>
     <body>
         {% block content %}{% endblock %}

@@ -45,7 +45,7 @@ async function format(recipe) {
 }
 
 
-const LoadService = {
+const LoadRecipeService = {
     load(service, filter) {
 
         this.filter = filter
@@ -78,4 +78,4 @@ const LoadService = {
     format
 }
 
-module.exports = LoadService
+module.exports = LoadRecipeService

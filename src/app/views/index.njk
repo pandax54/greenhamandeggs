@@ -1,10 +1,16 @@
 {% extends "layout.njk" %}
+{% import "parts/header-cover.njk" as cover %}
 
 {% block header %}
     <title>HOME PAGE</title>
 {% endblock %}
 
+    {# {%include "parts/header.njk"%} #}
+    
+
 {% block content %}
-    {%include "parts/header.njk"%}
-    <h1>HELLO GREEN HAM AND EGGS</h1>
+    {# {% macro render(title, classes, image) %} #}
+    {% call cover.render('HELLO GREEN HAM AND EGGS', 'home', 'assets/60th+Green+Eggs+banner.jpg' )%}
+     {% endcall %}
+    
 {% endblock %}
