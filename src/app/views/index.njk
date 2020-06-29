@@ -5,12 +5,30 @@
     <title>HOME PAGE</title>
 {% endblock %}
 
-    {# {%include "parts/header.njk"%} #}
-    
+{# {%include "parts/header.njk"%} #}
 
 {% block content %}
     {# {% macro render(title, classes, image) %} #}
     {% call cover.render('HELLO GREEN HAM AND EGGS', 'home', 'assets/60th+Green+Eggs+banner.jpg' )%}
-     {% endcall %}
-    
+    {% endcall %}
+
+    <div class="most-popular">
+        <h1>Most popular recipes</h1>
+        <div class="recipe-container">
+
+            {% for recipe in recipes %}
+
+                <div class="recipe-card" style="background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('{{recipe.img}}'); background-repeat: no-repeat; background-size: cover; background-position: center center">
+                    <div class="recipe-info">
+                        <h2 class="recipe-title">{{recipe.title}}</h2>
+                        <p>por
+                            {{recipe.user.name}}</p>
+                    </div>
+                </div>
+
+            {% endfor %}
+
+        </div>
+    </div>
+
 {% endblock %}

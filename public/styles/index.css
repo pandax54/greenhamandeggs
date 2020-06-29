@@ -1,0 +1,77 @@
+
+
+
+div.most-popular {
+    text-align: center;
+    padding-top: 50px;
+    
+}
+
+div.most-popular h1 {
+    height: 38px;
+    font-family: Futura PT;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 28px;
+    line-height: 135%;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #FF370A; 
+    margin-bottom: 60px;
+}
+
+.recipe-card {
+    position: relative;
+    margin: 20px auto;
+    width: 90%;
+    margin-bottom: 40px;
+
+}
+
+.recipe-info {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    top: 40%;
+    left: 40px;
+    text-align: left;
+}
+
+.recipe-card h2.recipe-title {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    letter-spacing: -0.02em;  
+    color: #FFFFFF;  
+    margin-bottom: 5px;
+
+}
+
+.recipe-card p {
+    height: 19px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: light;
+    font-size: 18px;
+    opacity: 0.7;
+    margin: 0;
+    color: #FFFFFF;
+}
+
+.recipe-card {  
+    /* width: 362px; */
+    width: 520px;
+    /* height: 169px; */
+    height: 250px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background: rgba(67, 66, 44, 0.3);
+    border-radius: 40px;
+    
+}
+
+.most-popular .recipe-container {
+    display: flex;
+    flex-wrap: wrap;
+}

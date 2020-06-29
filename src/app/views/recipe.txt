@@ -1,0 +1,19 @@
+                    {% for recipe in recipes %}
+                <div class="recipe-card" style="background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2) ), url('{{recipe}}'); background-repeat: no-repeat; background-size: cover; background-position: center center">
+                    <div class="recipe-info">
+                        <h2 class="recipe-title">{{}}</h2>
+                        <p>por
+                            {{recipes.name}}</p>
+                    </div>
+                </div>
+            {% endfor %}
+
+
+
+                            <div class="recipe-card" style="background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2) ), url('{{recipe}}'); background-repeat: no-repeat; background-size: cover; background-position: center center">
+                    <div class="recipe-info">
+                        <h2 class="recipe-title">{{}}</h2>
+                        <p>por
+                            {{recipes.name}}</p>
+                    </div>
+                </div>
