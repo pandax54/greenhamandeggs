@@ -17,3 +17,28 @@
                             {{recipes.name}}</p>
                     </div>
                 </div>
+
+
+
+                //---------------------
+
+
+
+
+
+                <div class="user card">
+            <img src="https://images.unsplash.com/photo-1507038732509-8b1a9623223a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt="">
+            <h1>Alberto Fox</h1>
+            <div class="social-icons">
+                <a class="round-icons" href="">
+                    <i class="fa fa-envelope" style="font-size:18px;color:#333;" aria-hidden="true"></i>
+                </a>
+                <a class="round-icons" href="">
+                    <i class="fa fa-instagram" style="font-size:18px;color:#333;" aria-hidden="true"></i>
+                </a>
+                <a class="round-icons" href="">
+                    <i class="fa fa-twitter" style="font-size:18px;color:#333;" aria-hidden="true"></i>
+                </a>
+
+            </div>
+        </div>

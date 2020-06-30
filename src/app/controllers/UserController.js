@@ -17,7 +17,7 @@ module.exports = {
         if (!users) return res.send("Users not found!")
 
 
-        return res.render('index', { recipes: users })
+        return res.render('users/index', { users })
     },
     async post(req, res) {
 

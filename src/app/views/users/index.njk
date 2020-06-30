@@ -1,0 +1,37 @@
+{% extends "layout.njk" %}
+{% import "parts/header-cover.njk" as cover %}
+
+{% block header %}
+    <title>Users Index</title>
+{% endblock %}
+{% block content %}
+    {% include "parts/nav.njk" %}
+
+    <div class="container users">
+
+        {% for user in users %}
+
+            <div class="user card">
+                <a href="/users/{{user.id}}">
+                    <img src="{{user.profile_image}}" alt="">
+                    <h1>{{user.name}}</h1>
+                </a>
+                <div class="social-icons">
+                    <a class="round-icons" href="{{user.email}}">
+                        <i class="fa fa-envelope" style="font-size:18px;color:#333;" aria-hidden="true"></i>
+                    </a>
+                    <a class="round-icons" href="https://www.instagram.com/{{user.instagram}}">
+                        <i class="fa fa-instagram" style="font-size:18px;color:#333;" aria-hidden="true"></i>
+                    </a>
+                    <a class="round-icons" href="https://twitter.com/{{user.twitter}}">
+                        <i class="fa fa-twitter" style="font-size:18px;color:#333;" aria-hidden="true"></i>
+                    </a>
+
+                </div>
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+{% endblock %}

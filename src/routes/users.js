@@ -6,4 +6,5 @@ const UserController = require("../app/controllers/UserController");
 routes.get("/", UserController.index)
 
 
+
 module.exports = routes 
