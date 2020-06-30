@@ -13,6 +13,7 @@ routes.use("/recipes", recipes)
 
 // Home
 routes.get('/', HomeController.index)
+routes.get('/about', HomeController.about)
 
 
 

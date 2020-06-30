@@ -16,5 +16,8 @@ module.exports = {
         } catch (error) {
             console.error(error)
         }
+    },
+    about(req, res) {
+        return res.render("about")
     }
 }

@@ -1,0 +1,29 @@
+{% extends "layout.njk" %}
+{% import "parts/header-cover.njk" as cover %}
+
+{% block header %}
+    <title>About</title>
+{% endblock %}
+
+{# {%include "parts/header.njk"%} #}
+
+{% block content %}
+    {% call cover.render('Dr. Seuss and the cookbook', 'about', 'assets/about2.png' )%}
+    {% endcall %}
+
+    <div class="about-content">
+
+        <div class="content-info">
+            <h1>INTRODUCTION</h1>
+            <p>Dr. Seuss was a storyteller in the grandest sense of the word. Not only did he tell fantastical tales of far-away places but he also gave us a unique visual language that carried his stories to new heights of artistic expression. Surrealism provided the foundation from which he built his career, but like a launch pad sitting idle just before liftoff, surrealism was soon to be engulfed in the flames of ridiculous fun and its launch tower thrown to the ground with each new
+            </br>
+        </br>
+    </br>editorial cartoon, magazine cover, painting, or children’s book. It was that explosive energy that thrust Ted’s works into otherworldly places, taking young and old alike on a ride that would become a critical reference point for most children from 1937 on, as well as for the adults who raised them. Nearly everyone has a significant Dr. Seuss memory. Many of today’s top visual artists, poets, filmmakers, and authors cite Ted as one of their greatest influences. Indeed, what Walt Disney was to entertainment, Theodor Seuss Geisel was to art and literature.</br>
+</br>
+</br>
+The Grinch and Cindy-Lou Who both like to bake, but who will eat the treat they make? Could it be . . . Max the dog? This simple rhymed holiday story is perfect for the very youngest readers. Complete with a simple 2-ingredient dog treat recipe printed inside the back cover, Dr. Seuss fans will be delighted-and inspired-by this sweet doggie tale featuring one of his most iconic characters!</p>
+</div>
+
+</div>
+
+{% endblock %}

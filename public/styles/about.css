@@ -1,0 +1,48 @@
+
+.container.header.about {
+    background-color: #fbf7e2;
+    /* background-image: url('/assets/about-img.png');
+    background-repeat: no-repeat;
+    background-size: initial;
+    background-position: 50px 50px; */
+}
+
+.about-content .content-info {
+    background-color: #fbf7e2;
+    background-image: url('/assets/about-img.png');
+    background-repeat: no-repeat;
+    background-size: initial;
+    background-position: 1300px 120px;
+    padding-bottom: 200px;
+}
+
+
+.about-content .content-info  h1 {
+width: 868px;
+
+font-family: Futura PT;
+font-style: normal;
+font-weight: normal;
+font-size: 28px;
+letter-spacing: 0.04em;
+color: #FF370A;
+padding-top: 80px;
+margin: 0 150px 0px;
+
+}
+
+
+.about-content .content-info p {
+    margin: 0 150px;
+    width: 1000px;
+    height: 410px;
+    line-height: 150%;
+    font-family: Adobe Garamond Pro;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+
+    letter-spacing: 0.04em;
+
+    color: #1A1A1A;
+}
