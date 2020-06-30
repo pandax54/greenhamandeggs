@@ -1,0 +1,9 @@
+{% macro render(title, classes) %}
+
+    <section class="form-container {{classes}}">
+        <div class="form-input-container">
+            {{ caller() }}
+        </div>
+    </section>
+
+{% endmacro %}

@@ -33,7 +33,7 @@ div.most-popular h1 {
     display: flex;
     flex-direction: column;
     width: 150px;
-    top: 40%;
+    top: 35%;
     left: 40px;
     text-align: left;
 }
@@ -42,7 +42,7 @@ div.most-popular h1 {
     font-family: Poppins;
     font-style: normal;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 22px;
     letter-spacing: -0.02em;  
     color: #FFFFFF;  
     margin-bottom: 5px;
@@ -54,17 +54,17 @@ div.most-popular h1 {
     font-family: Poppins;
     font-style: normal;
     font-weight: light;
-    font-size: 18px;
+    font-size: 16px;
     opacity: 0.7;
     margin: 0;
     color: #FFFFFF;
 }
 
-.recipe-card {  
-    /* width: 362px; */
-    width: 520px;
-    /* height: 169px; */
-    height: 250px;
+.recipe-card { 
+    /* width: 520px;
+    height: 250px; */
+    width: 400px;
+    height: 200px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     background: rgba(67, 66, 44, 0.3);
     border-radius: 40px;

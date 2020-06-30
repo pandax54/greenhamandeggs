@@ -19,6 +19,9 @@ module.exports = {
 
         return res.render('users/index', { users })
     },
+    registerForm(req, res) {
+        return res.render('users/registration')
+    },
     async post(req, res) {
 
         try {

@@ -17,6 +17,7 @@ h1 {
 
 .container header {
   position: relative;
+  min-width: 1100px;
 }
 
 div.container.header.home div.img-cover {
@@ -51,6 +52,28 @@ div.header--menu--links {
   margin-right: 80px;
 }
 
+div.header--menu--links li {
+  position: relative;
+}
+
+
+div.header--menu--links li:hover::before {
+  color: #234A59;
+  position: absolute;
+  top: -8px;
+  left: 35%;
+  width: 90px;
+  height: 32px;
+  border: 2px solid rgba(0,0,0,0.1);
+  border-radius: 50%;
+  content: '';
+  background: rgba(241, 243, 244, 0.4);
+  border-radius: 99px;
+  color: #234A59;
+  z-index: 0;
+
+}
+
 .search input {
   width: 253px;
   height: 35px;
@@ -81,7 +104,14 @@ nav.primary ul div.logo {
 nav.primary ul a {
   color: white;
   letter-spacing: 0.4px;
+  opacity: 0.9;
 }
+
+nav.primary ul li a:hover {
+  /* color: #234A59; */
+  opacity: 1; 
+}
+
 
 .cover-info {
   text-align: center;
@@ -108,4 +138,22 @@ nav.primary ul a {
   letter-spacing: 0.7px;
   line-height: 29px;
   color: #F7F6F6;
+}
+
+@media (max-width: 1200px) {
+  .search input {
+    display: none;
+  }
+
+  /* div.header--menu--links {
+    display: none;
+  } */
+
+  header {
+    min-width: 900px;
+  }
+
+  .cover-info h1, .cover-info h3 {
+    display: none;
+  }
 }

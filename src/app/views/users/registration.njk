@@ -1,0 +1,72 @@
+{% extends "layout.njk" %}
+{% import "../parts/header-cover.njk" as cover %}
+{% import "../parts/form-card.njk" as form %}
+
+{% block header %}
+    <title>About</title>
+{% endblock %}
+
+{# {%include "parts/header.njk"%} #}
+
+{% block content %}
+    {% call cover.render('CHEF REGISTRATION','', 'about', '../assets/about2.png' )%}
+    {% endcall %}
+
+    {% call form.render("CHEF'S FORM", "register chef") %}
+
+    <div class="row-1">
+        <label class="label-form" for="name">
+            <img src="../assets/chefs-icons/Group-1.png" alt="chef">
+            <h2>Chef's Name</h2>
+        </label>
+        <input name="name" placeholder="Juliane Hale" type="text">
+    </div>
+
+    <div class="row-2">
+        <div class="social-media email">
+            <label class="label-form" for="email">
+                <img src="../assets/chefs-icons/Vector.png" alt="chef">
+                <h2>E-mail</h2>
+            </label>
+            <input name="email" placeholder="Juliane Hale" type="text">
+        </div>
+        <div class="social-media instagram">
+            <label class="label-form" for="instagram">
+                {# <img src="../assets/chefs-icons/Group-1.png" alt="chef"> #}
+                <i class="fa fa-instagram" style="font-size:24px;color:#FF370A;opacity: 0.5; padding-left: 15px" aria-hidden="true"></i>
+                <h2>Instagram</h2>
+            </label>
+            <input name="instagram" placeholder="@juliahale" type="text">
+        </div>
+        <div class="social-media twitter">
+            <label class="label-form" for="twitter">
+                {# <img src="../assets/chefs-icons/Group-1.png" alt="chef"> #}
+                <i class="fa fa-twitter" style="font-size:24px;color:#FF370A;opacity: 0.5; padding-left: 15px" aria-hidden="true"></i>
+                <h2>Twitter</h2>
+            </label>
+            <input name="twitter" placeholder="@juliahale" type="text">
+        </div>
+    </div>
+    <div class="row-3">
+        <div class="about">
+            <label class="label-form" for="about">
+                <img src="../assets/chefs-icons/Group.png" alt="chef">
+                {# <i class="fa fa-twitter" style="font-size:24px;color:#FF370A;opacity: 0.5; padding-left: 15px" aria-hidden="true"></i> #}
+                <h2>About</h2>
+            </label>
+            <textarea name="about" id="about" cols="30" rows="10" placeholder=" When I was a little kid, I used to help my mother in the kitchen. She would always make my favourite dishes. Watching her cook since I was a kid, made me want to try out. So here I am, after more than a decade, writing about what inspires me to cook and why I love cooking so much"></textarea>
+        </div>
+
+        <div class="upload">
+            <label class="label-form" for="upload">
+                <i class="fa fa-image" style="font-size:24px;color:#FF370A;opacity: 0.5; padding-left: 15px" aria-hidden="true"></i>
+                <h2>Upload Profile Photo</h2>
+            </label>
+            <div class="upload-img"></div>
+        </div>
+
+    </div>
+
+    {% endcall %}
+
+{% endblock %}

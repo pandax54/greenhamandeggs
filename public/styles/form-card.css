@@ -1,0 +1,228 @@
+
+.form-container {
+    position: relative;
+    max-width: 90%;
+    min-width: 900px; 
+    /* height: 800px; */
+    height: auto;
+    margin: 0 auto;
+    background: #FFFFFF;
+    box-shadow: 0px 16px 24px rgba(8, 35, 48, 0.08), 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 40px;
+    margin-top: -50px;
+    padding-bottom: 30px;
+    margin-bottom: 80px;
+}
+
+.form-container::after {
+    position: absolute;
+    content: "CHEF'S FORM";
+    color: white;
+    background: rgba(255, 55, 10, 0.7);
+    width: 300px;
+    height: 60px;
+    border-radius: 40px 0 40px 0;
+    text-align: center;
+    font-family: Futura PT;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 135%;
+    padding-top: 30px;
+
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+
+    color: #FFFFFF;
+    top: 0;
+    left: 0;
+
+}
+
+
+input[type="text"] {  
+    background: #FFFFFF;
+    /* 32% Gray Light */
+    border: 1px solid #ADADAD;
+    box-sizing: border-box;
+    border-radius: 10px; 
+    /* width: 970px; */
+    /* width: 2000px; */
+    /* width: 100%; */
+    height: 50px;
+    border-color: 2px solid pink;
+
+
+}
+
+input::placeholder {
+
+    font-family: Adobe Garamond Pro;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 32px;
+    padding-left: 20px;
+    opacity: 0.8;
+    /* 64% Gray dark */
+    color: #5C5C5C;
+}
+
+
+/* INFO INSIDE CONTAINER  */
+
+.form-input-container {
+    display: flex;
+    flex-direction: column;
+    padding: 100px 60px 20px 60px;
+    margin: 0 auto;
+    width: 90%;
+    /* background-color: khaki; */
+
+}
+
+label.label-form {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 12px;
+    /* line-height: 32px; */
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    color: #FF370A;
+    padding-bottom: 10px ;
+}
+
+label img {
+    padding-left: 15px;
+}
+
+label h2 {
+    padding-left: 10px;
+    opacity: 0.8;
+}
+
+.row-1 {
+    width: 100%;
+    margin: 40px auto;
+}
+
+.row-1 input {
+    width: 100%;
+}
+
+.row-2 {
+    /* display: flex; */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-gap: 50px;
+}
+
+.row-2 input {
+    width: 100%;
+}
+
+.row-3 {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    margin-top: 40px;
+    flex: 1;
+    /* border: 2px solid green; */
+    box-sizing: border-box;
+}
+
+.row-3 .about{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+textarea {
+    background: #FFFFFF;
+    border: 1px solid #ADADAD;
+    box-sizing: border-box;
+    border-radius: 10px;
+    height: 300px;
+}
+
+textarea::placeholder {
+    padding: 18px;
+
+    font-family: Adobe Garamond Pro;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 32px;
+    opacity: 0.6;
+
+    color: #5C5C5C;
+}
+
+
+
+.row-3 label {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 12px;
+    /* line-height: 32px; */
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    color: #FF370A;
+    padding-bottom: 10px ;
+}
+
+.row-3 textarea, .row-3 div {
+    width: 100%;
+    height: 300px;
+}
+
+.row-3 .upload {
+    width: 40%;
+    height: 300px;
+}
+
+.row-3 .upload .upload-img {
+    width: 80%;
+    height: 80%;
+    background: #FFFFFF;
+    border: 1px solid #ADADAD;
+    box-sizing: border-box;
+
+    border-radius: 10px;
+    margin-left: 40px;
+}
+
+.row-3 .upload label {
+    padding-left: 45px;
+    padding-bottom: 15px;
+}
+
+@media (max-width: 1250px) {
+    .row-2 {
+        /* display: flex; */
+        display: flex;
+        flex-direction: column;
+        
+    }
+    
+    .row-3 {
+        flex-direction: column;   
+    }
+    .row-2 div {
+        margin-bottom: 30px;  
+    }
+    .row-3 div {
+        margin-bottom: 30px;  
+    }
+    .row-3 .upload .upload-img {
+        margin-left: 0;
+    }
+
+    .row-3 .upload label {
+        padding-left: 0;
+
+    }
+}
