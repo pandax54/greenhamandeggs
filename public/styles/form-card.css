@@ -2,6 +2,7 @@
 .form-container {
     position: relative;
     max-width: 90%;
+    max-width: 1100px;
     min-width: 900px; 
     /* height: 800px; */
     height: auto;
@@ -38,6 +39,21 @@
     left: 0;
 }
 
+.form-container.basic-info::after {
+    content: "BASIC INFO";
+} 
+
+.form-container.ingredients::after {
+    content: "INGREDIENTS";
+} 
+
+.form-container.instructions::after {
+    content: "INSTRUCTIONS";
+} 
+
+.form-container.photos::after {
+    content: "PHOTOS";
+} 
 
 input[type="text"] {  
     background: #FFFFFF;
@@ -50,8 +66,31 @@ input[type="text"] {
     /* width: 100%; */
     height: 50px;
     border-color: 2px solid pink;
+}
 
-
+select {
+    background: #FFFFFF;
+    /* 32% Gray Light */
+    border: 1px solid #ADADAD;
+    box-sizing: border-box;
+    border-radius: 10px; 
+    /* width: 970px; */
+    /* width: 2000px; */
+    /* width: 100%; */
+    height: 50px;
+    border-color: 2px solid pink;
+    display: block;
+    font-family: Adobe Garamond Pro;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 32px;
+    padding-left: 25px;
+    padding-right: 25px;
+    opacity: 0.8;
+    /* 64% Gray dark */
+    color: #5C5C5C;
+    width: 100%;
 }
 
 input::placeholder {
@@ -65,6 +104,12 @@ input::placeholder {
     opacity: 0.8;
     /* 64% Gray dark */
     color: #5C5C5C;
+}
+
+input {
+    padding-left: 20px;
+    padding-right: 40px;
+    font-size: 18px;
 }
 
 
@@ -152,7 +197,7 @@ textarea::placeholder {
     font-family: Adobe Garamond Pro;
     font-style: normal;
     font-weight: normal;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 32px;
     opacity: 0.6;
 
@@ -184,8 +229,10 @@ textarea::placeholder {
 }
 
 .row-3 .upload .upload-img {
-    width: 80%;
-    height: 80%;
+    /* width: 80%; */
+    /* height: 80%; */
+    width: 300px ;
+    height: 260px ;
     background: #FFFFFF;
     border: 1px solid #ADADAD;
     box-sizing: border-box;
@@ -194,10 +241,117 @@ textarea::placeholder {
     margin-left: 40px;
 }
 
-.row-3 .upload label {
-    padding-left: 45px;
+.row-3 .upload label.title {
+    padding-left: 30px;
     padding-bottom: 15px;
 }
+
+.upload-img{
+    /* position: relative; */
+    /* display: flex; */
+    /* padding-right: 20px; */
+    /* justify-content: center;
+    align-items: center; */
+}
+.upload-img label img {
+    padding: 0;
+}
+
+.upload-img label {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    /* padding-right: 20px; */
+    justify-content: center;
+    align-items: center;
+    /* position: absolute;
+    top: 35%;
+    left: 40px; */
+}
+
+
+
+
+ /* ADDING INGREDIENTS AND INPUT  */
+
+ button.add {
+    width: 201px;
+    height: 46px;
+    border: 1.5px solid #FF370A;
+    box-sizing: border-box;
+    border-radius: 245.556px;
+    color: #FF370A;
+    background-color: #fff;
+
+    font-family: Futura PT;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 21px;
+
+    letter-spacing: 0.920833px;
+    text-transform: uppercase;
+ }
+
+ .row-1.ingredients {
+     position: relative;
+     /* display: flex; */
+ }
+
+ label.label-form.ingredients {
+     position: absolute;
+     top: 0;
+     left: -80px;
+ }
+
+  input.ingredients.add {
+     position: relative;
+ }
+ div.close {
+     position: absolute;
+     background-image: url('../assets/Icons/Medium/icon-close.svg');
+     width: 30px;
+     height: 30px;
+     top: 10px;
+     right: 10px;
+ }
+
+  div.upload.recipe .upload-img.recipe-images {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background: #FFFFFF;
+  
+    border: 1px solid #ADADAD;
+    box-sizing: border-box;
+    border-radius: 10px;
+ }
+
+ div.upload.recipe .upload-img.recipe-images label {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+ }
+
+
+ .upload-img.recipe-images h2 {
+    
+    font-family: Futura PT;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 21px;
+    letter-spacing: 0.920833px;
+    text-transform: uppercase;
+    
+    color: #78909C;
+ }
+
+ 
 
 @media (max-width: 1250px) {
     .row-2 {
@@ -223,5 +377,9 @@ textarea::placeholder {
     .row-3 .upload label {
         padding-left: 0;
 
+    }
+
+    .row-3 .upload label.title {
+        padding-left: 0;
     }
 }

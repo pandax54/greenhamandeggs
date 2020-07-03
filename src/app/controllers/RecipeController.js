@@ -15,6 +15,9 @@ module.exports = {
 
         return res.json(recipes)
     },
+    create(req, res) {
+        return res.render('recipes/form')
+    }
     // async show(req, res) {
 
     //     try {
