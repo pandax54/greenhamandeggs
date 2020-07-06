@@ -286,12 +286,19 @@ nav.primary ul li a:hover {
   }
 
   .cover-info h1, .cover-info h3 {
-    display: none;
+    /* display: none; */
   }
 }
 
 #menuToggle {
   display: none;
+}
+
+footer {
+  height: 100px;
+  width: 100%;
+  background-color: #333;
+
 }
 
 @media (max-width: 980px) {

@@ -11,7 +11,9 @@
     </head>
     <body>
         {% block content %}{% endblock %}
-        {% block footer %}{% endblock %}
+        {% block footer %}
+            {% include "parts/footer.njk" %}
+        {% endblock %}
         <script src="./js/script.js"></script>
     </body>
 </html>
