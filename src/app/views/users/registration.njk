@@ -9,10 +9,10 @@
 {# {%include "parts/header.njk"%} #}
 
 {% block content %}
-    {% call cover.render('CHEF REGISTRATION','', 'about', '../assets/about2.png' )%}
+    {% call cover.render('CHEF REGISTRATION','', 'about', '', '../assets/about2.png' )%}
     {% endcall %}
 
-    {% call form.render("CHEF'S FORM", "register chef") %}
+    {% call form.render("CHEF'S FORM", "chef-form register chef") %}
 
     <div class="row-1">
         <label class="label-form" for="name">

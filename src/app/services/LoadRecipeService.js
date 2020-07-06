@@ -1,6 +1,10 @@
 const Recipe = require('../models/Recipe');
 const { formatPrice, date } = require('../../lib/utils');
 const User = require('../models/User')
+const Difficulties = require('../models/Difficulty')
+const dietRestriction = require('../models/dietRestriction')
+const mealType = require('../models/mealType')
+const worldCuisine = require('../models/worldCuisine')
 
 // agora pegar as imagens usando o product id
 async function getImages(recipeId) {
@@ -40,6 +44,17 @@ async function format(recipe) {
 
     recipe.formattedCreatedAt = `${recipe.published.date} às ${recipe.published.time}`
 
+    const difficulty = await Difficulties.findOne({ where: { id: recipe.difficulty_id } })
+
+    recipe.difficulty = difficulty
+
+    const diet_restriction = await dietRestriction.findOne({ where: { id: recipe.diet_restriction_id } })
+    const meal_type = await dietRestriction.findOne({ where: { id: recipe.meal_type_id } })
+    const world_cuisine = await worldCuisine.findOne({ where: { id: recipe.world_cuisine_id } })
+
+    recipe.diet_restriction = diet_restriction.name
+    recipe.meal_type = meal_type.name
+    recipe.world_cuisine = world_cuisine.name
 
     return recipe
 }

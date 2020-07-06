@@ -14,8 +14,8 @@
     padding-bottom: 30px;
     margin-bottom: 80px;
 }
-
-.form-container::after {
+ 
+.form-container.chef-form::after {
     position: absolute;
     content: "CHEF'S FORM";
     color: white;
@@ -84,13 +84,18 @@ select {
     font-style: normal;
     font-weight: normal;
     font-size: 18px;
-    line-height: 32px;
+    line-height: 20px;
+    /* padding: 10px 25px; */
     padding-left: 25px;
     padding-right: 25px;
     opacity: 0.8;
     /* 64% Gray dark */
     color: #5C5C5C;
     width: 100%;
+}
+
+select::placeholder {
+    padding: 10px 25px;
 }
 
 input::placeholder {
@@ -165,6 +170,11 @@ label h2 {
 
 .row-2 input {
     width: 100%;
+}
+
+.row-2.margin-top {
+    margin-top: 30px;
+    /* padding-top: 30px; */
 }
 
 .row-3 {
@@ -291,6 +301,15 @@ textarea::placeholder {
 
     letter-spacing: 0.920833px;
     text-transform: uppercase;
+    box-shadow: 0px 4px 4px rgba(51, 51, 51, 0.1);
+ }
+
+ button.add:hover {
+
+    background-color: #FF370A;
+    opacity: 0.7;
+    color: #fff;
+    box-shadow: none;
  }
 
  .row-1.ingredients {
@@ -307,7 +326,8 @@ textarea::placeholder {
   input.ingredients.add {
      position: relative;
  }
- div.close {
+
+  div.close {
      position: absolute;
      background-image: url('../assets/Icons/Medium/icon-close.svg');
      width: 30px;

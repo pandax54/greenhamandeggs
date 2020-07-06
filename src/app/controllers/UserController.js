@@ -1,9 +1,9 @@
 const User = require('../models/User')
 
-// const LoadService = require('../services/LoadProductService');
+const LoadRecipeService = require('../services/LoadRecipeService')
 // const { hash } = require("bcryptjs");
-
 const user = require('../validators/user')
+const Recipe = require('../models/Recipe')
 
 
 
@@ -21,6 +21,22 @@ module.exports = {
     },
     registerForm(req, res) {
         return res.render('users/registration')
+    },
+    async show(req, res) {
+
+        let user = await User.findOne({ where: { id: req.params.id } })
+
+        if (!user) return res.send("User not found!")
+
+        let recipes = await LoadRecipeService.load('recipes', { where: { user_id: user.id } })
+
+        if (recipes) {
+            user.recipes = recipes
+        }
+
+
+        return res.json(user)
+        // return res.render('users/profile', { user })
     },
     async post(req, res) {
 

@@ -1,0 +1,306 @@
+
+.cover-info.recipe-show {
+    display: flex;
+    flex-direction: column;
+    height: 600px;
+    justify-items: center;
+    align-items: center;
+}
+
+.cover-info.recipe-show .recipe-title {
+}
+
+.margin-top {
+    margin-top: 20px;
+}
+
+.recipe-details {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.recipe-details h3 {
+    
+    font-family: Futura PT;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 135%;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    /* orange */
+    color: #e3c8c2;
+    opacity: 0.65;
+}
+
+.recipe-details span {
+
+    font-family: Futura PT;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 135%;
+
+    letter-spacing: 0.04em;
+    text-transform: uppercase;  
+    /* orange */
+    color: #FF876C;
+
+}
+
+.recipe-show.transparency h3 {
+    max-width: 230px;
+    text-align: center;
+}
+
+.cover-info.recipe-show .recipe-title h1 {
+    font-family: Adobe Garamond Pro;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 44px;
+    line-height: 43px;
+    letter-spacing: 0.04em;
+    color: #a34935;
+}
+
+.recipe-show-user {
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    margin-top: -60px;
+    align-items: center;
+    width: 155px;
+    height: 155px;
+    background-color: rgba(247, 246, 246, 0.85);
+    border-radius: 50%;
+}
+.cover-info.recipe-show .recipe-title span {
+    
+    font-family: Adobe Garamond Pro;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 44px;
+    line-height: 43px;
+    letter-spacing: 0.04em;
+    color: rgba(247, 246, 246, 0.85);
+}
+
+
+.cover-info.recipe-show img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    align-self: center; 
+    display: block;
+    box-shadow: 0px 4px 4px rgba(51, 51, 51, 0.15), 0px 4px 8px rgba(51, 51, 51, 0.1);
+}
+
+
+/* CARD SHOW RECIPE  */
+
+.header {
+    position: relative;
+}
+
+.recipe-show {
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+.recipe-show h3 {
+    
+    font-family: Futura PT;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 135%;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    /* orange */
+    color: #FF876C;
+    /* margin-left: 20px; */
+}
+
+/* EDIT BUTTON  */
+.edit-btn.round-btn {
+    top: -20px;
+    left: -40px;
+    position: absolute;
+    background-color: black;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.85;
+    box-shadow: 0px 4px 4px rgba(51, 51, 51, 0.15), 0px 4px 8px rgba(51, 51, 51, 0.1);
+}
+
+.edit-btn.round-btn:hover {
+    box-shadow: none;
+    opacity: 1;
+    
+}
+.edit-btn img {
+    /* width: 64px; */
+    /* height: 64px; */
+}
+
+/* CONTENT CARD INGREDIENTS  */
+.ingredients-show {
+    margin: 60px 80px;
+}
+.title-icon {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.title-icon img {
+    display: block;
+    margin-right: 20px;
+}
+
+.title-icon h3 {
+
+    font-family: Futura PT;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 135%;
+
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+
+    color: rgba(31, 27, 27, 0.7);
+}
+
+.ingredients-info .ingredients-list-items li.ingredients-list-item {
+
+    font-family: Adobe Garamond Pro;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 32px;
+    color: #1F1B1B;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.ingredients-info .ingredients-list-items {
+    margin-left: 35px;
+}
+
+.ingredients-info .ingredients-list-items li.ingredients-list-item::before {
+    content: '';
+    width: 6.5px;
+    height: 6.5px;
+    border-radius: 50%;
+    background: #78909C;
+    position: absolute;
+    top: 10px;
+    left: -20px;
+
+}
+
+/* CONTENT CARD PREPARATION  */
+
+.preparation-show {
+    margin: 0 80px;
+}
+
+.preparation-show .preparation-info ul.preparations-list-items .preparations-list-item h2 {
+    margin-left: 20px;
+    font-family: Futura PT;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 22px;
+    line-height: 32px;
+
+    color: rgba(31, 27, 27, 0.7);
+    margin-bottom: 10px;
+}
+
+.preparation-show .preparation-info ul.preparations-list-items .preparations-list-item {
+    position: relative;
+    margin-left: 20px;
+    margin-bottom: 40px;
+}
+
+
+section.form-container.recipe-show .preparation-show .preparation-info ul.preparations-list-items .preparations-list-item::before {
+    content: '';
+    width: 6.5px;
+    height: 6.5px;
+    border-radius: 50%;
+    background: #78909C;
+    position: absolute;
+    top: 10px;
+    left: 0px;
+    
+}
+
+.preparation-show .preparation-info ul.preparations-list-items li.preparations-list-item p {
+
+    font-family: Adobe Garamond Pro;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 32px;
+    color: #000000;
+    
+}
+
+
+/* UPLOAD IMAGE FILES  */
+
+.recipe-files {
+    max-width: 1100px;
+    min-width: 900px;
+    margin: 0 auto;
+    /* display: flex; */
+    /* flex-wrap: wrap; */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 30px;
+
+}
+
+.recipe-file {
+    width: 350px;
+    height: 256px;
+    border-radius: 10px;
+}
+
+.img-footer {
+    position: relative;
+    margin: 0 auto;
+    width: 550px;
+    height: 625px;
+    background-image: url('../assets/show-recipe.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+.img-footer h1 {
+    position: absolute;
+    top: 80px;
+    left: 500px;
+    font-family: PintoW00-NO_01;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 43px;
+    /* identical to box height */
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+
+    
+    color: #FF370A; 
+}

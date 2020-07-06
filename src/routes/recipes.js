@@ -7,5 +7,7 @@ routes.get("/", RecipeController.index)
 
 routes.get("/recipe-form", RecipeController.create)
 
+routes.get("/recipe/:id", RecipeController.show)
+
 
 module.exports = routes  
