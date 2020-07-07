@@ -12,167 +12,213 @@
     {% call cover.render('NEW RECIPE FORM','', 'recipe form', '', '../assets/about2.png' )%}
     {% endcall %}
 
-    {% call form.render("basic infos", "recipe-form basic-info chef-form") %}
+    <form action="/recipes" method="POST" enctype="multipart/form-data">
+
+        {% call form.render("basic infos", "recipe-form basic-info chef-form") %}
+
+        <div class="row-1">
+            <label class="label-form" for="name">
+                <img src="../assets/recipe-icons-form/Group-4.png" alt="chef">
+                <h2>Title</h2>
+            </label>
+            <input name="title" placeholder="Ramen Carbonara" type="text">
+        </div>
+
+        <div class="row-2">
+            <div class="social-media email">
+                <label class="label-form" for="email">
+                    <img src="../assets/recipe-icons-form/Group-3.png" alt="chef">
+                    <h2>Serve (person)</h2>
+                </label>
+                <input name="serving_size" placeholder="2 person" type="text">
+            </div>
+            <div class="social-media instagram">
+                <label class="label-form" for="instagram">
+                    {# <img src="../assets/chefs-icons/Group-1.png" alt="chef"> #}
+                    <img src="../assets/recipe-icons-form/Group-2.png" alt="chef">
+                    <h2>Cooking Time (min)</h2>
+                </label>
+                <input name="cooking_time" placeholder="20" type="text">
+            </div>
+            <div class="social-media twitter">
+                <label class="label-form" for="twitter">
+                    {# <img src="../assets/chefs-icons/Group-1.png" alt="chef"> #}
+                    <img src="../assets/recipe-icons-form/Group-1.png" alt="chef">
+                    <h2>Difficulty</h2>
+                </label>
+                <select>
+                    <option value="0">Select the difficulty</option>
+                    <option value="1">Easy</option>
+                    <option value="2">Medium</option>
+                    <option value="3">Hard</option>
+                    <option value="4">Harder</option>
+                    <option value="5">Hardest</option>
+                    <option value="6">Hardestest</option>
+                    <option value="7">Darksouls</option>
+                    <option value="8">Dante must die</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row-2 margin-top">
+            <div class="social-media twitter">
+                <label class="label-form" for="twitter">
+                    {# <img src="../assets/chefs-icons/Group-1.png" alt="chef"> #}
+                    <img src="../assets/more-icons/Group-1.svg" alt="chef">
+                    <h2>Diet Restriction</h2>
+                </label>
+                <select>
+                    <option value="0">Select the difficulty</option>
+                    {% for item in diet_restriction %}
+                        <option value="{{item.id}}">{{item.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="social-media twitter">
+                <label class="label-form" for="twitter">
+                    {# <img src="../assets/chefs-icons/Group-1.png" alt="chef"> #}
+                    <img src="../assets/more-icons/Group-2.svg" alt="chef">
+                    <h2>Meal Type</h2>
+                </label>
+                <select>
+                    <option value="0">Select the difficulty</option>
+                    {% for item in meal_type %}
+                        <option value="{{item.id}}">{{item.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="social-media twitter">
+                <label class="label-form" for="twitter">
+                    {# <img src="../assets/chefs-icons/Group-1.png" alt="chef"> #}
+                    <img src="../assets/more-icons/Group.svg" alt="chef">
+                    <h2>World Cuisine</h2>
+                </label>
+                <select>
+                    <option value="0">Select the difficulty</option>
+                    {% for item in world_cuisine %}
+                        <option value="{{item.id}}">{{item.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <div class="row-3">
+            <div class="about">
+                <label class="label-form" for="about">
+                    <img src="../assets/more-icons/Group.svg" alt="chef">
+                    {# <i class="fa fa-twitter" style="font-size:24px;color:#FF370A;opacity: 0.5; padding-left: 15px" aria-hidden="true"></i> #}
+                    <h2>Description</h2>
+                </label>
+                <textarea name="about" id="about" cols="30" rows="10" placeholder=" Carbonara is known as a quick-to-fix meal, but get dinner done even sooner by using ramen instead of traditional pasta. Top with additional Parmesan if desired."></textarea>
+            </div>
+
+        </div>
+
+    </div>
+
+    {% endcall %}
+
+    {% call form.render("Ingredients", "recipe form ingredients chef-form") %}
+
+    <div>
+
+        <div class="row-1 ingredients ingredients-container" id="ingredients">
+
+            <label class="label-form ingredients" for="name">
+                <img src="../assets/recipe-icons-form/Group7.png" alt="chef">
+            </label>
+
+            <div class="ingredient">
+                <input type="text" name="ingredients[]" value="" placeholder="2 slices bacon, chopped"/>
+                <button onclick="remove(event)" type="button" class="close-field">
+                    <img src="/assets/Icons/Medium/icon-close.svg" alt="">
+                </button>
+            </div>
+
+        </div>
+
+        <button type="button" class="add add-ingredient">Add Ingredient</button>
+
+    </div>
+
+    {% endcall %}
+
+    {% call form.render("preparation", "recipe form instructions chef-form") %}
+
+    <div>
+
+        <div class="row-1 ingredients instructions-container" id="instructions">
+
+            <label class="label-form ingredients preparation" for="name">
+                <img src="../assets/recipe-icons-form/Group18.png" alt="chef">
+            </label>
+
+            <div class="preparation">
+                <input type="text" name="preparation[]" value="" placeholder="Cook bacon in a large skillet over medium heat until crisp, about 5 minutes..."/>
+                <button onclick="remove(event)" type="button" class="close-field">
+                    <img src="/assets/Icons/Medium/icon-close.svg" alt="">
+                </button>
+            </div>
+
+        </div>
+
+        <button type="button" class="add add-instructions">Add instructions</button>
+
+    </div>
+
+    {% endcall %}
+
+    {% call form.render("Ingredients", "recipe form photos chef-form") %}
 
     <div class="row-1">
-        <label class="label-form" for="name">
-            <img src="../assets/recipe-icons-form/Group-4.png" alt="chef">
-            <h2>Title</h2>
-        </label>
-        <input name="title" placeholder="Ramen Carbonara" type="text">
-    </div>
 
-    <div class="row-2">
-        <div class="social-media email">
-            <label class="label-form" for="email">
-                <img src="../assets/recipe-icons-form/Group-3.png" alt="chef">
-                <h2>Serve (person)</h2>
-            </label>
-            <input name="serving_size" placeholder="2 person" type="text">
-        </div>
-        <div class="social-media instagram">
-            <label class="label-form" for="instagram">
-                {# <img src="../assets/chefs-icons/Group-1.png" alt="chef"> #}
-                <img src="../assets/recipe-icons-form/Group-2.png" alt="chef">
-                <h2>Cooking Time (min)</h2>
-            </label>
-            <input name="cooking_time" placeholder="20" type="text">
-        </div>
-        <div class="social-media twitter">
-            <label class="label-form" for="twitter">
-                {# <img src="../assets/chefs-icons/Group-1.png" alt="chef"> #}
-                <img src="../assets/recipe-icons-form/Group-1.png" alt="chef">
-                <h2>Difficulty</h2>
-            </label>
-            <select>
-                <option value="0">Select the difficulty</option>
-                <option value="1">Easy</option>
-                <option value="2">Medium</option>
-                <option value="3">Hard</option>
-                <option value="4">Harder</option>
-                <option value="5">Hardest</option>
-                <option value="6">Hardestest</option>
-                <option value="7">Darksouls</option>
-                <option value="8">Dante must die</option>
-            </select>
-        </div>
-    </div>
+        <div class="upload recipe">
+            <div class="upload-img recipe-images" id="photos-upload">
+                <input id="photos-input" name="photos" type="file" accept="image/*" multiple="multiple" onchange="photoUpload.handleUploadPhoto(event)">
+                <label class="label-form" for="upload">
+                    <img src="../assets/recipe-icons-form/download.png" alt="chef">
+                    <h2>DRAG AND DROP IMAGE</h2>
+                    <p>(maximum of 6 photos)</p>
+                </label>
+            </div>
 
-    <div class="row-2 margin-top">
-        <div class="social-media twitter">
-            <label class="label-form" for="twitter">
-                {# <img src="../assets/chefs-icons/Group-1.png" alt="chef"> #}
-                <img src="../assets/more-icons/Group-1.svg" alt="chef">
-                <h2>Diet Restriction</h2>
-            </label>
-            <select>
-                <option value="0">Select the difficulty</option>
-                {% for item in diet_restriction %}
-                    <option value="{{item.id}}">{{item.name}}</option>
+            <div id="photos-preview">
+                {% if files %}
+                    {% for image in files %}
+                        <div class="photo" id="{{ image.id }}">
+                            <img src="{{ image.src}}" alt="{{ image.name }}">
+                            <i class="material-icons" onclick="photoUpload.removeOldPhoto(event)">
+                                close</i>
+                        </div>
+                    {% endfor %}
+                    {# toda vez que eu deletar uma foto o id dela vem para cá #}
+                    <input type="hidden" name="removed_files">
+                {% endif %}
+            </div>
+
+        </div>
+        {% endcall %}
+
+        {# https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file #}
+        <div id="photos-preview">
+            {% if files %}
+                {% for image in files %}
+                    <div class="photo" id="{{ image.id }}">
+                        <img src="{{ image.src}}" alt="{{ image.name }}">
+                        <i class="material-icons" onclick="photoUpload.removeOldPhoto(event)">
+                            close</i>
+                    </div>
                 {% endfor %}
-            </select>
-        </div>
-        <div class="social-media twitter">
-            <label class="label-form" for="twitter">
-                {# <img src="../assets/chefs-icons/Group-1.png" alt="chef"> #}
-                <img src="../assets/more-icons/Group-2.svg" alt="chef">
-                <h2>Meal Type</h2>
-            </label>
-            <select>
-                <option value="0">Select the difficulty</option>
-                {% for item in meal_type %}
-                    <option value="{{item.id}}">{{item.name}}</option>
-                {% endfor %}
-            </select>
-        </div>
-        <div class="social-media twitter">
-            <label class="label-form" for="twitter">
-                {# <img src="../assets/chefs-icons/Group-1.png" alt="chef"> #}
-                <img src="../assets/more-icons/Group.svg" alt="chef">
-                <h2>World Cuisine</h2>
-            </label>
-            <select>
-                <option value="0">Select the difficulty</option>
-                {% for item in world_cuisine %}
-                    <option value="{{item.id}}">{{item.name}}</option>
-                {% endfor %}
-            </select>
-        </div>
-    </div>
-
-    <div class="row-3">
-        <div class="about">
-            <label class="label-form" for="about">
-                <img src="../assets/more-icons/Group.svg" alt="chef">
-                {# <i class="fa fa-twitter" style="font-size:24px;color:#FF370A;opacity: 0.5; padding-left: 15px" aria-hidden="true"></i> #}
-                <h2>Description</h2>
-            </label>
-            <textarea name="about" id="about" cols="30" rows="10" placeholder=" Carbonara is known as a quick-to-fix meal, but get dinner done even sooner by using ramen instead of traditional pasta. Top with additional Parmesan if desired."></textarea>
+                {# toda vez que eu deletar uma foto o id dela vem para cá #}
+                <input type="hidden" name="removed_files">
+            {% endif %}
         </div>
 
-    </div>
-
-</div>
-
-{% endcall %}
-
-{% call form.render("Ingredients", "recipe form ingredients chef-form") %}
-
-<div class="row-1 ingredients">
-    <label class="label-form ingredients" for="name">
-        <img src="../assets/recipe-icons-form/Group7.png" alt="chef">
-    </label>
-    <div id="ingredients">
-        <div class="ingredient">
-            <input type="text" name="ingredients[]" value="" placeholder="2 slices bacon, chopped"/>
-            <div class="close"></div>
+        <div class="form-btn">
+            <button type="submit" class="post-btn" onclick="Validate.allFields(event)">Salvar</button>
+            <a class="cancel-btn" href="/">Cancel</a>
         </div>
-    </div>
-</div>
 
-<button type="button" class="add add-ingredient">Add Ingredient</button>
-
-</div>
-
-</div>
-
-{% endcall %}
-
-{% call form.render("preparation", "recipe form instructions chef-form") %}
-
-<div class="row-1 ingredients">
-<label class="label-form ingredients preparation" for="name">
-<img src="../assets/recipe-icons-form/Group18.png" alt="chef">
-</label>
-<div id="preparation">
-<div class="preparation">
-    <input type="text" name="preparation[]" value="" placeholder="Cook bacon in a large skillet over medium heat until crisp, about 5 minutes..."/>
-    <div class="close"></div>
-</div>
-</div>
-</div>
-
-<button type="button" class="add add-ingredient">Add instructions</button>
-
-</div>
-
-</div>
-
-{% endcall %}
-
-{% call form.render("Ingredients", "recipe form photos chef-form") %}
-
-<div class="row-1">
-
-<div class="upload recipe">
-<div class="upload-img recipe-images">
-<label class="label-form" for="upload">
-<img src="../assets/recipe-icons-form/download.png" alt="chef">
-<h2>DRAG AND DROP IMAGE</h2>
-</label>
-</div>
-</div>
-
-{% endcall %}
+    </form>
 
 {% endblock %}
