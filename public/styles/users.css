@@ -1,11 +1,15 @@
 /* USERS INDEX  */
-
+.user-profile {
+    max-width: 80%;
+    margin: 0 auto;
+}
 .container.users {
     background: #EEEDE8;
-    height: auto;
+    min-height: 90vh;
     padding: 80px 80px;
     display: flex;
     flex-wrap: wrap;
+
 }
 
 .user.card {
@@ -46,7 +50,6 @@
 }
 
 .user.card img:hover {
-    
     
 }
 
@@ -104,3 +107,195 @@
 }
 
 /* =========================================== */
+ /* ========= USER PROFILE PAGE  =============== */
+ .header.user-profile {
+    position: relative;
+    width: 90%;
+    background-color: #333;
+    max-width: 1173px;
+    min-width: 1000px;
+    height: 331px;
+    margin: 50px auto;
+    margin-top: 70px;
+    margin-bottom: 100px;
+
+    background: #333333;
+    /* card */
+    box-shadow: 0px 16px 24px rgba(8, 35, 48, 0.08), 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px;
+ }
+
+ .background-img {
+     position: absolute;
+     z-index: 1;
+     width: 300px;
+     height: 400px;
+     top: 40px;
+     left: 680px;
+     background-image: url('/assets/drawing4.png');
+     background-repeat: no-repeat;
+     /* background-position: right center; */
+     mix-blend-mode: multiply;
+     opacity: 0.4;
+ }
+
+ .user-profile-right {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+ .user-profile-image img {
+    width: 185px;
+    height: 185px;
+
+    background: url(.png);
+    border: 3px solid rgba(51, 51, 51, 0.35);
+    box-sizing: border-box;
+    /* card */
+
+    box-shadow: 0px 16px 24px rgba(8, 35, 48, 0.08), 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255, 0.4);; 
+ }
+
+ .user-info.user-profile {
+     color: white;
+     margin-left: 40px;
+ }
+
+ .user-info.user-profile h1 {
+    margin-bottom: 15px;
+    min-width: 265px;
+    height: 60px;
+    display: block;
+    font-family: Futura PT;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 42px;
+    line-height: 132%;
+
+    color: #FFFFFF;
+ }
+
+ .social-icons {
+     display: flex;
+ } 
+
+ .social-icons a.round-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255,255,255, 0.6);
+    /* padding-top: 1px; */
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 20px;
+ }
+
+ .social-icons a.round-icons:hover {
+
+    background-color: rgba(255,255,255, 1);
+ }
+
+ .user-info.user-about {
+     width: 50%;
+     justify-self: self-end;
+ }
+
+ .user-info.user-about p {
+    width: 375px;
+    height: 192px;
+    opacity: 1;
+    font-family: Adobe Garamond Pro;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 37px;
+    /* or 178% */
+    color: #FFFFFF;
+    z-index: 2;
+ }
+
+ /* BUTTONS AND RECIPE CONTAINER  */
+ .buttons-recipes-container {
+     /* width: 90%; */
+     max-width: 1450px;
+     min-width: 1000px;
+     margin: 0 auto;
+ }
+
+ /* BUTTONS  */
+ .buttons.user-profile {
+     width: 100%;
+     margin-left: 60px;
+     display: flex;
+     align-items: center;
+     margin: 0;
+     margin-top: 50px;
+     margin-bottom: 50px;
+     margin: 50px auto;
+ }
+
+ /* RECIPE LIST  */
+
+ .buttons.user-profile a.add.add-recipe {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 210px;
+    height: 52px;
+    border: 1.5px solid #FF370A;
+    box-sizing: border-box;
+    border-radius: 245.556px;
+    color: #FF370A;
+    background-color: #fff;
+    font-family: Futura PT;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    letter-spacing: 0.920833px;
+    text-transform: uppercase;
+    box-shadow: 0px 4px 4px rgba(51, 51, 51, 0.1);
+    margin-right: 20px;
+ }
+
+ .buttons.user-profile a.add.add-recipe:hover {
+    background-color: #FF370A;
+    color: #fff;
+    opacity: 0.7;
+
+ }
+
+ .buttons.user-profile a.edit-user-btn.round-btn {
+    background-color: black;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.85;
+    box-shadow: 0px 4px 4px rgba(51, 51, 51, 0.15), 0px 4px 8px rgba(51, 51, 51, 0.1);
+ }
+
+  .buttons.user-profile a.edit-user-btn.round-btn:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+ }
+
+ .recipes.user-profile {
+     min-height: 40vh;
+     margin: 0;
+     width: 100%;
+     margin: 0 auto;
+     display: grid;
+     grid-template-columns: 1fr 1fr 1fr;
+     grid-gap: 20px;
+ }

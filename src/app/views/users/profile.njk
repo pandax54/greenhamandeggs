@@ -7,6 +7,62 @@
 {% block content %}
     {% include "parts/nav.njk" %}
 
-    <div class="user-profile"></div>
+    <div class="user-profile">
+        <div class="header user-profile">
+            <div class="background-img"></div>
+            <div class="user-profile-right">
+                <div class="user-profile-image">
+                    <img src="{{user.profile_image}}" alt="">
+                </div>
+
+                <div class="user-info user-profile">
+                    <h1>{{user.name}}</h1>
+                    <div class="user-profile social-midias">
+                        <div class="social-icons">
+                            <a class="round-icons" href="{{user.email}}">
+                                <i class="fa fa-envelope" style="font-size:20px;color:#333;" aria-hidden="true"></i>
+                            </a>
+                            <a class="round-icons" href="https://www.instagram.com/{{user.instagram}}">
+                                <i class="fa fa-instagram" style="font-size:20px;color:#333;" aria-hidden="true"></i>
+                            </a>
+                            <a class="round-icons" href="https://twitter.com/{{user.twitter}}">
+                                <i class="fa fa-twitter" style="font-size:20px;color:#333;" aria-hidden="true"></i>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="user-info user-about">
+                <p>{{user.about}}</p>
+            </div>
+        </div>
+
+        <div class="buttons-recipes-container">
+
+            <div class="buttons user-profile">
+                <a type="button" class="add add-recipe">Add new recipe</a>
+                <a class="edit-user-btn round-btn" href=""><img src="/assets/icons-recipe-show/icon.svg" alt=""></a>
+            </div>
+
+            <div class="recipes user-profile">
+
+                {% for recipe in user.recipes %}
+
+                    <a href="/recipes/recipe/{{recipe.id}}">
+                        <div class="recipe-card" style="background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5) ), url('{{recipe.img}}'); background-repeat: no-repeat; background-size: cover; background-position: center center">
+                            <div class="recipe-info">
+                                <h2 class="recipe-title">{{recipe.title}}</h2>
+                                <p>por
+                                    {{recipe.user.name}}</p>
+                            </div>
+                        </div>
+                    </a>
+
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
 
 {% endblock %}

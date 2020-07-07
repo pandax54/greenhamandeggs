@@ -46,6 +46,7 @@
     text-transform: uppercase;  
     /* orange */
     color: #FF876C;
+    max-width: 150px;
 
 }
 
@@ -272,8 +273,8 @@ section.form-container.recipe-show .preparation-show .preparation-info ul.prepar
 
 .recipe-file {
     width: 350px;
-    height: 256px;
-    border-radius: 10px;
+    height: 240px;
+    border-radius: 30px;
 }
 
 .img-footer {

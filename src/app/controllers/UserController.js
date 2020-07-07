@@ -35,8 +35,8 @@ module.exports = {
         }
 
 
-        return res.json(user)
-        // return res.render('users/profile', { user })
+        // return res.json(user)
+        return res.render('users/profile', { user })
     },
     async post(req, res) {
 
