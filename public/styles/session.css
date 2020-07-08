@@ -1,0 +1,73 @@
+.register_form h1 {
+    height: 38px;
+    text-align: center;
+    font-family: Futura PT;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 135%;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #FF370A;
+    margin-bottom: 60px;
+}
+
+.form-container.login::after {
+    position: absolute;
+    content: "Login";
+    color: white;
+    background: rgba(255, 55, 10, 0.7);
+    width: 300px;
+    height: 60px;
+    border-radius: 40px 0 40px 0;
+    text-align: center;
+    font-family: Futura PT;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 135%;
+    padding-top: 30px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    top: 0;
+    left: 0;
+}
+
+.action {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.action.form-btn button.save.post-btn {
+    margin: 0;
+}
+
+.action .link-actions {
+    display: flex;
+    /* margin: 0 auto; */
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.action .link-actions a {
+    margin: 30px 20px;
+
+    font-family: Adobe Garamond Pro;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 32px;
+    padding-left: 20px;
+    opacity: 0.6;
+    /* 64% Gray dark */
+    color: #5C5C5C;
+}
+
+.action .link-actions a:hover {
+    opacity: 1;
+    /* 64% Gray dark */
+    color: #5C5C5C;
+}

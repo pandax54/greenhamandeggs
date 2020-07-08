@@ -48,6 +48,42 @@ module.exports = {
             console.error(error)
         }
 
-    }
+    },
+    async post(req, res) {
+        try {
+            //   let { chef, title, ingredients, preparation, information } = req.body;
+
+            //   const recipeId = await Recipe.create({
+            //     chef_id: chef,
+            //     user_id: req.session.userId,
+            //     title,
+            //     ingredients,
+            //     preparation,
+            //     information,
+            //   });
+
+            //   const filesPromise = req.files.map((file) =>
+            //     File.create({ name: file.filename, path: file.path })
+            //   );
+            //   const filesId = await Promise.all(filesPromise);
+
+            //   const relationPromise = filesId.map((fileId) =>
+            //     RecipeFile.create({
+            //       recipe_id: recipeId,
+            //       file_id: fileId,
+            //     })
+            //   );
+
+            //   await Promise.all(relationPromise);
+
+            //   return res.render("admin/parts/success", {
+            //     type: "Receita",
+            //     action: "criada",
+            //   });
+            return res.json(req.body)
+        } catch (err) {
+            console.error(err);
+        }
+    },
 
 }

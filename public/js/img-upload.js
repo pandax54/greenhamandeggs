@@ -113,5 +113,46 @@ const photoUpload = {
             }
         }
         photoDiv.remove() // tirando do frontend
-    }
+    },
+    handleUploadProfile(event) {
+
+        console.log(event.target.files)
+
+        const { files: file } = event.target
+
+        const profileUploadDiv = document.querySelector('#profile-image-div')
+        console.log(profileUploadDiv)
+        console.log(file[0].name)
+
+        const image = file[0]
+
+        let src;
+
+        // permite que o js leia arquivo
+        const reader = new FileReader();
+
+        reader.onload = () => {
+
+            src = String(reader.result)
+            // console.log(src)
+            profileUploadDiv.style.backgroundImage = `url('${src}')`;
+            image.src = src
+        }
+
+        // // depois que isso estiver pronto ele irá carregar a func onload
+        reader.readAsDataURL(file[0])
+
+        console.log(image)
+
+
+
+        // dataTransfer nao funciona no firefox --> new ClipboardEvent("").clipboardData || new DataTransfer();
+        const dataTransfer = new ClipboardEvent("").clipboardData || new DataTransfer();
+
+        dataTransfer.items.add(image)
+
+        console.log("this is data transfer", dataTransfer.files)
+        return dataTransfer.files
+
+    },
 }

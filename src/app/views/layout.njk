@@ -14,8 +14,11 @@
         {% block footer %}
             {% include "parts/footer.njk" %}
         {% endblock %}
-        <script src="/js/script.js"></script>
-        <script src="/js/img-upload.js"></script>
+
+        {% block script %}
+            {# <script src="/js/script.js"></script> #}
+            {# <script src="/js/img-upload.js"></script> #}
+        {% endblock %}
 
     </body>
 </html>

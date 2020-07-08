@@ -54,7 +54,7 @@ div.header--menu--links {
   font-family: 'Roboto';
   font-weight: 500;
   letter-spacing: 0.7px;
-  font-size: 16px;
+  font-size: 18px;
   margin-right: 80px;
 }
 
@@ -89,8 +89,8 @@ div.header--menu--links li:hover::before {
 }
 
 .search input::placeholder {
-  padding-left: 24px;
-  font-size: 14px;
+  padding-left: 6px;
+  font-size: 16px;
   font-family: FontAwesome;
   font-style: normal;
   font-weight: normal;
@@ -116,6 +116,10 @@ nav.primary ul a {
 nav.primary ul li a:hover {
   /* color: #234A59; */
   opacity: 1; 
+}
+
+i.material-icons {
+  font-size: 28px;
 }
 
 
@@ -275,7 +279,7 @@ nav.primary ul li a:hover {
  }
 
 
-@media (max-width: 1200px) {
+@media (max-width: 1300px) {
   .search input {
     display: none;
   }

@@ -410,3 +410,9 @@ const Lightbox = {
 //   tableElements[i].addEventListener("click", dispElementData(this)); 
 // }
 // })
+
+
+
+
+https://github.com/viniciusmoreeira/foodfy
+https://github.com/Rocketseat/bootcamp-launchbase-desafios-04/blob/master/desafios/04-admin-foodfy.md

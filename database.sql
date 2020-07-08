@@ -205,6 +205,23 @@ ALTER SEQUENCE files_id_seq RESTART WITH 1;
 
 
 ----------
+
+-- SESSION
+
+CREATE TABLE "session" (
+  "sid" varchar NOT NULL COLLATE "default",
+	"sess" json NOT NULL,
+	"expire" timestamp(6) NOT NULL
+)
+WITH (OIDS=FALSE);
+
+ALTER TABLE "session" ADD CONSTRAINT "session_pkey" PRIMARY KEY ("sid") NOT DEFERRABLE INITIALLY IMMEDIATE;
+
+CREATE INDEX "IDX_session_expire" ON "session" ("expire");
+
+
+------------------------------------------------------------
+
 https://www.postgresql.org/docs/current/arrays.html#ARRAYS-INPUT
 INSERT INTO sal_emp
     VALUES ('Bill',

@@ -1,0 +1,48 @@
+{% extends "../layout.njk" %}
+{% import "../parts/header-cover.njk" as cover %}
+{% import "../parts/form-card.njk" as form %}
+
+{% block header %}
+    <title>Users Index</title>
+{% endblock %}
+{% block content %}
+    {% call cover.render('WELCOME GREEN HAM AND EGGS!','', 'about', '', '../assets/about2.png' )%}
+    {% endcall %}
+    {% call form.render("LOGIN", "login chef register_form") %}
+    <form class="register_form" method="POST" action="/users/login">
+
+        {# <h1>LOGIN</h1> #}
+
+        <div class="row-1">
+            <label class="label-form" for="email">
+                <img src="../assets/chefs-icons/Vector.png" alt="chef">
+                <h2>E-mail</h2>
+            </label>
+            <input name="email" placeholder="Juliane Hale" type="text">
+        </div>
+
+        <div class="row-1">
+            <div class="social-media email">
+                <label class="label-form" for="password">
+                    <img src="../assets/chefs-icons/Vector.png" alt="chef">
+                    <h2>Password</h2>
+                </label>
+                <input name="password" placeholder="Put your password" type="password">
+            </div>
+
+        </div>
+        <div class="action form-btn">
+            <button class="save post-btn" type="submit">Acessar</button>
+            <div class="link-actions">
+                <a href="/users/register">Registre-se</a>
+                <a href="/users/forgot-password">Perdeu a senha?</a>
+            </div>
+        </div>
+
+    </div>
+
+</form>
+
+{% endcall %}
+
+{% endblock content %}

@@ -28,13 +28,13 @@
                 </a>#}
                 <a href="/accounts">
                     <li style="display:flex; align-items: center">
-                        <i style="padding-right: 5px" class="material-icons">account_circle</i>
+                        <i style="padding-right: 5px; font-size: 30px" class="material-icons">account_circle</i>
                         Login
                     </li>
                 </a>
-                <a href="/accounts">
+                <a href="/">
                     <li style="display:flex; align-items: center">
-                        <i style="padding-right: 5px" class="material-icons">shopping_cart</i>
+                        <i style="padding-right: 5px; font-size: 30px" class="material-icons">shopping_cart</i>
                         {% if (session.cart) and (session.cart.total.quantity > 0) %}
                             <span id="cart-status-info">{{ session.cart.total.quantity}}</span>
                         {% endif %}

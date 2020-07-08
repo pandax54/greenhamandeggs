@@ -62,15 +62,43 @@
                 <i class="fa fa-image" style="font-size:24px;color:#FF370A;opacity: 0.5; padding-left: 15px" aria-hidden="true"></i>
                 <h2>Upload Profile Photo</h2>
             </label>
-            <div class="upload-img">
+            <div class="upload-img profile-img" id="profile-image-div">
                 <label class="label-form" for="upload">
                     <img src="../assets/recipe-icons-form/download.png" alt="chef">
                 </label>
+                <input id="profile-image" name="profile-image" type="file" accept="image/*" onchange="photoUpload.handleUploadProfile(event)">
             </div>
         </div>
 
     </div>
+    <div class="row-1">
+        <div class="social-media email">
+            <label class="label-form" for="password">
+                <img src="../assets/chefs-icons/Vector.png" alt="chef">
+                <h2>Password</h2>
+            </label>
+            <input name="password" placeholder="Choose a password" type="password">
+        </div>
+        <div class="row-3">
+            <div class="social-media email">
+                <label class="label-form" for="passwordRepeat">
+                    <img src="../assets/chefs-icons/Vector.png" alt="chef">
+                    <h2>Repeat the Password</h2>
+                </label>
+                <input name="passwordRepeat" placeholder="Repeat the choosen password" type="password">
+            </div>
 
-    {% endcall %}
+        </div>
+        <div class="form-btn">
+            <button type="submit" class="post-btn" onclick="Validate.allFields(event)">Salvar</button>
+            <a class="cancel-btn" href="/">Cancel</a>
+        </div>
 
-{% endblock %}
+        {% endcall %}
+
+    {% endblock %}
+
+    {% block script %}
+        {# <script src="/js/script.js"></script> #}
+        <script src="/js/img-upload.js"></script>
+    {% endblock %}
