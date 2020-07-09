@@ -2,16 +2,16 @@
 
 <div class="row-1">
     <label class="label-form" for="name">
-        <img src="../assets/recipe-icons-form/Group-4.png" alt="chef">
+        <img src="../../assets/recipe-icons-form/Group-4.png" alt="chef">
         <h2>Title</h2>
     </label>
-    <input name="title" placeholder="Ramen Carbonara" type="text">
+    <input name="title" value="{{recipe.title}}" placeholder="Ramen Carbonara" type="text">
 </div>
 
 <div class="row-2">
     <div class="social-media email">
         <label class="label-form" for="email">
-            <img src="../assets/recipe-icons-form/Group-3.png" alt="chef">
+            <img src="../../assets/recipe-icons-form/Group-3.png" alt="chef">
             <h2>Serve (person)</h2>
         </label>
         <input name="serving_size" placeholder="2 person" type="text">
@@ -19,7 +19,7 @@
     <div class="social-media instagram">
         <label class="label-form" for="instagram">
             {# <img src="../assets/chefs-icons/Group-1.png" alt="chef"> #}
-            <img src="../assets/recipe-icons-form/Group-2.png" alt="chef">
+            <img src="../../assets/recipe-icons-form/Group-2.png" alt="chef">
             <h2>Cooking Time (min)</h2>
         </label>
         <input name="cooking_time" placeholder="20" type="text">
@@ -27,7 +27,7 @@
     <div class="social-media twitter">
         <label class="label-form" for="twitter">
             {# <img src="../assets/chefs-icons/Group-1.png" alt="chef"> #}
-            <img src="../assets/recipe-icons-form/Group-1.png" alt="chef">
+            <img src="../../assets/recipe-icons-form/Group-1.png" alt="chef">
             <h2>Difficulty</h2>
         </label>
         <select>
@@ -48,7 +48,7 @@
     <div class="social-media twitter">
         <label class="label-form" for="twitter">
             {# <img src="../assets/chefs-icons/Group-1.png" alt="chef"> #}
-            <img src="../assets/more-icons/Group-1.svg" alt="chef">
+            <img src="../../assets/more-icons/Group-1.svg" alt="chef">
             <h2>Diet Restriction</h2>
         </label>
         <select>
@@ -61,7 +61,7 @@
     <div class="social-media twitter">
         <label class="label-form" for="twitter">
             {# <img src="../assets/chefs-icons/Group-1.png" alt="chef"> #}
-            <img src="../assets/more-icons/Group-2.svg" alt="chef">
+            <img src="../../assets/more-icons/Group-2.svg" alt="chef">
             <h2>Meal Type</h2>
         </label>
         <select>
@@ -74,7 +74,7 @@
     <div class="social-media twitter">
         <label class="label-form" for="twitter">
             {# <img src="../assets/chefs-icons/Group-1.png" alt="chef"> #}
-            <img src="../assets/more-icons/Group.svg" alt="chef">
+            <img src="../../assets/more-icons/Group.svg" alt="chef">
             <h2>World Cuisine</h2>
         </label>
         <select>
@@ -89,7 +89,7 @@
 <div class="row-3 textarea">
     <div class="about">
         <label class="label-form" for="about">
-            <img src="../assets/more-icons/Group.svg" alt="chef">
+            <img src="../../assets/more-icons/Group.svg" alt="chef">
             {# <i class="fa fa-twitter" style="font-size:24px;color:#FF370A;opacity: 0.5; padding-left: 15px" aria-hidden="true"></i> #}
             <h2>Description</h2>
         </label>
@@ -109,13 +109,13 @@
 <div class="row-1 ingredients ingredients-container" id="ingredients">
 
     <label class="label-form ingredients" for="name">
-        <img src="../assets/recipe-icons-form/Group7.png" alt="chef">
+        <img src="../../assets/recipe-icons-form/Group7.png" alt="chef">
     </label>
 
     <div class="ingredient">
         <input type="text" name="ingredients[]" value="" placeholder="2 slices bacon, chopped"/>
         <button onclick="remove(event)" type="button" class="close-field">
-            <img src="/assets/Icons/Medium/icon-close.svg" alt="">
+            <img src="../../assets/Icons/Medium/icon-close.svg" alt="">
         </button>
     </div>
 
@@ -134,13 +134,13 @@
 <div class="row-1 ingredients instructions-container" id="instructions">
 
     <label class="label-form ingredients preparation" for="name">
-        <img src="../assets/recipe-icons-form/Group18.png" alt="chef">
+        <img src="../../assets/recipe-icons-form/Group18.png" alt="chef">
     </label>
 
     <div class="preparation">
         <input type="text" name="preparation[]" value="" placeholder="Cook bacon in a large skillet over medium heat until crisp, about 5 minutes..."/>
         <button onclick="remove(event)" type="button" class="close-field">
-            <img src="/assets/Icons/Medium/icon-close.svg" alt="">
+            <img src="../../assets/Icons/Medium/icon-close.svg" alt="">
         </button>
     </div>
 
@@ -160,7 +160,7 @@
     <div class="upload-img recipe-images" id="photos-upload">
         <input id="photos-input" name="photos" type="file" accept="image/*" multiple="multiple" onchange="photoUpload.handleUploadPhoto(event)">
         <label class="label-form" for="upload">
-            <img src="../assets/recipe-icons-form/download.png" alt="chef">
+            <img src="../../assets/recipe-icons-form/download.png" alt="chef">
             <h2>DRAG AND DROP IMAGE</h2>
             <p>(maximu of 6 photos)</p>
         </label>

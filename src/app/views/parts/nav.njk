@@ -8,16 +8,16 @@
             <span></span>
             <span></span>
             <ul id="menu">
-                <a href="#">
+                <a href="/">
                     <li>Home</li>
                 </a>
-                <a href="#">
+                <a href="/about">
                     <li>About</li>
                 </a>
-                <a href="#">
+                <a href="/recipes">
                     <li>Recipes</li>
                 </a>
-                <a href="#">
+                <a href="/users">
                     <li>Chefs</li>
                 </a>
                 {# <a href="https://erikterwan.com/" target="_blank">
@@ -74,36 +74,40 @@
                     </li>
                 </a>
             </div>
-            <form class="search" action="/products/search" method="GET">
+            <form class="search" action="/recipes/search" method="GET">
 
                 <input type="text" name="filter" placeholder="&#xF002;   Search for recipe..." {% if search.term %} value="{{search.term}}" {% endif %}>
 
             </form>
             <li class="dropdown-container">
-                <a href="/accounts">
-                    <i class="material-icons">account_circle</i>
-                </a>
                 {% if session.userId %}
-                    <ul class="dropdown">
-                        <li>
-                            <a href="/users">Minha conta</a>
-                        </li>
-                        <li>
-                            <a href="/users/ads">Meus anúncios</a>
-                        </li>
-                        <li>
-                            <a href="/orders">Meus pedidos</a>
-                        </li>
-                        <li>
-                            <a href="/orders/sales">Minhas vendas</a>
-                        </li>
-                        <li>
-                            <form action="/users/logout" method="POST">
-                                <button>Sair</button>
-                            </form>
-                        </li>
-                    </ul>
-                {% endif %}
+                    <a href="/users/user/{{session.userId}}">
+                    {% else %}
+                        <a href="/users/login">
+                        {% endif %}
+                        <i class="material-icons">account_circle</i>
+                    </a>
+                    {% if session.userId %}
+                        <ul class="dropdown">
+                            <li class="dropdown-item">
+                                <a href="/users/user/{{session.userId}}">My account</a>
+                            </li>
+                            <li class="dropdown-item">
+                                <a href="/recipes/user-recipe/{{session.userId}}">My recipes</a>
+                            </li>
+                            <li class="dropdown-item">
+                                <a href="/orders">My Orders</a>
+                            </li>
+                            <li class="dropdown-item">
+                                <a href="/users/account">Settings</a>
+                            </li>
+                            <li class="dropdown-item logout">
+                                <form action="/users/logout" method="POST">
+                                    <button>Logout</button>
+                                </form>
+                            </li>
+                        </ul>
+                    {% endif %}
 
                 <li >
                     <a href="/cart">

@@ -311,6 +311,7 @@ footer {
   }
   #menuToggle {
     display: block;
+    max-width: 90%;
   }
   nav.primary {
     background-color: rgba(0,0,0, .0);

@@ -1,0 +1,83 @@
+.dropdown-container {
+    position: relative;
+}
+
+.dropdown {
+    position: absolute;
+    top: 40px;
+    left: 0px;
+    background-color: white;
+    z-index: 2;
+    border-radius: 10px;
+    max-width: 280px;
+    min-width: 100%;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 400ms ease-in-out;
+    box-shadow: 0px 4px 4px 6px rgba(51, 51, 51, 0.1);
+    
+}
+
+ul.dropdown li.dropdown-item {
+    margin: 0;
+    padding: 20px 50px;
+}
+
+ul.dropdown li.dropdown-item:hover {
+    margin: 0;
+    padding: 20px 50px;
+    background-color: hsl(0, 0%, 95%);
+    border-radius: 10px;
+    color: hsl(0, 79%, 50%);
+}
+
+ul.dropdown li.dropdown-item a {
+    color: hsl(0, 79%, 72%);
+    font-size: 16px;
+    text-transform: uppercase;
+    display: block;
+    width: 100%;
+}
+
+ul.dropdown li.dropdown-item:hover a {
+    color: hsl(0, 79%, 50%);
+}
+
+/* LOGOUT BTN  */
+.dropdown-item.logout {
+    background-color: #333;
+    border-radius: 0 0 10px 10px;
+    cursor: pointer;
+}
+.dropdown-item form button {
+    color: lightseagreen;
+    background-color: #333;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+ul.dropdown li.dropdown-item.logout:hover {
+    margin: 0;
+    padding: 20px 50px;
+    background-color: #333;
+    color: white;
+}
+
+.dropdown-item form:hover button:hover {
+    color: white;
+}
+
+.dropdown-item form:hover {
+    color: white;
+}
+
+
+/* DROPDOWN VISIBILITY  */
+li.dropdown-container:hover  ul.dropdown,
+ul.dropdown:hover {
+    visibility: initial;
+    opacity: 1;
+
+}

@@ -39,6 +39,10 @@
     left: 0;
 }
 
+.form-container.account::after {
+    content: "CHEF'S ACCOUNT";
+}
+
 .form-container.basic-info::after {
     content: "BASIC INFO";
 } 
@@ -179,12 +183,16 @@ label h2 {
 
 .row-3 {
     width: 100%;
-    height: 300px;
+    height: auto;
     display: flex;
     margin-top: 40px;
     flex: 1;
     /* border: 2px solid green; */
     box-sizing: border-box;
+}
+
+.textarea {
+    height: 300px;  
 }
 
 .row-3 .about{
@@ -199,6 +207,9 @@ textarea {
     box-sizing: border-box;
     border-radius: 10px;
     height: 300px;
+    padding: 20px;
+    font-size: 16px;
+    line-height: 24px;
 }
 
 textarea::placeholder {
@@ -230,7 +241,7 @@ textarea::placeholder {
 
 .row-3 textarea, .row-3 div {
     width: 100%;
-    height: 300px;
+    /* height: 300px; */
 }
 
 .row-3 .upload {
@@ -495,7 +506,7 @@ input[type="file"]{
     margin-right: 60px;
  }
 
- .form-btn a.cancel-btn {
+ .cancel-btn {
     width: 144px;
     height: 54px;   
     /* almost black */
@@ -517,12 +528,29 @@ input[type="file"]{
     color: rgba(31, 27, 27, 0.7);
 }
 
+form#form-delete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.delete {
+    /* position: absolute;
+    bottom: -1990px;
+    left: 850px; */
+    width: 235.96px;
+    height: 54px;
+    /* margin: 40px auto; */
+    margin-right: 60px;
+    margin-bottom: 50px;
+}
+
 .form-btn button.post-btn:hover {
     background: #f56a4b;
     /* opacity: 0.8; */
 }
 
-.form-btn a.cancel-btn:hover {
+.cancel-btn:hover {
     background-color: rgba(31, 27, 27, 0.7);
     color: white;
 }

@@ -1,14 +1,19 @@
-{% macro render(title, subtitle, classes, img, image) %}
+{% import "parts/nav-copy.njk" as nav %}
+{% macro render(title, subtitle, classes, img, image, session) %}
     <header>
 
         <div class="container header {{classes}}">
 
             <div class="img-cover" style="background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url('{{image}}'); background-repeat: no-repeat; background-size: cover;">
 
-                {% include "parts/nav.njk" %}
+                {# {% include "parts/nav-copy.njk" %} #}
+                {% call nav.render( session )%}
+                {% endcall %}
 
                 <div class="cover-info">
-                    <h1>{{title}}</h1>
+                    <h1>{{title}}
+                        teste
+                        {{session.userId}}</h1>
                     <h3>{{subtitle}}</h3>
                     <img class="round-img" src="{{img}}" alt="">
                 </div>

@@ -305,3 +305,16 @@ section.form-container.recipe-show .preparation-show .preparation-info ul.prepar
     
     color: #FF370A; 
 }
+
+@media (max-width: 900px) {
+
+    div.recipe-files {
+        display: flex; 
+        flex-wrap: wrap;
+        /* flex-direction: column; */
+        max-width: 1100px;
+        min-width: 900px;
+        /* margin: 0 auto; */
+    
+    }
+}

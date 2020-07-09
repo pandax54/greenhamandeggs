@@ -9,27 +9,8 @@
 
 {% block content %}
     {# {% macro render(title, classes, image) %} #}
-    {# {% call cover.render('HELLO GREEN HAM AND EGGS','Sam never gives up on his quest to get a good recipe', 'home','', 'assets/60th+Green+Eggs+banner.jpg' )%}
-    {% endcall %} #}
-    <header>
-
-        <div class="container header {{classes}}">
-
-            <div class="img-cover" style="background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url('assets/60th+Green+Eggs+banner.jpg'); background-repeat: no-repeat; background-size: cover;">
-
-                {% include "parts/nav.njk" %}
-
-                <div class="cover-info">
-                    <h1>HELLO GREEN HAM AND EGGS</h1>
-                    <h3>Sam never gives up on his quest to get a good recipe</h3>
-                </div>
-
-            </div>
-            <div class="color-cover"></div>
-
-        </div>
-
-    </header>
+    {% call cover.render('HELLO GREEN HAM AND EGGS','Sam never gives up on his quest to get a good recipe', 'home','', 'assets/60th+Green+Eggs+banner.jpg')%}
+    {% endcall %}
 
     <div class="most-popular">
         <h1>Most popular recipes

@@ -34,6 +34,10 @@
     left: 0;
 }
 
+div.form-input-container.register_form {
+    max-width: 800px;
+}
+
 .action {
     display: flex;
     flex-direction: column;
@@ -61,7 +65,7 @@
     font-size: 20px;
     line-height: 32px;
     padding-left: 20px;
-    opacity: 0.6;
+    opacity: 0.4;
     /* 64% Gray dark */
     color: #5C5C5C;
 }

@@ -21,4 +21,8 @@ routes.get("/login", SessionController.loginForm);
 routes.post("/login", SessionValidator.login, SessionController.login);
 routes.post("/logout", onlyUsers, SessionController.logout);
 
-module.exports = routes 
+routes.get('/account', UserController.settings)
+
+
+
+module.exports = routes  

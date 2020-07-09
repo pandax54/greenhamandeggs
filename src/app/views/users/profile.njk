@@ -13,6 +13,7 @@
             <div class="user-profile-right">
                 <div class="user-profile-image">
                     <img src="{{user.profile_image}}" alt="">
+                    {# <img src="https://images.unsplash.com/photo-1557431177-36141475c676?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt=""> #}
                 </div>
 
                 <div class="user-info user-profile">
@@ -39,11 +40,13 @@
         </div>
 
         <div class="buttons-recipes-container">
-
-            <div class="buttons user-profile">
-                <a type="button" class="add add-recipe">Add new recipe</a>
-                <a class="edit-user-btn round-btn" href=""><img src="/assets/icons-recipe-show/icon.svg" alt=""></a>
-            </div>
+            {% if session.userId == user.id %}
+                <div class="buttons user-profile">
+                    <input type="hidden" name="userId" value="session.userId">
+                    <a href="/recipes/recipe-form" class="add add-recipe">Add new recipe</a>
+                    <a class="edit-user-btn round-btn" href="/users/account"><img src="/assets/icons-recipe-show/icon.svg" alt=""></a>
+                </div>
+            {% endif %}
 
             <div class="recipes user-profile">
 

@@ -8,32 +8,14 @@
 {# {%include "parts/header.njk"%} #}
 
 {% block content %}
-    {# {% call cover.render('Dr. Seuss and the cookbook','Sam never gives up on his quest to get a good recipe', 'about','', 'assets/about2.png' )%}
-    {% endcall %} #}
-    <header>
-
-        <div class="container header {{classes}}">
-
-            <div class="img-cover" style="background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url('assets/about2.png'); background-repeat: no-repeat; background-size: cover;">
-
-                {% include "parts/nav.njk" %}
-
-                <div class="cover-info">
-                    <h1>Dr. Seuss and the cookbook</h1>
-                    <h3>Sam never gives up on his quest to get a good recipe</h3>
-                </div>
-
-            </div>
-            <div class="color-cover"></div>
-
-        </div>
-
-    </header>
+    {% call cover.render('Dr. Seuss and the cookbook','testing', 'about','', 'assets/about2.png', session )%}
+    {% endcall %}
 
     <div class="about-content">
 
         <div class="content-info">
-            <h1>INTRODUCTION</h1>
+            <h1>INTRODUCTION
+                {{session.userId}}</h1>
             <p>Dr. Seuss was a storyteller in the grandest sense of the word. Not only did he tell fantastical tales of far-away places but he also gave us a unique visual language that carried his stories to new heights of artistic expression. Surrealism provided the foundation from which he built his career, but like a launch pad sitting idle just before liftoff, surrealism was soon to be engulfed in the flames of ridiculous fun and its launch tower thrown to the ground with each new
             </br>
         </br>
@@ -46,3 +28,6 @@ The Grinch and Cindy-Lou Who both like to bake, but who will eat the treat they 
 </div>
 
 {% endblock %}
+
+{# https://stackoverflow.com/questions/40977503/nunjucks-passing-an-object-as-parameter-in-macro #}
+{# https://www.gellish.co/nunjuck-full-tutorial #}

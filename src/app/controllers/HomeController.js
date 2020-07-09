@@ -11,7 +11,14 @@ module.exports = {
             // let recipes = await Recipe.findAll()
             recipes = recipes.filter((recipe, index) => index > 8 ? false : true)   // pegar apenas os primeiros produtos
 
-            return res.render("index", { recipes })
+            if (req.session) {
+                console.log(req.session.userId)
+                let session = req.session
+                console.log(session)
+                return res.render("index", { recipes })
+            }
+
+            return res.render("index", { recipes, session })
 
         } catch (error) {
             console.error(error)
@@ -19,5 +26,8 @@ module.exports = {
     },
     about(req, res) {
         return res.render("about")
+    },
+    about2(req, res) {
+        return res.render("about\ copy")
     }
 }

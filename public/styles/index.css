@@ -4,6 +4,8 @@
 div.most-popular {
     text-align: center;
     padding-top: 50px;
+    width: 80%;
+    margin: 0 auto;
     
 }
 
@@ -19,8 +21,11 @@ div.most-popular h1 {
     color: #FF370A; 
     margin-bottom: 60px;
 }
+.recipe-card-container {
+    margin-right: 20px;
+}
 
-.recipe-card {
+div.recipe-card {
     position: relative;
     margin: 20px auto;
     width: 90%;
@@ -38,7 +43,7 @@ div.most-popular h1 {
     text-align: left;
 }
 
-.recipe-card h2.recipe-title {
+div.recipe-card h2.recipe-title {
     font-family: Poppins;
     font-style: normal;
     font-weight: bold;
@@ -49,7 +54,7 @@ div.most-popular h1 {
 
 }
 
-.recipe-card p {
+div.recipe-card p {
     height: 19px;
     font-family: Poppins;
     font-style: normal;
@@ -60,7 +65,7 @@ div.most-popular h1 {
     color: #FFFFFF;
 }
 
-.recipe-card { 
+div.recipe-card { 
     /* width: 520px;
     height: 250px; */
     width: 400px;

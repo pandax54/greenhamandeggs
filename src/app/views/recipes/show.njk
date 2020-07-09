@@ -25,7 +25,9 @@
                             <span>by
                                 {{recipe.user.name}}</span></h1>
                     </div>
-                    <div class="recipe-show-user"><img class="round-img" src="{{recipe.user.profile_image}}" alt=""></div>
+                    <a href="/users/user/{{recipe.user.id}}">
+                        <div class="recipe-show-user"><img class="round-img" src="{{recipe.user.profile_image}}" alt=""></div>
+                    </a>
                 </div>
 
             </div>
@@ -50,9 +52,11 @@
                     {{recipe.difficulty.name}}</h3>
             </div>
 
-            <div class="edit-btn">
-                <a class="edit-btn round-btn" href=""><img src="/assets/icons-recipe-show/icon.svg" alt=""></a>
-            </div>
+            {% if user.session.userId == user.id %}
+                <div class="edit-btn">
+                    <a class="edit-btn round-btn" href="/recipes/recipe-edit/{{recipe.id}}"><img src="/assets/icons-recipe-show/icon.svg" alt=""></a>
+                </div>
+            {% endif %}
 
             <div class="ingredients-show">
                 <div class="title-icon">

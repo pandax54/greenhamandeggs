@@ -28,6 +28,14 @@ module.exports = {
 
         return res.render('recipes/form', { diet_restriction, meal_type, world_cuisine })
     },
+    async edit(req, res) {
+
+        const diet_restriction = await dietRestriction.findAll()
+        const meal_type = await mealType.findAll()
+        const world_cuisine = await worldCuisine.findAll()
+
+        return res.render('recipes/update-form', { diet_restriction, meal_type, world_cuisine })
+    },
     async show(req, res) {
 
         try {
