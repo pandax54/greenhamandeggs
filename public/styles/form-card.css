@@ -428,12 +428,12 @@ textarea::placeholder {
  }
 
  
-input[type="file"]{
+input.input-files{
     position: absolute;
-    top:140px;
-    left: 115px;
+    top:0;
+    left: 0;
     cursor:pointer;
-    width: 870px;
+    width: 300px;
 	height: 300px;
 	opacity:0;
 	overflow: hidden;

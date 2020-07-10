@@ -10,7 +10,12 @@
         {% include "parts/styles.njk" %}
     </head>
     <body>
-        {% block content %}{% endblock %}
+
+        {% include "parts/messages.njk" %}
+        <section class="main">
+            {% block content %}{% endblock %}
+        </section>
+
         {% block footer %}
             {% include "parts/footer.njk" %}
         {% endblock %}

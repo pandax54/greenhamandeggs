@@ -24,7 +24,7 @@ module.exports = {
         const user = await User.findOne({ where: { id } })
 
         if (!user) {
-            return res.render("user/register", {
+            return res.render("session/login", {
                 error: "Usuário não encontrado!"
             })
         }
@@ -37,12 +37,12 @@ module.exports = {
         // check all fields
         const fillAllFields = checkAllField(req.body)
         if (fillAllFields) {
-            return res.render("user/index", fillAllFields)
+            return res.render("users/registration", fillAllFields)
         }
 
         const { id, password } = req.body
 
-        if (!password) return res.render("user/index", {
+        if (!password) return res.render("users/registration", {
             user: req.body,
             error: "Coloque sua senha para atualizar seu cadastro"
         })
@@ -52,7 +52,7 @@ module.exports = {
         // password descriptografar
         const passed = await compare(password, user.password)
 
-        if (!passed) return res.render("user/index", {
+        if (!passed) return res.render("users/registration", {
             user: req.body,
             error: "Senha incorreta"
         })
@@ -67,10 +67,12 @@ module.exports = {
         // check all fields
         const fillAllFields = checkAllField(req.body)
         if (fillAllFields) {
-            return res.render("user/register", fillAllFields)
+            return res.render("users/registration", fillAllFields)
         }
 
-        // check if user exists [email, cpf_cnpj unique]
+        console.log("filled all fields")
+
+        // check if user exists [email unique]
         let { email, password, passwordRepeat } = req.body
 
 
@@ -79,21 +81,28 @@ module.exports = {
             where: { email }
         })
 
-        // if (user) return res.send("User exists")
+
         // enviar a mensagem de erro e os dados do user pra preencher os campos e nao apagar tudo
-        if (user) return res.render("user/register", {
+        // renderizar novamente a página
+        if (user) return res.render("users/registration", {
             user: req.body,
             error: "Usuário já cadastrado"
-        }) // renderizar novamente a página
+        })
 
         // check if password match
         if (password !== passwordRepeat) {
-            return res.render("user/register", {
+            return res.render("users/registration", {
                 user: req.body,
                 error: 'Password Mismatch'
             })
             // res.send('Password Mismatch')
         }
+        // if (!req.file) {
+        //     return res.render("users/registration", {
+        //         user: req.body,
+        //         error: 'Please, send at least one image'
+        //     })
+        // }
         //return res.send("passed!")
         // caso todas as condições sejam validadas passar para o controller
         next()

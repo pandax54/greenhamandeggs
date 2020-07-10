@@ -1,11 +1,39 @@
 {% if error %}
     <div class="messages error">
-        {{error}}
+        <div id="error-box">
+            {# <div class="dot"></div> #}
+            {# <div class="dot two"></div> #}
+            <div class="img-error"></div>
+            <div class="message">
+                <h1 class="alert">Error!</h1>
+                <p>oh no,
+                    {{error}}.
+                </p>
+                <div class="action-box">
+                    <h2 class="red repeat">try again!</h2>
+                </div>
+            </div>
+        </div>
     </div>
 {% endif %}
 
 {% if success %}
     <div class="messages success">
-        {{success}}
+        <div id="success-box">
+            {# <div class="dot"></div> #}
+            {# <div class="dot two"></div> #}
+            <div class="img-success"></div>
+            <div class="message">
+                <h1 class="alert">Success!</h1>
+                <p>
+                    {{success}}.</p>
+                <div class="action-box">
+                    <h2 class="green repeat">continue</h2>
+                </div>
+            </div>
+        </div>
     </div>
 {% endif %}
+
+{# https://codepen.io/juliepark/pen/vjMOKQ #}
+{# https://codepen.io/cobra_winfrey/pen/GjgLBJ #}

@@ -23,7 +23,7 @@
     padding: 25px 0 5px 0;
     min-width: 210px;
     max-width: 230px;
-    height: 320px;
+    height: 350px;
     box-shadow: 0px 16px 24px rgba(8, 35, 48, 0.08), 0px 4px 4px rgba(0, 0, 0, 0.25);
     background: #333333;
     box-shadow: 0px 7.97583px 11.9637px rgba(8, 35, 48, 0.08), 0px 1.99396px 1.99396px rgba(0, 0, 0, 0.25);
@@ -53,30 +53,35 @@
 
 }
 
-.user.card img:hover {
-    
-}
 
 .user.card h1 {
 
     /* width: 101px; */
     height: 32px;
-    padding-top: 20px;
     font-family: Futura PT;
     font-style: normal;
     font-weight: 450;
     font-size: 22px;
     line-height: 132%;
     display: block;
-
+    padding: 20px 15px;
     color: #FFFFFF;
     text-align: center;
+}
+
+.user.card a.profile-index {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
 }
 
 
 .user.card .social-icons {
     display: flex;
-    margin-top: 40px;
+    margin-top: 60px;
     justify-content: space-around;
 
 }
@@ -172,6 +177,10 @@
  .user-info.user-profile {
      color: white;
      margin-left: 40px;
+     display: flex;
+     flex-direction: column;
+     /* align-items: center; */
+     justify-content: center;
  }
 
  .user-info.user-profile h1 {
@@ -188,8 +197,14 @@
     color: #FFFFFF;
  }
 
+ div.social-midias {
+    padding-top: 10px;
+ }
+
  .social-icons {
      display: flex;
+     margin-top: 50px;
+     align-self: center;
  } 
 
  .social-icons a.round-icons {

@@ -1,0 +1,137 @@
+
+div.messages {
+    position: absolute;
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    /* background-color: lightcoral; */
+    top: 40px;
+    right: 10px;
+    z-index: 4;
+    opacity: 1;
+    visibility: initial;
+    animation: hidemessages 400ms 5s ease-out forwards;
+}
+
+h1 {
+  font-size: 42px;
+  font-weight: 100;
+  letter-spacing: 3px;
+  padding-top: 5px;
+  color: #fff;
+  padding-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.green {
+  color: #379a8b;
+}
+
+.red {
+  color: hsl(351, 76%, 60%);
+}
+
+h2.repeat {
+    font-size: 30px;
+    text-transform: uppercase;
+}
+
+.alert {
+  font-weight: 700;
+  letter-spacing: 5px;
+}
+
+p {
+  margin-top: -5px;
+  font-size: 28px;
+  font-weight: 100;
+  color: #333;
+  opacity: 0.7;
+  letter-spacing: 1px;
+}
+
+button, .dot {
+  cursor: pointer;
+}
+
+#success-box {
+  position: absolute;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  width: 800px;
+  height: 400px;
+  right: 70px;
+  /* background: linear-gradient(to bottom right, #B0DB7D 40%, #99DBB4 100%); */
+  background-image: linear-gradient(120deg, #65ce72 0%, #8fd3f4 100%);
+  background-color: #08AEEA;
+  /* background-image: linear-gradient(315deg, #08AEEA 0%, #2AF598 100%); */
+  border-radius: 20px;
+  box-shadow: 5px 5px 22px hsl(86, 69%, 18%);
+  perspective: 40px;
+}
+/* https://cssgradient.io/gradient-backgrounds/ */
+/* background-color: #85FFBD; */
+/* background-image: linear-gradient(315deg, #85FFBD 0%, #FFFB7D 100%); */
+
+
+#error-box {
+  position: absolute;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  width: 800px;
+  height: 400px;
+  right: 70px;
+  /* background: linear-gradient(to bottom left, #EF8D9C 40%, #FFC39E 100%); */
+  background-image: linear-gradient( 135deg, #FEB692 10%, #EA5455 100%);
+  border-radius: 20px;
+  box-shadow: 5px 5px 20px hsl(349, 17%, 40%);
+}
+
+.img-error {
+    background-image: url('https://media0.giphy.com/media/69C8PSWpsVM2Xib3zF/giphy.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 350px;
+    height: 400px;
+}
+/* https://i.pinimg.com/originals/a7/f8/55/a7f8559806818c2e706f924df6ed6aa5.gif */
+
+.img-success {
+    background-image: url('https://media1.giphy.com/media/dAiKuPBhU3Bvh9ljS7/source.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 350px;
+    height: 400px;
+}
+/* https://i.pinimg.com/originals/a5/1a/2e/a51a2ed5e847e956bda683fa895713e7.gif */
+/* https://www.seussville.com/wp-content/uploads/2019/11/character-Duck-Dog.png */
+
+.message {
+  /* position: absolute; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 60px 50px;
+  /* width: 100%; */
+  text-align: center;
+  /* height: 40%; */
+  /* top: 47%; */
+}
+
+/* VALIDATOR MESSAGES  */
+
+/* ANIMAÇÃO PARA A MESSAGE SUMIR DA TELA DEPOIS DE UM TEMPO  */
+@keyframes hidemessages {
+    to {
+        right: -50px;
+        opacity: 0; 
+        visibility: hidden;
+    }
+}
+
+
+
+

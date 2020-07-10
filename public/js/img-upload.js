@@ -142,14 +142,14 @@ const photoUpload = {
         // // depois que isso estiver pronto ele irá carregar a func onload
         reader.readAsDataURL(file[0])
 
-        console.log(image)
+        console.log(file)
 
 
 
         // dataTransfer nao funciona no firefox --> new ClipboardEvent("").clipboardData || new DataTransfer();
         const dataTransfer = new ClipboardEvent("").clipboardData || new DataTransfer();
 
-        dataTransfer.items.add(image)
+        dataTransfer.items.add(file)
 
         console.log("this is data transfer", dataTransfer.files)
         return dataTransfer.files

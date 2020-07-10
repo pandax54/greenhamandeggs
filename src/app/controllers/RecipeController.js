@@ -43,9 +43,6 @@ module.exports = {
             //let product = await Product.find(id)
             let recipe = await LoadRecipeService.load('recipe', { where: { id: req.params.id } })
 
-            console.log(recipe)
-            console.log(recipe.files[0].path)
-
             if (!recipe) return res.send("Product not found!")
 
 

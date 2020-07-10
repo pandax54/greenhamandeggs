@@ -18,7 +18,7 @@
 
                 <div class="user-info user-profile">
                     <h1>{{user.name}}</h1>
-                    <div class="user-profile social-midias">
+                    <div class="social-midias">
                         <div class="social-icons">
                             <a class="round-icons" href="{{user.email}}">
                                 <i class="fa fa-envelope" style="font-size:20px;color:#333;" aria-hidden="true"></i>
@@ -44,7 +44,7 @@
                 <div class="buttons user-profile">
                     <input type="hidden" name="userId" value="session.userId">
                     <a href="/recipes/recipe-form" class="add add-recipe">Add new recipe</a>
-                    <a class="edit-user-btn round-btn" href="/users/account"><img src="/assets/icons-recipe-show/icon.svg" alt=""></a>
+                    <a class="edit-user-btn round-btn" href="/users/edit"><img src="/assets/icons-recipe-show/icon.svg" alt=""></a>
                 </div>
             {% endif %}
 

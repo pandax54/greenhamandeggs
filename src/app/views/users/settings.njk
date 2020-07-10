@@ -9,11 +9,11 @@
 {# {%include "parts/header.njk"%} #}
 
 {% block content %}
-    {% call cover.render('CHEF REGISTRATION','', 'about', '', '../assets/about2.png', req.session )%}
+    {% call cover.render('CHEF UPDATE REGISTRATION','', 'about', '', '../assets/about2.png', session )%}
     {% endcall %}
 
     {% call form.render("CHEF'S FORM", "chef-form register chef") %}
-    <form action="/users/register" enctype="multipart/form-data" method="POST">
+    <form action="/users/edit?_method=PUT" enctype="multipart/form-data" method="POST">
         <div class="row-1">
             <label class="label-form" for="name">
                 <img src="../assets/chefs-icons/Group-1.png" alt="chef">
@@ -62,7 +62,7 @@
                     <i class="fa fa-image" style="font-size:24px;color:#FF370A;opacity: 0.5; padding-left: 15px" aria-hidden="true"></i>
                     <h2>Upload Profile Photo</h2>
                 </label>
-                <div class="upload-img profile-img" id="profile-image-div">
+                <div class="upload-img profile-img" style="background-image: url('{{user.profile_image}}')" id="profile-image-div">
                     <label class="label-form" for="upload">
                         <img src="../assets/recipe-icons-form/download.png" alt="chef">
                     </label>
@@ -79,27 +79,20 @@
                 </label>
                 <input name="password" placeholder="Choose a password" type="password">
             </div>
-            <div class="row-3">
-                <div class="social-media email">
-                    <label class="label-form" for="passwordRepeat">
-                        <img src="../assets/chefs-icons/Vector.png" alt="chef">
-                        <h2>Repeat the Password</h2>
-                    </label>
-                    <input name="passwordRepeat" placeholder="Repeat the choosen password" type="password">
-                </div>
-                {# <input type="file" name="img" accept="image/*"> #}
-            </div>
-            <div class="form-btn">
-                {# <button type="submit" class="post-btn" onclick="Validate.allFields(event)">Salvar</button> #}
-                <button type="submit" class="post-btn">Salvar</button>
-                <a class="cancel-btn" href="/">Cancel</a>
-            </div>
-        </form>
-        {% endcall %}
+            {# <input type="file" name="img" accept="image/*"> #}
+        </div>
+        <div class="form-btn">
+            <input type="hidden" name="id" value="{{user.id}}">
+            {# <button type="submit" class="post-btn" onclick="Validate.allFields(event)">Salvar</button> #}
+            <button type="submit" class="post-btn">Salvar</button>
+            <a class="cancel-btn" href="/">Cancel</a>
+        </div>
+    </form>
+    {% endcall %}
 
-    {% endblock %}
+{% endblock %}
 
-    {% block script %}
-        {# <script src="/js/script.js"></script> #}
-        <script src="/js/img-upload.js"></script>
-    {% endblock %}
+{% block script %}
+    {# <script src="/js/script.js"></script> #}
+    <script src="/js/img-upload.js"></script>
+{% endblock %}

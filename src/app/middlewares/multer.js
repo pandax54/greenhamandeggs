@@ -31,3 +31,12 @@ module.exports = multer({
     storage,
     fileFilter
 })
+
+
+// ABOUT MULTER AND UPLOAD 
+// https://www.youtube.com/watch?v=MkkbUfcZUZM
+// https://www.youtube.com/watch?v=FKnDvu_eODY
+// https://www.youtube.com/watch?v=9Qzmri1WaaE
+
+// https://code.tutsplus.com/tutorials/file-upload-with-multer-in-node--cms-32088
+// https://github.com/expressjs/multer#:~:text=Multer%20is%20a%20node.,multipart%2Fform%2Ddata%20).

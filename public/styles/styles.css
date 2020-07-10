@@ -8,6 +8,10 @@
     border: none;
   }
 
+  section.main {
+    /* position: relative; */
+  }
+
 h1 {
     /* font-family: 'Futura PT'; */
     font-family: 'Adobe Garamond Pro';
