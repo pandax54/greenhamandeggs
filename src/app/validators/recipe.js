@@ -1,4 +1,4 @@
-const Category = require('../models/Category');
+
 
 
 async function post(req, res, next) {
@@ -7,12 +7,20 @@ async function post(req, res, next) {
 
     for (key of keys) {
         if (req.body[key] == "") {
-            return res.send("Please fill all the fields")
+            // return res.send("Please fill all the fields")
+            return res.render("recipes/form", {
+                user: req.body,
+                error: "Please fill all the fields"
+            })
         }
     }
     // exigir pelo menos uma imagem - como está sendo exigido os campos anteriores
     if (!req.files || req.files.length == 0)
-        return res.send('Please, send at least one image')
+        // return res.send('Please, send at least one image')
+        return res.render("recipes/form", {
+            user: req.body,
+            error: 'Please, send at least one image'
+        })
 
     next()
 }

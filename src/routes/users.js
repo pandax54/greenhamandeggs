@@ -14,15 +14,16 @@ routes.get("/", UserController.index)
 routes.get('/user/:id', UserController.show)
 
 routes.get('/register', UserController.registerForm)
-// form para criar o usuário
+// form para criar o usuário 
 // multer.array("photos", 6)
 routes.post('/register', multer.single("profile_image"), UserValidator.post, UserController.post)
 // criando usuário
 
 
 // update user
-routes.get('/edit', UserController.edit)
-routes.put('/edit', onlyUsers, multer.single("profile_image"), UserValidator.update, UserController.put)
+routes.get('/settings', UserController.edit)
+routes.put('/settings', onlyUsers, multer.single("profile_image"), UserValidator.update, UserController.put)
+routes.delete('/settings', UserController.delete)
 
 
 // SESSION PART 
@@ -33,7 +34,7 @@ routes.get("/login", SessionController.loginForm);
 routes.post("/login", SessionValidator.login, SessionController.login);
 routes.post("/logout", onlyUsers, SessionController.logout);
 
-routes.get('/account', isLogged, UserController.settings)
+
 
 
 

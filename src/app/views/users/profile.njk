@@ -12,7 +12,7 @@
             <div class="background-img"></div>
             <div class="user-profile-right">
                 <div class="user-profile-image">
-                    <img src="{{user.profile_image}}" alt="">
+                    <img src="{{user.profileImage}}" alt="">
                     {# <img src="https://images.unsplash.com/photo-1557431177-36141475c676?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt=""> #}
                 </div>
 
@@ -44,7 +44,7 @@
                 <div class="buttons user-profile">
                     <input type="hidden" name="userId" value="session.userId">
                     <a href="/recipes/recipe-form" class="add add-recipe">Add new recipe</a>
-                    <a class="edit-user-btn round-btn" href="/users/edit"><img src="/assets/icons-recipe-show/icon.svg" alt=""></a>
+                    <a class="edit-user-btn round-btn" href="/users/settings"><img src="/assets/icons-recipe-show/icon.svg" alt=""></a>
                 </div>
             {% endif %}
 

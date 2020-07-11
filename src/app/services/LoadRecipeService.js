@@ -49,7 +49,7 @@ async function format(recipe) {
     recipe.difficulty = difficulty
 
     const diet_restriction = await dietRestriction.findOne({ where: { id: recipe.diet_restriction_id } })
-    const meal_type = await dietRestriction.findOne({ where: { id: recipe.meal_type_id } })
+    const meal_type = await mealType.findOne({ where: { id: recipe.meal_type_id } })
     const world_cuisine = await worldCuisine.findOne({ where: { id: recipe.world_cuisine_id } })
 
     recipe.diet_restriction = diet_restriction.name

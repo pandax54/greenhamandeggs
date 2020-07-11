@@ -440,6 +440,14 @@ input.input-files{
     cursor: pointer;
  }
 
+ input#photos.input-files.input-big {
+     width: 900px;
+     height: 300px;
+     top:140px;
+     left:120px;
+
+ }
+
  /* // DIV PHOTOS  */
  #photos-preview .photo{
     position: relative;

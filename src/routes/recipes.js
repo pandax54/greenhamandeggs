@@ -1,8 +1,11 @@
 const express = require('express');
 const routes = express.Router();
 const { isLogged, onlyUsers } = require("../app/middlewares/session");
+const multer = require('../app/middlewares/multer')
 
 const RecipeController = require("../app/controllers/RecipeController")
+
+const fieldsValidator = require('../app/validators/recipe');
 
 routes.get("/", RecipeController.index)
 
@@ -12,5 +15,9 @@ routes.get("/recipe-edit/:id", RecipeController.edit)
 
 routes.get("/recipe/:id", RecipeController.show)
 
+
+// colocaremos agora o multer como filtro, recebendo arquivos do campo photos e limitando a 6 
+routes.post('/recipe-form', onlyUsers, multer.array("photos", 6), fieldsValidator.post, RecipeController.post)
+// routes.put('/recipe-form', onlyUsers, multer.array("photos", 6), fieldsValidator.put, RecipeController.put)
 
 module.exports = routes  

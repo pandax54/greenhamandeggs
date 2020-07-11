@@ -102,7 +102,7 @@ button, .dot {
     background-image: url('https://media1.giphy.com/media/dAiKuPBhU3Bvh9ljS7/source.gif');
     background-repeat: no-repeat;
     background-size: cover;
-    width: 350px;
+    width: 420px;
     height: 400px;
 }
 /* https://i.pinimg.com/originals/a5/1a/2e/a51a2ed5e847e956bda683fa895713e7.gif */
@@ -127,7 +127,7 @@ button, .dot {
 @keyframes hidemessages {
     to {
         right: -50px;
-        opacity: 0; 
+        opacity: 0;
         visibility: hidden;
     }
 }

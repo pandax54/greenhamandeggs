@@ -5,7 +5,7 @@
         <img src="../assets/recipe-icons-form/Group-4.png" alt="chef">
         <h2>Title</h2>
     </label>
-    <input name="title" placeholder="Ramen Carbonara" type="text">
+    <input name="title" value="{{recipe.title}}" placeholder="Ramen Carbonara" type="text">
 </div>
 
 <div class="row-2">
@@ -14,7 +14,7 @@
             <img src="../assets/recipe-icons-form/Group-3.png" alt="chef">
             <h2>Serve (person)</h2>
         </label>
-        <input name="serving_size" placeholder="2 person" type="text">
+        <input value="{{recipe.serving_size}}" name="serving_size" placeholder="2 person" type="text">
     </div>
     <div class="social-media instagram">
         <label class="label-form" for="instagram">
@@ -22,7 +22,7 @@
             <img src="../assets/recipe-icons-form/Group-2.png" alt="chef">
             <h2>Cooking Time (min)</h2>
         </label>
-        <input name="cooking_time" placeholder="20" type="text">
+        <input value="{{recipe.cooking_time}}" name="cooking_time" placeholder="20" type="text">
     </div>
     <div class="social-media twitter">
         <label class="label-form" for="twitter">
@@ -30,16 +30,19 @@
             <img src="../assets/recipe-icons-form/Group-1.png" alt="chef">
             <h2>Difficulty</h2>
         </label>
-        <select>
+        <select name="difficulty_id" id="difficulty_id">
             <option value="0">Select the difficulty</option>
-            <option value="1">Easy</option>
+            {% for item in session.difficulties %}
+                <option value="{{item.id}}">{{item.name}}</option>
+            {% endfor %}
+            {# <option value="1">Easy</option>
             <option value="2">Medium</option>
             <option value="3">Hard</option>
             <option value="4">Harder</option>
             <option value="5">Hardest</option>
             <option value="6">Hardestest</option>
             <option value="7">Darksouls</option>
-            <option value="8">Dante must die</option>
+            <option value="8">Dante must die</option> #}
         </select>
     </div>
 </div>
@@ -51,9 +54,9 @@
             <img src="../assets/more-icons/Group-1.svg" alt="chef">
             <h2>Diet Restriction</h2>
         </label>
-        <select>
+        <select name="diet_restriction_id" id="diet_restriction_id">
             <option value="0">Select the difficulty</option>
-            {% for item in diet_restriction %}
+            {% for item in session.diet_restriction %}
                 <option value="{{item.id}}">{{item.name}}</option>
             {% endfor %}
         </select>
@@ -64,9 +67,9 @@
             <img src="../assets/more-icons/Group-2.svg" alt="chef">
             <h2>Meal Type</h2>
         </label>
-        <select>
+        <select name="meal_type_id" id="meal_type_id">
             <option value="0">Select the difficulty</option>
-            {% for item in meal_type %}
+            {% for item in session.meal_type %}
                 <option value="{{item.id}}">{{item.name}}</option>
             {% endfor %}
         </select>
@@ -77,9 +80,9 @@
             <img src="../assets/more-icons/Group.svg" alt="chef">
             <h2>World Cuisine</h2>
         </label>
-        <select>
+        <select name="world_cuisine_id" id="world_cuisine_id">
             <option value="0">Select the difficulty</option>
-            {% for item in world_cuisine %}
+            {% for item in session.world_cuisine %}
                 <option value="{{item.id}}">{{item.name}}</option>
             {% endfor %}
         </select>
@@ -88,12 +91,12 @@
 
 <div class="row-3 textarea">
     <div class="about">
-        <label class="label-form" for="about">
+        <label class="label-form" for="information">
             <img src="../assets/more-icons/Group.svg" alt="chef">
             {# <i class="fa fa-twitter" style="font-size:24px;color:#FF370A;opacity: 0.5; padding-left: 15px" aria-hidden="true"></i> #}
             <h2>Description</h2>
         </label>
-        <textarea name="about" id="about" cols="30" rows="10" placeholder=" Carbonara is known as a quick-to-fix meal, but get dinner done even sooner by using ramen instead of traditional pasta. Top with additional Parmesan if desired."></textarea>
+        <textarea name="information" id="information" cols="30" rows="10" placeholder=" Carbonara is known as a quick-to-fix meal, but get dinner done even sooner by using ramen instead of traditional pasta. Top with additional Parmesan if desired.">{{recipe.about}}</textarea>
     </div>
 
 </div>
@@ -112,12 +115,23 @@
         <img src="../assets/recipe-icons-form/Group7.png" alt="chef">
     </label>
 
-    <div class="ingredient">
-        <input type="text" name="ingredients[]" value="" placeholder="2 slices bacon, chopped"/>
-        <button onclick="remove(event)" type="button" class="close-field">
-            <img src="/assets/Icons/Medium/icon-close.svg" alt="">
-        </button>
-    </div>
+    {%if recipe %}
+        {% for i in recipe.ingredients %}
+            <div class="ingredient">
+                <input type="text" name="ingredients[]" value="{{i}}" placeholder="2 slices bacon, chopped"/>
+                <button onclick="remove(event)" type="button" class="close-field">
+                    <img src="/assets/Icons/Medium/icon-close.svg" alt="">
+                </button>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="ingredient">
+            <input type="text" name="ingredients[]" value="" placeholder="2 slices bacon, chopped"/>
+            <button onclick="remove(event)" type="button" class="close-field">
+                <img src="/assets/Icons/Medium/icon-close.svg" alt="">
+            </button>
+        </div>
+    {% endif %}
 
 </div>
 
@@ -137,12 +151,23 @@
         <img src="../assets/recipe-icons-form/Group18.png" alt="chef">
     </label>
 
-    <div class="preparation">
-        <input type="text" name="preparation[]" value="" placeholder="Cook bacon in a large skillet over medium heat until crisp, about 5 minutes..."/>
-        <button onclick="remove(event)" type="button" class="close-field">
-            <img src="/assets/Icons/Medium/icon-close.svg" alt="">
-        </button>
-    </div>
+    {%if recipe %}
+        {% for i in recipe.preparation %}
+            <div class="preparation">
+                <input type="text" name="preparation[]" value="{{i}}" placeholder="Cook bacon in a large skillet over medium heat until crisp, about 5 minutes..."/>
+                <button onclick="remove(event)" type="button" class="close-field">
+                    <img src="/assets/Icons/Medium/icon-close.svg" alt="">
+                </button>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="preparation">
+            <input onblur="Mask.apply(this, 'formatPreparation')" type="text" name="preparation[]" value="" placeholder="Cook bacon in a large skillet over medium heat until crisp, about 5 minutes..."/>
+            <button onclick="remove(event)" type="button" class="close-field">
+                <img src="/assets/Icons/Medium/icon-close.svg" alt="">
+            </button>
+        </div>
+    {% endif %}
 
 </div>
 
@@ -158,7 +183,7 @@
 
 <div class="upload recipe">
     <div class="upload-img recipe-images" id="photos-upload">
-        <input id="photos-input" name="photos" type="file" accept="image/*" multiple="multiple" onchange="photoUpload.handleUploadPhoto(event)">
+        <input class="input-files input-big" id="photos" name="photos" type="file" accept="image/*" multiple="multiple" onchange="photoUpload.handleUploadPhoto(event)">
         <label class="label-form" for="upload">
             <img src="../assets/recipe-icons-form/download.png" alt="chef">
             <h2>DRAG AND DROP IMAGE</h2>

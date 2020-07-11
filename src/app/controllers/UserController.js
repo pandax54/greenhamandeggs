@@ -16,6 +16,11 @@ module.exports = {
 
         if (!users) return res.send("Users not found!")
 
+        users = users.map(user => ({
+            ...user,
+            profileImage: user.profile_image.replace(/(.*)(\/images.*)/, '$2')
+        }))
+
 
         return res.render('users/index', { users })
     },
@@ -24,7 +29,10 @@ module.exports = {
     },
     settings(req, res) {
 
-        return res.render('users/account')
+        const { user } = req.session
+
+        return res.render('users/settings', { user })
+        // return res.render('users/account')
     },
     async show(req, res) {
 
@@ -32,11 +40,21 @@ module.exports = {
 
         if (!user) return res.send("User not found!")
 
+        user.profileImage = user.profile_image.replace(/(.*)(\/images.*)/, '$2')
+
+
         let recipes = await LoadRecipeService.load('recipes', { where: { user_id: user.id } })
 
         if (recipes) {
+            recipes = recipes.map(recipe => ({
+                ...recipe,
+                img: recipe.files[0].path.replace(/(.*)(\/images.*)/, '$2')
+            }))
             user.recipes = recipes
         }
+
+        // user.profileImage = user.profile_image.replace(/(.*)(\/images.*)/, '$2')
+        console.log("this is the recipe", user.recipes[0])
 
 
         // return res.json(user)
@@ -51,23 +69,23 @@ module.exports = {
             // promise
             password = await hash(password, 8)
 
-            let profile_image = req.file.path
-
 
             const userId = await User.create({
                 name,
                 email,
                 instagram,
                 twitter,
-                about,
-                profile_image,
+                about: String(about).replace("'", "''"),
+                profile_image: req.file.path,
                 password
             })
+            // profile_image: req.file.path.replace(/(.*)(\/images.*)/, '$2')
+            // .replace(/(\d{3})(\d)/, '$1.$2')
 
             // agora temos acesso ao session por meio do req
             req.session.userId = userId
-
-            // console.log(req.file)
+            console.log(userId)
+            console.log(req.file)
             // {
             //     fieldname: 'profile_image',
             //     originalname: 'Screen Shot 2020-07-05 at 12.55.20.png',
@@ -81,8 +99,8 @@ module.exports = {
 
             console.log(req.body)
 
-            // return res.json(req.body)
-            return res.redirect(`/users/user/${userId}`)
+            return res.redirect('/users')
+            // return res.redirect(`/users/user/${userId}`)
 
         } catch (error) {
             console.error(error)
@@ -93,6 +111,8 @@ module.exports = {
         let user = await User.findOne({ where: { id: req.session.userId } })
 
         if (!user) return res.send("User not found!")
+
+        user.profileImage = user.profile_image.replace(/(.*)(\/images.*)/, '$2')
 
 
         return res.render('users/settings', { user })
@@ -107,6 +127,10 @@ module.exports = {
                 name, email, instagram, twitter, about
             })
 
+            updateUser = await User.findOne({ where: { id } })
+
+            req.session.user = updateUser
+
         } catch (err) {
             console.error(err)
             return res.render("users/settings", {
@@ -120,5 +144,50 @@ module.exports = {
             user: req.body,
             success: "Conta atualizada com sucesso"
         })
-    }
+    },
+    async delete(req, res) {
+        try {
+
+            const user = await User.findOne({ where: { id: req.body.id } })
+            const recipes = await Recipe.findAll({ where: { user_id: req.body.id } })
+
+
+            // dos produtos, pegar todas as imagens
+            const allFilesPromise = recipes.map(recipe =>
+                Recipe.files(recipe.id))
+
+            let promiseResults = await Promise.all(allFilesPromise)
+
+            let profileImage = user.profile_image
+
+            // rodar a remoção do usuário
+            await User.delete(req.body.id)
+            req.session.destroy()
+
+            // remover as imagens da pasta public
+            promiseResults.map(files => {
+                files.map(file => {
+                    try {
+                        unlinkSync(file.path)
+                    } catch (err) {
+                        console.error(err)
+                    }
+
+                })
+            })
+
+            unlinkSync(profileImage)
+
+            return res.render("session/login", {
+                success: "Conta deletada com sucesso!"
+            })
+
+        } catch (error) {
+            console.error(error)
+            return res.render("users/settings", {
+                user: req.body,
+                error: "Erro ao tentar deletar sua conta"
+            })
+        }
+    },
 }

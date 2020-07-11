@@ -9,11 +9,11 @@
 {# {%include "parts/header.njk"%} #}
 
 {% block content %}
-    {% call cover.render('CHEF UPDATE REGISTRATION','', 'about', '', '../assets/about2.png', session )%}
+    {% call cover.render('SETTINGS','', 'about', '', '../assets/about2.png', session )%}
     {% endcall %}
 
     {% call form.render("CHEF'S FORM", "chef-form register chef") %}
-    <form action="/users/edit?_method=PUT" enctype="multipart/form-data" method="POST">
+    <form action="/users/settings?_method=PUT" enctype="multipart/form-data" method="POST">
         <div class="row-1">
             <label class="label-form" for="name">
                 <img src="../assets/chefs-icons/Group-1.png" alt="chef">
@@ -62,7 +62,7 @@
                     <i class="fa fa-image" style="font-size:24px;color:#FF370A;opacity: 0.5; padding-left: 15px" aria-hidden="true"></i>
                     <h2>Upload Profile Photo</h2>
                 </label>
-                <div class="upload-img profile-img" style="background-image: url('{{user.profile_image}}')" id="profile-image-div">
+                <div class="upload-img profile-img" style="background-image: url('{{user.profileImage}}')" id="profile-image-div">
                     <label class="label-form" for="upload">
                         <img src="../assets/recipe-icons-form/download.png" alt="chef">
                     </label>
@@ -89,6 +89,11 @@
         </div>
     </form>
     {% endcall %}
+
+    <form id="form-delete" action="/users/settings?_method=DELETE" method="POST">
+        <input type="hidden" name="id" value="{{user.id}}">
+        <button class="button delete" type="submit">Deletar conta</button>
+    </form>
 
 {% endblock %}
 

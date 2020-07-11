@@ -9,10 +9,10 @@
 {# {%include "parts/header.njk"%} #}
 
 {% block content %}
-    {% call cover.render('NEW RECIPE FORM','', 'recipe form', '', '../assets/about2.png' )%}
+    {% call cover.render('NEW RECIPE FORM','', 'recipe form', '', '../assets/about2.png', session )%}
     {% endcall %}
 
-    <form action="/recipes" method="POST" enctype="multipart/form-data">
+    <form action="/recipes/recipe-form" enctype="multipart/form-data" method="POST">
         {% include "recipes/fields.njk" %}
         <div class="form-btn">
             <button type="submit" class="post-btn" onclick="Validate.allFields(event)">Salvar</button>

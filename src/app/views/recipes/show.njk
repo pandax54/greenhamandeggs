@@ -15,7 +15,7 @@
 
         <div class="container header">
 
-            <div class="img-cover" style="background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url('{{recipe.files[0].name}}'); background-repeat: no-repeat; background-size: cover;">
+            <div class="img-cover" style="background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url('/images/{{recipe.files[0].src}}'); background-repeat: no-repeat; background-size: cover;">
 
                 {% include "parts/nav.njk" %}
 
@@ -26,7 +26,7 @@
                                 {{recipe.user.name}}</span></h1>
                     </div>
                     <a href="/users/user/{{recipe.user.id}}">
-                        <div class="recipe-show-user"><img class="round-img" src="{{recipe.user.profile_image}}" alt=""></div>
+                        <div class="recipe-show-user"><img class="round-img" src="{{recipe.user.profileImage}}" alt=""></div>
                     </a>
                 </div>
 
@@ -52,7 +52,7 @@
                     {{recipe.difficulty.name}}</h3>
             </div>
 
-            {% if user.session.userId == user.id %}
+            {% if user.session.userId == recipe.user_id %}
                 <div class="edit-btn">
                     <a class="edit-btn round-btn" href="/recipes/recipe-edit/{{recipe.id}}"><img src="/assets/icons-recipe-show/icon.svg" alt=""></a>
                 </div>
@@ -65,10 +65,9 @@
                 </div>
                 <div class="ingredients-info">
                     <ul class="ingredients-list-items">
-                        <li class="ingredients-list-item">2 slices bacon, chopped</li>
-                        <li class="ingredients-list-item">½ cup chopped onion</li>
-                        <li class="ingredients-list-item">2 (3 ounce) packages ramen noodles (flavor packets discarded)</li>
-                        <li class="ingredients-list-item">½ cup frozen peas</li>
+                        {% for item in recipe.ingredients %}
+                            <li class="ingredients-list-item">{{ item }}</li>
+                        {% endfor %}
                     </ul>
                 </div>
             </div>
@@ -90,18 +89,15 @@
 </div>
 <div class="preparation-info">
     <ul class="preparations-list-items">
-        <li class="preparations-list-item">
-            <h2>STEP 1</h2>
-            <p>Cook bacon in a large skillet over medium heat until crisp, about 5 minutes. Transfer to paper towels to drain. Add onion to bacon drippings in skillet; cook until tender, 3 to 5 minutes.</p>
-        </li>
-        <li class="preparations-list-item">
-            <h2>STEP 2</h2>
-            <p>Cook bacon in a large skillet over medium heat until crisp, about 5 minutes. Transfer to paper towels to drain. Add onion to bacon drippings in skillet; cook until tender, 3 to 5 minutes.</p>
-        </li>
-        <li class="preparations-list-item">
-            <h2>STEP 3</h2>
-            <p>Cook bacon in a large skillet over medium heat until crisp, about 5 minutes. Transfer to paper towels to drain. Add onion to bacon drippings in skillet; cook until tender, 3 to 5 minutes.</p>
-        </li>
+        {% for item in recipe.steps %}
+            {% if item != "" %}
+                <li class="preparations-list-item">
+                    <h2>STEP
+                        {{loop.index}}</h2>
+                    <p>{{ item }}</p>
+                </li>
+            {% endif %}
+        {% endfor %}
     </ul>
 </div>
 </div>
@@ -138,12 +134,9 @@
 {% endcall %}
 
 <div class="recipe-files">
-<div class="recipe-file" style="background-image: url('{{recipe.files[0].name}}'); background-repeat: no-repeat; background-size: cover;"></div>
-<div class="recipe-file" style="background-image: url('{{recipe.files[0].name}}'); background-repeat: no-repeat; background-size: cover;"></div>
-<div class="recipe-file" style="background-image: url('{{recipe.files[0].name}}'); background-repeat: no-repeat; background-size: cover;"></div>
-<div class="recipe-file" style="background-image: url('{{recipe.files[0].name}}'); background-repeat: no-repeat; background-size: cover;"></div>
-<div class="recipe-file" style="background-image: url('{{recipe.files[0].name}}'); background-repeat: no-repeat; background-size: cover;"></div>
-<div class="recipe-file" style="background-image: url('{{recipe.files[0].name}}'); background-repeat: no-repeat; background-size: cover;"></div>
+{% for file in recipe.files %}
+<div class="recipe-file" style="background-image: url('/images/{{file.src}}'); background-repeat: no-repeat; background-size: cover;"></div>
+{% endfor %}
 </div>
 
 <div class="img-footer">

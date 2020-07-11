@@ -82,3 +82,21 @@ function remove(event) {
     }
 
 }
+
+
+const Mask = {
+    apply(input, func) {
+
+        setTimeout(() => {
+
+            input.value = Mask[func](input.value)
+
+        }, 1)
+
+    },
+    formatPreparation(value) {
+
+        value = value.replace(/(.*\.)[a-zA-Z0-9,.!? ]*$/, '$1@')
+        return value
+    }
+}

@@ -1,0 +1,153 @@
+{% extends "layout.njk" %}
+{% import "../parts/header-cover.njk" as cover %}
+{% import "../parts/form-card.njk" as form %}
+
+{% block header %}
+    <title>Recipes</title>
+{% endblock %}
+
+{# {%include "parts/header.njk"%} #}
+
+{% block content %}
+    {# {% call cover.render('show recipe', '','recipe ingredients-show-card', '','http://lorempixel.com/640/480/food' )%}
+    {% endcall %} #}
+    <header>
+
+        <div class="container header">
+
+            <div class="img-cover" style="background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url('{{recipe.files[0].name}}'); background-repeat: no-repeat; background-size: cover;">
+
+                {% include "parts/nav.njk" %}
+
+                <div class="cover-info recipe-show">
+                    <div class="recipe-title">
+                        <h1>{{recipe.title}}
+                            <span>by
+                                {{recipe.user.name}}</span></h1>
+                    </div>
+                    <a href="/users/user/{{recipe.user.id}}">
+                        <div class="recipe-show-user"><img class="round-img" src="{{recipe.user.profile_image}}" alt=""></div>
+                    </a>
+                </div>
+
+            </div>
+            <div class="color-cover"></div>
+
+        </div>
+
+    </header>
+
+    {% call form.render("ingredients", "recipe-show") %}
+
+    <div class="header">
+        <div id="recipe-show">
+            <div class="recipe-show">
+                <h3>Preparation:
+                    {{recipe.cooking_time}}
+                    minutes</h3>
+                <h3>Serve:
+                    {{recipe.serving_size}}
+                    people</h3>
+                <h3>Difficulty:
+                    {{recipe.difficulty.name}}</h3>
+            </div>
+
+            {% if user.session.userId == recipe.user_id %}
+                <div class="edit-btn">
+                    <a class="edit-btn round-btn" href="/recipes/recipe-edit/{{recipe.id}}"><img src="/assets/icons-recipe-show/icon.svg" alt=""></a>
+                </div>
+            {% endif %}
+
+            <div class="ingredients-show">
+                <div class="title-icon">
+                    <img src="/assets/icons-recipe-show/Group.svg" alt="">
+                    <h3>ingredients</h3>
+                </div>
+                <div class="ingredients-info">
+                    <ul class="ingredients-list-items">
+                        <li class="ingredients-list-item">2 slices bacon, chopped</li>
+                        <li class="ingredients-list-item">½ cup chopped onion</li>
+                        <li class="ingredients-list-item">2 (3 ounce) packages ramen noodles (flavor packets discarded)</li>
+                        <li class="ingredients-list-item">½ cup frozen peas</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+{% endcall %}
+
+{% call form.render("preparation", "recipe-show") %}
+
+<div class="preparation-show">
+<div class="title-icon">
+    <img src="/assets/icons-recipe-show/Vector.svg" alt="">
+    <h3>INSTRUCTIONS</h3>
+</div>
+<div class="preparation-info">
+    <ul class="preparations-list-items">
+        <li class="preparations-list-item">
+            <h2>STEP 1</h2>
+            <p>Cook bacon in a large skillet over medium heat until crisp, about 5 minutes. Transfer to paper towels to drain. Add onion to bacon drippings in skillet; cook until tender, 3 to 5 minutes.</p>
+        </li>
+        <li class="preparations-list-item">
+            <h2>STEP 2</h2>
+            <p>Cook bacon in a large skillet over medium heat until crisp, about 5 minutes. Transfer to paper towels to drain. Add onion to bacon drippings in skillet; cook until tender, 3 to 5 minutes.</p>
+        </li>
+        <li class="preparations-list-item">
+            <h2>STEP 3</h2>
+            <p>Cook bacon in a large skillet over medium heat until crisp, about 5 minutes. Transfer to paper towels to drain. Add onion to bacon drippings in skillet; cook until tender, 3 to 5 minutes.</p>
+        </li>
+    </ul>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+</div>
+
+{% endcall %}
+
+{% call form.render("preparation", "recipe-show") %}
+
+<div class="recipe-show transparency margin-top">
+
+<div class="recipe-details">
+<h3>Diet Restriction:</h3>
+<span>{{recipe.diet_restriction}}</span>
+</div>
+
+<div class="recipe-details">
+<h3>Meal Type:</h3>
+<span>{{recipe.meal_type}}</span>
+</div>
+
+<div class="recipe-details">
+<h3>World Cuisine:</h3>
+<span>{{recipe.world_cuisine}}</span>
+</div>
+
+</div>
+
+{% endcall %}
+
+<div class="recipe-files">
+<div class="recipe-file" style="background-image: url('{{recipe.files[0].name}}'); background-repeat: no-repeat; background-size: cover;"></div>
+<div class="recipe-file" style="background-image: url('{{recipe.files[0].name}}'); background-repeat: no-repeat; background-size: cover;"></div>
+<div class="recipe-file" style="background-image: url('{{recipe.files[0].name}}'); background-repeat: no-repeat; background-size: cover;"></div>
+<div class="recipe-file" style="background-image: url('{{recipe.files[0].name}}'); background-repeat: no-repeat; background-size: cover;"></div>
+<div class="recipe-file" style="background-image: url('{{recipe.files[0].name}}'); background-repeat: no-repeat; background-size: cover;"></div>
+<div class="recipe-file" style="background-image: url('{{recipe.files[0].name}}'); background-repeat: no-repeat; background-size: cover;"></div>
+</div>
+
+<div class="img-footer">
+<h1>Bon appétit!</h1>
+</div>
+
+{% endblock %}

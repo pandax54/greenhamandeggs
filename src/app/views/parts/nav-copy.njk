@@ -91,16 +91,16 @@
                         {% if session.userId %}
                             <ul class="dropdown">
                                 <li class="dropdown-item">
-                                    <a href="/users/user/{{session.userId}}">My account</a>
+                                    <a href="/users/user/{{session.userId}}">Account</a>
                                 </li>
+                                {# <li class="dropdown-item">
+                                <a href="/recipes/user-recipe/{{session.userId}}">Recipes</a>
+                            </li> #}
+                                {# <li class="dropdown-item">
+                                <a href="/orders">Orders</a>
+                            </li> #}
                                 <li class="dropdown-item">
-                                    <a href="/recipes/user-recipe/{{session.userId}}">My recipes</a>
-                                </li>
-                                <li class="dropdown-item">
-                                    <a href="/orders">My Orders</a>
-                                </li>
-                                <li class="dropdown-item">
-                                    <a href="/users/account">Settings</a>
+                                    <a href="/users/settings">Settings</a>
                                 </li>
                                 <li class="dropdown-item logout">
                                     <form action="/users/logout" method="POST">
