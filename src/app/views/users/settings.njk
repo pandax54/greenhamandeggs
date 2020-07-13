@@ -79,7 +79,7 @@
                 </label>
                 <input name="password" placeholder="Choose a password" type="password">
             </div>
-            {# <input type="file" name="img" accept="image/*"> #}
+
         </div>
         <div class="form-btn">
             <input type="hidden" name="id" value="{{user.id}}">
@@ -91,6 +91,8 @@
     {% endcall %}
 
     <form id="form-delete" action="/users/settings?_method=DELETE" method="POST">
+        <input value="{{user}}" type="hidden" name="user">
+        <input value="{{user.password}}" type="hidden" name="password">
         <input type="hidden" name="id" value="{{user.id}}">
         <button class="button delete" type="submit">Deletar conta</button>
     </form>
@@ -100,4 +102,5 @@
 {% block script %}
     {# <script src="/js/script.js"></script> #}
     <script src="/js/img-upload.js"></script>
+    <script src="/js/deleteAccount.js"></script>
 {% endblock %}

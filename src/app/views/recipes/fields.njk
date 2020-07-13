@@ -50,7 +50,6 @@
 <div class="row-2 margin-top">
     <div class="social-media twitter">
         <label class="label-form" for="twitter">
-            {# <img src="../assets/chefs-icons/Group-1.png" alt="chef"> #}
             <img src="../assets/more-icons/Group-1.svg" alt="chef">
             <h2>Diet Restriction</h2>
         </label>
@@ -63,7 +62,6 @@
     </div>
     <div class="social-media twitter">
         <label class="label-form" for="twitter">
-            {# <img src="../assets/chefs-icons/Group-1.png" alt="chef"> #}
             <img src="../assets/more-icons/Group-2.svg" alt="chef">
             <h2>Meal Type</h2>
         </label>
@@ -195,7 +193,7 @@
         {% if files %}
             {% for image in files %}
                 <div class="photo" id="{{ image.id }}">
-                    <img src="{{ image.src}}" alt="{{ image.name }}">
+                    <img src="/images/{{ image.src}}" alt="{{ image.name }}">
                     <i class="material-icons" onclick="photoUpload.removeOldPhoto(event)">
                         close</i>
                 </div>
@@ -209,7 +207,7 @@
 {% endcall %}
 
 {# https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file #}
-<div id="photos-preview">
+{# <div id="photos-preview">
     {% if files %}
         {% for image in files %}
             <div class="photo" id="{{ image.id }}">
@@ -218,7 +216,6 @@
                     close</i>
             </div>
         {% endfor %}
-        {# toda vez que eu deletar uma foto o id dela vem para cá #}
         <input type="hidden" name="removed_files">
     {% endif %}
-</div>
+</div> #}

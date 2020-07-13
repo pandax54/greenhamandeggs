@@ -1,6 +1,6 @@
 const formDelete = document.querySelector('#form-delete')
 formDelete.addEventListener("submit", function () {
-    const confirmation = confirm("Tem certeza que deseja excluir sua conta? Essa operação não poderá ser desfeita")
+    const confirmation = confirm("Are you sure do you want to delete your account?")
     if (!confirmation) {
         e.preventDefault()
     }

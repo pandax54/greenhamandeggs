@@ -7,7 +7,7 @@ const Difficulties = require('../models/Difficulty')
 const dietRestriction = require('../models/dietRestriction')
 const mealType = require('../models/mealType')
 const worldCuisine = require('../models/worldCuisine')
-
+const DeleteService = require('../services/DeleteService')
 
 
 module.exports = {
@@ -15,30 +15,25 @@ module.exports = {
 
         let recipes = await LoadRecipeService.load('recipes')
 
-        // let recipes = await Recipe.findAll()
-
-        req.session.userId = userId
+        // because of the seed there are http images that may broken the layout
+        // recipes = recipes.map(recipe => ({
+        //     ...recipe,
+        //     img: (recipe.img.includes('http') ? recipe.img : `/images/${recipe.img}`)
+        // }))
 
         return res.render('recipes/index', { recipes })
     },
     async create(req, res) {
 
-        const diet_restriction = await dietRestriction.findAll()
-        const meal_type = await mealType.findAll()
-        const world_cuisine = await worldCuisine.findAll()
-        const difficulties = await Difficulties.findAll()
-
-        // console.log(diet_restriction, meal_type, world_cuisine)
-
-        return res.render('recipes/form', { diet_restriction, meal_type, world_cuisine })
+        return res.render('recipes/form')
     },
     async edit(req, res) {
 
-        const diet_restriction = await dietRestriction.findAll()
-        const meal_type = await mealType.findAll()
-        const world_cuisine = await worldCuisine.findAll()
+        const { id } = req.params
 
-        return res.render('recipes/update-form', { diet_restriction, meal_type, world_cuisine })
+        let recipe = await LoadRecipeService.load('recipe', { where: { id } })
+
+        return res.render('recipes/update-form', { recipe })
     },
     async show(req, res) {
 
@@ -47,12 +42,9 @@ module.exports = {
             //let product = await Product.find(id)
             let recipe = await LoadRecipeService.load('recipe', { where: { id: req.params.id } })
 
+            console.log(recipe)
+
             if (!recipe) return res.send("Product not found!")
-
-            console.log(recipe.preparation.join(',').split('@'))
-            recipe.steps = recipe.preparation.join('').split('@')
-
-            recipe.user.profileImage = recipe.user.profile_image.replace(/(.*)(\/images.*)/, '$2')
 
 
             return res.render('recipes/show', { recipe })
@@ -65,9 +57,6 @@ module.exports = {
     },
     async post(req, res) {
         try {
-
-
-            // console.log(diet_restriction, meal_type, world_cuisine)
 
             let {
                 title,
@@ -124,16 +113,85 @@ module.exports = {
             return res.render('recipes/form', {
                 success: "receita criada"
             });
-            // return res.json(recipeId)
 
 
         } catch (err) {
             console.error(err)
-            return res.redirect("recipes/form",
+            return res.redirect('/')
+            // return res.redirect("recipes/form",
+            //     {
+            //         recipe: req.body,
+            //         error: "Algum erro aconteceu"
+            //     })
+        }
+    },
+    async put(req, res) {
+        try {
+
+            let {
+                title,
+                serving_size,
+                cooking_time,
+                difficulty_id,
+                ingredients,
+                preparation,
+                information,
+                diet_restriction_id,
+                meal_type_id,
+                world_cuisine_id
+            } = req.body;
+
+            if (req.files.length != 0) {
+                const newFilesPromise = req.files.map((file) =>
+                    File.create({ name: file.filename, path: file.path })
+                );
+                await Promise.all(newFilesPromise)
+            }
+
+            if (req.body.removed_files) {
+                DeleteService.removedFiles(req.body);
+            }
+
+            await Recipe.update(req.body.id, {
+                title: title.replace("'", "''"),
+                user_id: req.session.userId,
+                serving_size,
+                cooking_time,
+                difficulty_id,
+                ingredients: `{${ingredients.join(',').replace(/['"]/g, "''")}}`,
+                preparation: `{${preparation.join(',').replace(/['"]/g, "''")}}`,
+                information: information.replace("'", "''").replace("\"", ""),
+                diet_restriction_id,
+                meal_type_id,
+                world_cuisine_id
+            });
+
+
+            return res.render('recipes/update-form', {
+                success: "receita atualizada"
+            });
+        } catch (err) {
+            console.error(err)
+            return res.redirect("recipes/update-form",
                 {
                     recipe: req.body,
                     error: "Algum erro aconteceu"
                 })
+        }
+    },
+    async delete(req, res) {
+        try {
+            const files = await Recipe.files(req.body.id);
+
+            await Recipe.delete(req.body.id);
+
+            DeleteService.deleteFiles(files);
+
+            return res.render("index", {
+                success: "deletada",
+            });
+        } catch (err) {
+            console.error(err);
         }
     }
 }

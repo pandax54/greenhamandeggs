@@ -20,7 +20,7 @@ module.exports = {
             req.session.world_cuisine = world_cuisine
 
             let recipes = await LoadRecipeService.load('recipes')
-            // let recipes = await Recipe.findAll()
+
             recipes = recipes.map(recipe => ({
                 ...recipe,
                 img: recipe.files[0].path.replace(/(.*)(\/images.*)/, '$2')
@@ -28,7 +28,7 @@ module.exports = {
 
             recipes = recipes.filter((recipe, index) => index > 8 ? false : true)   // pegar apenas os primeiros produtos
 
-            console.log(req.session.userId)
+
 
             return res.render("index", { recipes })
 

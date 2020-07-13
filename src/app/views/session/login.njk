@@ -6,7 +6,7 @@
     <title>Users Index</title>
 {% endblock %}
 {% block content %}
-    {% call cover.render('WELCOME GREEN HAM AND EGGS!','', 'about', '', '../assets/about2.png' )%}
+    {% call cover.render('WELCOME GREEN HAM AND EGGS!','', 'about', '', '../assets/about2.png', session )%}
     {% endcall %}
     {% call form.render("LOGIN", "login chef register_form") %}
     <form class="register_form" method="POST" action="/users/login">

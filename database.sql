@@ -112,9 +112,9 @@ ALTER TABLE "recipes" ADD FOREIGN KEY ("world_cuisine_id") REFERENCES "world_cui
 
 
 -- create delete cascade
-ALTER TABLE "recipes" DROP CONSTRAINT IF EXISTS recipes_chef_id_fkey,
-ADD CONSTRAINT recipes_chef_id_fkey
-FOREIGN KEY ("chef_id") REFERENCES "chefs" ("id")
+ALTER TABLE "recipes" DROP CONSTRAINT IF EXISTS recipes_user_id_fkey,
+ADD CONSTRAINT recipes_user_id_fkey
+FOREIGN KEY ("user_id") REFERENCES "users" ("id")
 ON DELETE CASCADE;
 
 ALTER TABLE "chefs" DROP CONSTRAINT IF EXISTS chefs_user_id_fkey,

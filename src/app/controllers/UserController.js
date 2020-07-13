@@ -1,10 +1,10 @@
 const User = require('../models/User')
-
 const LoadRecipeService = require('../services/LoadRecipeService')
+const LoadUserService = require('../services/LoadUserService')
 const { hash } = require("bcryptjs");
 const user = require('../validators/user')
 const Recipe = require('../models/Recipe')
-
+const { unlinkSync } = require("fs");
 
 
 module.exports = {
@@ -12,14 +12,10 @@ module.exports = {
 
 
         // pegar o id do usuário que está logado do session
-        let users = await User.findAll()
+        // let users = await User.findAll()
+        let users = await LoadUserService.load('users')
 
         if (!users) return res.send("Users not found!")
-
-        users = users.map(user => ({
-            ...user,
-            profileImage: user.profile_image.replace(/(.*)(\/images.*)/, '$2')
-        }))
 
 
         return res.render('users/index', { users })
@@ -148,6 +144,8 @@ module.exports = {
     async delete(req, res) {
         try {
 
+            console.log('this is id', req.body.id)
+
             const user = await User.findOne({ where: { id: req.body.id } })
             const recipes = await Recipe.findAll({ where: { user_id: req.body.id } })
 
@@ -185,9 +183,9 @@ module.exports = {
         } catch (error) {
             console.error(error)
             return res.render("users/settings", {
-                user: req.body,
+                user,
                 error: "Erro ao tentar deletar sua conta"
             })
         }
-    },
+    }
 }

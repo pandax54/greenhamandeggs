@@ -10,11 +10,12 @@ const worldCuisine = require('../models/worldCuisine')
 async function getImages(recipeId) {
     // get the images of the product
     let files = await Recipe.files(recipeId)
+
     // somente retornar o caminho pois precisamos da url na tag da imagem
     files = files.map(file => ({
         ...file,
         // src: `${file.path.replace("public", "")}`
-        src: file.name
+        src: file.name.includes('http') ? file.name : file.path.replace(/(.*)(\/images.*)/, '$2')
 
     }))
 
@@ -55,6 +56,10 @@ async function format(recipe) {
     recipe.diet_restriction = diet_restriction.name
     recipe.meal_type = meal_type.name
     recipe.world_cuisine = world_cuisine.name
+
+    recipe.steps = recipe.preparation.join('').split('@')
+
+    recipe.user.profileImage = recipe.user.profile_image.replace(/(.*)(\/images.*)/, '$2')
 
     return recipe
 }

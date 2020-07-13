@@ -23,7 +23,7 @@ routes.post('/register', multer.single("profile_image"), UserValidator.post, Use
 // update user
 routes.get('/settings', UserController.edit)
 routes.put('/settings', onlyUsers, multer.single("profile_image"), UserValidator.update, UserController.put)
-routes.delete('/settings', UserController.delete)
+routes.delete('/settings', UserValidator.delete, UserController.delete)
 
 
 // SESSION PART 

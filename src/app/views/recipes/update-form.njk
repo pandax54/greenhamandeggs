@@ -6,24 +6,22 @@
     <title>Form recipes</title>
 {% endblock %}
 
-{# {%include "parts/header.njk"%} #}
-
 {% block content %}
-    {% call cover.render('UPDATE RECIPE FORM','', 'recipe form', '', '../../assets/about2.png' )%}
+    {% call cover.render('UPDATE RECIPE FORM','', 'recipe form', '', '../../assets/about2.png', session )%}
     {% endcall %}
 
-    <form action="/recipes?_method=PUT" enctype="multipart/form-data" method="POST">
+    <form action="/recipes/recipe-form?_method=PUT" enctype="multipart/form-data" method="POST">
         {% include "recipes/fields-update.njk" %}
+        {# {% include "recipes/fields.njk" %} #}
 
         <input type="hidden" name="id" value="{{recipe.id}}">
 
         <div class="form-btn">
             <button type="submit" class="post-btn" onclick="Validate.allFields(event)">Salvar</button>
-            {# <a class="cancel-btn" href="/">Delete</a> #}
         </div>
     </form>
 
-    <form id="form-delete" action="/recipes?_method=DELETE" method="POST">
+    <form id="form-delete" action="/recipes/recipe-form?_method=DELETE" method="POST">
         <input type="hidden" name="id" value="{{recipe.id}}">
         <button class="cancel-btn delete" type="submit">Deletar</button>
     </form>
@@ -33,4 +31,5 @@
 {% block script %}
     <script src="/js/script.js"></script>
     <script src="/js/img-upload.js"></script>
+    <script src="/js/deleteConfirm.js"></script>
 {% endblock %}

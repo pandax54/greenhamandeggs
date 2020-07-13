@@ -15,7 +15,7 @@
 
         <div class="container header">
 
-            <div class="img-cover" style="background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url('/images/{{recipe.files[0].src}}'); background-repeat: no-repeat; background-size: cover;">
+            <div class="img-cover" style="background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url('{{recipe.files[0].src}}'); background-repeat: no-repeat; background-size: cover;">
 
                 {% include "parts/nav.njk" %}
 
@@ -52,7 +52,7 @@
                     {{recipe.difficulty.name}}</h3>
             </div>
 
-            {% if user.session.userId == recipe.user_id %}
+            {% if session.userId == recipe.user_id %}
                 <div class="edit-btn">
                     <a class="edit-btn round-btn" href="/recipes/recipe-edit/{{recipe.id}}"><img src="/assets/icons-recipe-show/icon.svg" alt=""></a>
                 </div>
@@ -133,9 +133,26 @@
 
 {% endcall %}
 
+{% call form.render("preparation", "recipe-show") %}
+
+<div class="recipe-show transparency">
+
+<div class="recipe-information">
+{# <h3 class="recipe-information-title">Additional information:</h3> #}
+<div class="title-icon">
+<img src="/assets/recipe-icons-form/mixer.svg" alt="">
+<h3>Additional info</h3>
+</div>
+<p>{{recipe.information}}</p>
+</div>
+
+</div>
+
+{% endcall %}
+
 <div class="recipe-files">
 {% for file in recipe.files %}
-<div class="recipe-file" style="background-image: url('/images/{{file.src}}'); background-repeat: no-repeat; background-size: cover;"></div>
+<div class="recipe-file" style="background-image: url('{{file.src}}'); background-repeat: no-repeat; background-size: cover;"></div>
 {% endfor %}
 </div>
 

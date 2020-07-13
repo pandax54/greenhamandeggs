@@ -1,7 +1,10 @@
 const User = require('../models/User')
 const { update } = require('../controllers/UserController')
 const { compare } = require("bcryptjs")
-
+const { user } = require('../services/LoadUserService')
+const session = require('express-session')
+const { hash } = require("bcryptjs");
+const LoadUserService = require('../services/LoadUserService')
 
 function checkAllField(body) {
     // check if has all fields
@@ -105,6 +108,34 @@ module.exports = {
         // }
         //return res.send("passed!")
         // caso todas as condições sejam validadas passar para o controller
+        next()
+    },
+    async delete(req, res, next) {
+
+        console.log("delete id", req.body.id)
+        console.log("password", req.body.password)
+
+        const user = await LoadUserService.load('user', { where: { id: req.body.id } })
+
+        if (!req.body.password) {
+            return res.render("users/settings", {
+                user: session.user,
+                error: 'Please, enter the password'
+            })
+        }
+
+        // const passed = await compare(req.body.password, user.password)
+        // console.log(passed, user.password)
+        const passed = req.body.password == user.password
+
+        if (!passed) {
+            return res.render("users/settings", {
+                user,
+                error: 'Wrong Password'
+            })
+        }
+
+        console.log('passed!')
         next()
     }
 

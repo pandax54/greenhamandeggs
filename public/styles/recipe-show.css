@@ -49,6 +49,23 @@
     max-width: 150px;
 
 }
+div.recipe-information {
+    text-align: left;
+}
+div.recipe-information p {
+    font-size: 18px;
+    line-height: 143%;
+
+}
+
+div.recipe-information h3.recipe-information-title {
+    color: rgba(31, 27, 27, 0.8);
+    /* display: block; */
+    text-align: left;
+    margin: 0 0 20px 0;
+    width: auto;
+    
+}
 
 .recipe-show.transparency h3 {
     max-width: 230px;

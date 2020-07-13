@@ -1,7 +1,7 @@
 
-const formDelete = document.querySelector('#form-delete')
-formDelete.addEventListener("submit", function () {
-    const confirmation = confirm("Deseja deletar o produto")
+const recipeDelete = document.querySelector('#form-delete')
+recipeDelete.addEventListener("submit", function () {
+    const confirmation = confirm("Please, confirm the recipe deletion")
     if (!confirmation) {
         e.preventDefault()
     }

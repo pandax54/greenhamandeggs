@@ -18,6 +18,8 @@ routes.get("/recipe/:id", RecipeController.show)
 
 // colocaremos agora o multer como filtro, recebendo arquivos do campo photos e limitando a 6 
 routes.post('/recipe-form', onlyUsers, multer.array("photos", 6), fieldsValidator.post, RecipeController.post)
-// routes.put('/recipe-form', onlyUsers, multer.array("photos", 6), fieldsValidator.put, RecipeController.put)
+routes.put('/recipe-form', onlyUsers, multer.array("photos", 6), fieldsValidator.put, RecipeController.put)
+routes.delete("/recipe-form", onlyUsers, RecipeController.delete);
+
 
 module.exports = routes  

@@ -1,14 +1,12 @@
 // ==== INGREDIENTS FIELDS =========
 
 function addIngredient() {
+    console.log('click')
     const ingredients = document.querySelector("#ingredients");
     const fieldContainer = document.querySelectorAll(".ingredients-container");
 
     // Realiza um clone do último ingrediente adicionado
     const newField = fieldContainer[fieldContainer.length - 1].cloneNode(true);
-
-    console.log(fieldContainer)
-    console.log(newField)
 
     console.log(newField.children[1].querySelector("button"))
 
@@ -26,7 +24,7 @@ document
     .addEventListener("click", addIngredient);
 
 
-function removeIngredient(event) {
+function remove(event) {
 
     const field = event.target.parentNode.parentNode.parentNode
 
@@ -46,6 +44,7 @@ function removeIngredient(event) {
 // ==== INSTRUCTION FIELDS =========
 
 function addInstructions() {
+    console.log('click')
     const ingredients = document.querySelector("#instructions");
     const fieldContainer = document.querySelectorAll(".instructions-container");
 
