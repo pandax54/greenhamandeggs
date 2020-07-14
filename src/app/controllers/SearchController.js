@@ -131,10 +131,18 @@ module.exports = {
             // meal_type
             // world_cuisine
 
+            console.log("this is query", req.query)
+
             const search = {
                 term: req.query.filter,
                 total: recipes.length
             }
+
+
+            // const search = {
+            //     term: { filters: req.query },
+            //     total: recipes.length
+            // }
 
 
             return res.render("search/index", { recipes, search, params, labels, labelsKeys })
