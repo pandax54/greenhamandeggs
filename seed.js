@@ -106,9 +106,9 @@ async function createImages() {
 
 
 async function init() {
-    // await createUsers()
-    // await createRecipes()
-    await createImages()
+    await createUsers()
+    await createRecipes()
+    // await createImages()
 }
 
 init()
