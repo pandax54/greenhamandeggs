@@ -1,0 +1,96 @@
+{% extends "layout.njk" %}
+{% import "parts/header-cover.njk" as cover %}
+
+{% block header %}
+    <title>SEARCH PAGE</title>
+{% endblock %}
+
+{% block content %}
+    {# {% macro render(title, classes, image) %} #}
+    {# {% call cover.render('HELLO GREEN HAM AND EGGS','Sam never gives up on his quest to get a good recipe', 'home','', 'assets/60th+Green+Eggs+banner.jpg' )%}
+    {% endcall %} #}
+    <header>
+
+        <div class="container header {{classes}}">
+
+            <div class="img-cover" style="background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url('/assets/60th+Green+Eggs+banner.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+                {% include "parts/nav.njk" %}
+
+                <div class="cover-info">
+                    <h1>HELLO GREEN HAM AND EGGS</h1>
+                    <h3>Sam never gives up on his quest to get a good recipe</h3>
+                </div>
+
+            </div>
+            <div class="color-cover"></div>
+
+        </div>
+
+    </header>
+
+    <section class="search-recipes container">
+
+        <aside>
+            <div class="header-search">
+                <h1>Search terms and results<h1>
+                        <h2>{{ search.term}}</h2>
+                        <p>{{search.total}}
+                            {% if search.total.length == 1 %}
+                                recipe
+                                {%else%}
+                                recipes
+                            {% endif %}
+                            found</p>
+                    </div>
+
+                    <nav class="categories">
+                        <h1>Filters and Categories</h1>
+                        <ul>
+                            {% for label, value in labels %}
+                                <li class="search-buttons">
+                                    <div class="title-search">
+                                        <a href="/recipes/search?filter={{search.term}}&{{label}}={{category.id}}">
+                                            <img src="../assets/search-icons/search-icons-svg/{{label}}.svg" alt="chef">
+                                            <h2>{{label}}</h2>
+                                        </div>
+                                        <div class="values-search">
+                                            {% for item in value %}
+                                                <a class="search-params" href="/recipes/search?filter={{search.term}}&{{item.name}}={{item.id}}">{{item.name}}</a>
+                                            {% endfor %}
+                                        </div>
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </nav>
+                </aside>
+
+                <div class="recipe-results">
+                    <h1>RECIPES</h1>
+                    <div class="recipe-container">
+
+                        {% for recipe in recipes %}
+                            <a class="recipe-card-container" href="/recipes/recipe/{{recipe.id}}">
+                                <div class="recipe-card" style="background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5) ), url('{{recipe.img}}'); background-repeat: no-repeat; background-size: cover; background-position: center center">
+                                    <div class="recipe-info">
+                                        <h2 class="recipe-title">{{recipe.title}}</h2>
+                                        <p>por
+                                            {{recipe.user.name}}</p>
+                                    </div>
+                                </div>
+                            </a>
+
+                        {% endfor %}
+
+                    </div>
+
+                </section>
+
+            {% endblock content %}
+
+            {% block script %}
+
+                <script src="/js/scripts.js"></script>
+
+            {% endblock %}

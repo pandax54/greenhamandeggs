@@ -15,32 +15,36 @@ const Recipe = {
 
         return results.rows
     },
-    // async search(params) {
+    async search(params) {
 
-    //     const { filter, category } = params
+        const {
+            filter,
+            difficulties,
+            diet_restriction,
+            meal_type,
+            world_cuisine
+        } = params
 
-    //     let query = `
-    //         SELECT products.*,
-    //             categories.name AS category_name
-    //         FROM products
-    //         LEFT JOIN categories ON (categories.id = products.category_id)
-    //         WHERE 1 = 1
-    //     `
+        let query = `
+            SELECT recipes.*,
+            difficulties.name AS difficulties_name
+            FROM recipes
+            LEFT JOIN difficulties ON (difficulties.id = recipes.difficulty_id)
+            WHERE 1 = 1
+        `
 
-    //     if (category) {
-    //         query += ` AND products.category_id = ${category}`
-    //     }
+        if (difficulties) {
+            query += ` AND recipes.difficulty_id = ${difficulties}`
+        }
 
-    //     if (filter) {
-    //         query += ` AND (products.name ilike '%${filter}%' 
-    //         OR products.description ilike '%${filter}%')`
-    //     }
+        if (filter) {
+            query += ` AND (recipes.title ilike '%${filter}%' 
+            OR recipes.information ilike '%${filter}%')`
+        }
 
-    //     query += ` AND status != 0`
-
-    //     const results = await db.query(query)
-    //     return results.rows
-    // }
+        const results = await db.query(query)
+        return results.rows
+    }
 }
 
 module.exports = Recipe

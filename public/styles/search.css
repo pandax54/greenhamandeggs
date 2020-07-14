@@ -1,0 +1,119 @@
+.search-recipes.container {
+    min-height: 50vh;
+    display: flex;
+}
+
+div.header-search {
+    display: flex;
+    margin-bottom: 80px;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+.header-search h1 {
+    color: #FF876C;
+    font-size: 28px;
+    opacity: 0.7;
+}
+
+.header-search h2 {
+    opacity: 0.7;
+    margin-right: 10px;
+}
+
+.header-search span {
+    opacity: 1;
+}
+
+.header-search p {
+    font-size: 20px;
+    margin-top: 0px;
+}
+
+aside {
+    margin-top: 50px;
+    margin-left: 50px;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 30px;
+
+}
+
+ul.categories {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+nav.categories h1 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+nav.categories li.search-buttons {
+    position: relative;
+    width: 290px;
+    /* background: #FFFFFF; */
+    background-color: rgba(240, 230, 140, 0.10);
+    box-shadow: 0px 16px 24px rgba(8, 35, 48, 0.08), 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 40px;
+    padding: 13px;
+    margin-bottom: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 50px auto;
+}
+
+.search-buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.search-buttons a {
+ display: flex;
+ /* flex-direction: column; */
+ width: auto;
+ justify-content: center;
+ align-items: center;
+ padding: 0 10px;
+ margin: 0 auto;
+}
+
+.title-search {
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.values-search {
+    margin-bottom: 10px;
+}
+
+.values-search a {
+    margin-bottom: 8px;
+}
+
+.search-buttons h2 {
+    text-transform: uppercase;
+    font-size: 16px;
+    color: #333;
+}
+
+.search-buttons img {
+    margin-right: 10px;
+    opacity: 0.9;
+}
+
+a.search-params {
+    font-size: 20px;
+    /* color: #fdf33e; */
+    /* color: rgba(254, 243, 67, 1); */
+    /* color: #558a03; */
+    color: rgba(85, 138, 3, 1);;
+
+}

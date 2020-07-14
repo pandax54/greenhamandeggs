@@ -49,7 +49,7 @@
                     {{recipe.serving_size}}
                     people</h3>
                 <h3>Difficulty:
-                    {{recipe.difficulty.name}}</h3>
+                    {{recipe.difficulties.name}}</h3>
             </div>
 
             {% if session.userId == recipe.user_id %}
@@ -116,17 +116,17 @@
 
 <div class="recipe-details">
 <h3>Diet Restriction:</h3>
-<span>{{recipe.diet_restriction}}</span>
+<span>{{recipe.diet_restriction.name}}</span>
 </div>
 
 <div class="recipe-details">
 <h3>Meal Type:</h3>
-<span>{{recipe.meal_type}}</span>
+<span>{{recipe.meal_type.name}}</span>
 </div>
 
 <div class="recipe-details">
 <h3>World Cuisine:</h3>
-<span>{{recipe.world_cuisine}}</span>
+<span>{{recipe.world_cuisine.name}}</span>
 </div>
 
 </div>
