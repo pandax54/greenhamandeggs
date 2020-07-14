@@ -32,7 +32,8 @@
     </header>
 
     <div class="most-popular">
-        <h1>RECIPES ({{session.userId}})</h1>
+        {# <h1>({{session.userId}})</h1> #}
+        <h1></h1>
         <div class="recipe-container">
 
             {% for recipe in recipes %}
@@ -51,4 +52,37 @@
         </div>
     </div>
 
+    {# <div class="pagination" data-page="{{pagination.page}}" data-total="{{pagination.total}}"></div> #}
+
+    <nav class="is-rounded pagination" data-page="{{pagination.page}}" data-total="{{pagination.total}}" role="navigation" aria-label="pagination">
+        {# <a class="pagination-previous">Previous</a>
+        <a class="pagination-next">Next page</a> #}
+        {# <ul class="pagination-list">
+            <li>
+                <a class="pagination-link" aria-label="Goto page 1">1</a>
+            </li>
+            <li>
+                <span class="pagination-ellipsis">&hellip;</span></li>
+            <li>
+                <a class="pagination-link" aria-label="Goto page 45">45</a>
+            </li>
+            <li>
+                <a class="pagination-link is-current" aria-label="Page 46" aria-current="page">46</a>
+            </li>
+            <li>
+                <a class="pagination-link" aria-label="Goto page 47">47</a>
+            </li>
+            <li>
+                <span class="pagination-ellipsis">&hellip;</span></li>
+            <li>
+                <a class="pagination-link" aria-label="Goto page 86">86</a>
+            </li>
+        </ul> #}
+    </nav>
+
+{% endblock %}
+
+{% block script %}
+    <script src="/js/script.js"></script>
+    <script src="/js/pagination.js"></script>
 {% endblock %}

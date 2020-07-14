@@ -8,12 +8,39 @@ const dietRestriction = require('../models/dietRestriction')
 const mealType = require('../models/mealType')
 const worldCuisine = require('../models/worldCuisine')
 const DeleteService = require('../services/DeleteService')
+const { format } = require('../services/format')
+
+
 
 
 module.exports = {
     async index(req, res) {
 
-        let recipes = await LoadRecipeService.load('recipes')
+        let { page, limit } = req.query;
+        page = page || 1;
+        limit = limit || 10;
+        let offset = limit * (page - 1);
+
+        const params = {
+            page,
+            limit,
+            offset,
+        };
+
+        let totalRecipes = await LoadRecipeService.load('recipes')
+
+        let total = totalRecipes.length
+
+        let recipes = await Recipe.paginate(params)
+
+        recipesPromises = await recipes.map(format)
+
+        recipes = await Promise.all(recipesPromises)
+
+        const pagination = {
+            total: Math.ceil(total / limit),
+            page
+        };
 
         // because of the seed there are http images that may broken the layout
         // recipes = recipes.map(recipe => ({
@@ -21,7 +48,7 @@ module.exports = {
         //     img: (recipe.img.includes('http') ? recipe.img : `/images/${recipe.img}`)
         // }))
 
-        return res.render('recipes/index', { recipes })
+        return res.render('recipes/index', { recipes, pagination })
     },
     async create(req, res) {
 

@@ -6,7 +6,6 @@ const dietRestriction = require('../models/dietRestriction')
 const mealType = require('../models/mealType')
 const worldCuisine = require('../models/worldCuisine')
 
-// agora pegar as imagens usando o product id
 async function getImages(recipeId) {
     // get the images of the product
     let files = await Recipe.files(recipeId)
@@ -65,37 +64,6 @@ async function format(recipe) {
 }
 
 
-const LoadRecipeService = {
-    load(service, filter) {
-
-        this.filter = filter
-        return this[service]()
-    },
-    async recipe() {
-
-        try {
-
-            const recipe = await Recipe.findOne(this.filter)
-            return format(recipe)
-
-        } catch (error) {
-            console.error(error)
-        }
-
-    },
-    async recipes() {
-        try {
-
-            const recipes = await Recipe.findAll(this.filter)
-            // recipes.map(recipe => format(recipe)) == recipes.map(format)
-            const recipesPromise = recipes.map(format)
-            return Promise.all(recipesPromise)
-
-        } catch (error) {
-            console.error(error)
-        }
-    },
+module.exports = {
     format
-}
-
-module.exports = LoadRecipeService 
+} 

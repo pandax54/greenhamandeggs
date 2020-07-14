@@ -59,6 +59,35 @@ const Recipe = {
 
         const results = await db.query(query)
         return results.rows
+    },
+    async paginate(params) {
+
+        const { limit, offset } = params
+
+        console.log('params', limit, offset)
+
+        let query = `SELECT recipes.*, count(recipes) as total
+        FROM recipes`
+
+        // if (filter) {
+        //     query = `${query}
+        //     WHERE recipes.title ilike '%${filter}%' 
+        //     OR recipes.information ilike '%${filter}%'
+        //     `
+        // }
+
+        query = `${query} 
+        GROUP BY recipes.id
+        LIMIT ${limit}
+        OFFSET ${offset}`
+        // or user $1 e $2
+
+
+        const results = await db.query(query)
+
+        console.log('the results are', results.rows.length)
+
+        return results.rows
     }
 }
 
