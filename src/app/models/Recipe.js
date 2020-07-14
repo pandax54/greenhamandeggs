@@ -30,11 +30,26 @@ const Recipe = {
             difficulties.name AS difficulties_name
             FROM recipes
             LEFT JOIN difficulties ON (difficulties.id = recipes.difficulty_id)
+            LEFT JOIN diet_restriction ON (diet_restriction.id = recipes.diet_restriction_id)
+            LEFT JOIN meal_type ON (meal_type.id = recipes.meal_type_id)
+            LEFT JOIN world_cuisine ON (world_cuisine.id = recipes.world_cuisine_id)
             WHERE 1 = 1
         `
 
         if (difficulties) {
             query += ` AND recipes.difficulty_id = ${difficulties}`
+        }
+
+        if (diet_restriction) {
+            query += ` AND recipes.diet_restriction_id = ${diet_restriction}`
+        }
+
+        if (meal_type) {
+            query += ` AND recipes.meal_type_id = ${meal_type}`
+        }
+
+        if (world_cuisine) {
+            query += ` AND recipes.world_cuisine_id = ${world_cuisine}`
         }
 
         if (filter) {

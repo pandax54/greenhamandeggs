@@ -125,9 +125,6 @@ module.exports = {
             // LABELS FILTERS
             const labelsKeys = Object.keys(labels)
 
-            console.log("LABELS", labels)
-
-
             // console.log("the recipes are", recipes)
             // difficulty = { id: 3, name: "hard"}
             // diet_restriction

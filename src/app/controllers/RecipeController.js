@@ -102,7 +102,6 @@ module.exports = {
             // str.replace(/[.#]/g, 'replacechar');
             // this will replace., - and # with your replacechar!
 
-            console.log('recipe id', recipeId)
 
             const filesPromise = req.files.map((file) =>
                 File.create({ name: file.filename, path: file.path, recipe_id: recipeId })

@@ -19,8 +19,6 @@ module.exports = {
             req.session.meal_type = meal_type
             req.session.world_cuisine = world_cuisine
 
-            console.log(req.session)
-
             let recipes = await LoadRecipeService.load('recipes')
 
             recipes = recipes.map(recipe => ({
