@@ -18,7 +18,7 @@ h1.store {
     color: #333;
     margin: 60px 0;
 }
-
+ 
 span.sale-tag {
     position: absolute;
     top: 40px;
@@ -135,12 +135,13 @@ a.product {
 .product-single .card-content {
     background-color: white;
     display: grid;
-    grid-template-columns: 700px 700px;
+    grid-template-columns: 1fr 2fr;
     grid-gap: 24px;
 
     padding: 32px 5px;
     /* margin: 32px auto; */
-
+    width: 90%;
+    margin: auto;
     /* box-shadow: 2px 2px 2px -2px rgba(63,63,63,.5); */
     /* border: 1px solid #efefef; */
     /* border-radius: 4px; */
@@ -162,6 +163,7 @@ a.product {
    width: 100%;
    min-height: 600px;
    object-fit: contain;
+   cursor: zoom-in;
    
 }
 
@@ -179,6 +181,7 @@ a.product {
    display: grid;
    grid-template-columns: repeat(3, 1fr);
    grid-gap: 2px ;
+   cursor: pointer;
 
 }
 
@@ -188,7 +191,6 @@ a.product {
    width: 100%;
    object-fit: cover;
    opacity: 0.6;
-   cursor: pointer;
    transition: 200ms;
 
 }
@@ -204,12 +206,12 @@ a.product {
      width: 100%;
      height: 100%;
      background: rgba(0,0,0,.7);
-
+     color: red;
      overflow: hidden;
-     z-index: 100;
+     z-index: 5;
 
-     top: -100;
-     /* top: 0; */
+     /* top: -100; */
+     top: -100px;
      left: 0;
 
      transition: 400ms;
@@ -234,7 +236,7 @@ a.product {
      height: 90%;
 
      object-fit: contain;
-
+     overflow: hidden;
      transition: 400ms;
 
  }
@@ -242,14 +244,26 @@ a.product {
  .product-single .highlight a.lightbox-close {
      width: 50px;
      height: 50px;
-     background-color: white;
+     /* background-color: white; */
      position: absolute;
-     top: -80px;
-     right: 0;
+     top: 200px;
+     right: 80px;
+
 
      display: flex;
      align-items: center;
      justify-content: center;
+ }
+
+ .product-single .highlight a.lightbox-close i {
+     margin-top: 200px;
+     margin-right: 235px;
+     color: tomato;
+     font-size: 150px;
+     /* drop-shadow: 1x 1px 1px 1px rgba(0,0,0,.7); */
+     filter: drop-shadow(16px 16px 10px rgba(0,0,0,0.6));
+     /* background-color: white; */
+     border-radius: 20px;
  }
 
 
@@ -257,6 +271,7 @@ a.product {
 
 .product-single .product-info {
     display: flex;
+    max-width: 800px;
     flex-direction: column;
     align-items: flex-start;
 

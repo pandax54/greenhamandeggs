@@ -36,6 +36,24 @@ module.exports = {
         }
 
     },
+    async teste(req, res) {
+        try {
+
+
+            let product = await LoadProductService.load('product', { where: { "products.id": req.params.id } })
+
+            if (!product) return res.send("Product not found!")
+
+            console.log(product)
+
+
+            // return res.render('products/show', { product, files: product.files })
+            return res.render("products/show-test", { product })
+
+        } catch (error) {
+            console.error(error)
+        }
+    }
 
     // async create(req, res) {
 

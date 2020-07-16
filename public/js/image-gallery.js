@@ -26,10 +26,12 @@ const Lightbox = {
     open() {
         // mudando agora a opacity pelo js para que o lightbox fique visível
         Lightbox.target.style.opacity = 1
+        Lightbox.target.style.visibility = "initial"
         Lightbox.target.style.top = 0
         Lightbox.target.style.bottom = 0
 
         Lightbox.closeButton.style.top = 0
+        // Lightbox.closeButton.style.visibility = "initial"
         // mudar o target da imagem que expande acima !!
 
 
