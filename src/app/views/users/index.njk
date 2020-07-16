@@ -1,11 +1,14 @@
 {% extends "layout.njk" %}
 {% import "parts/header-cover.njk" as cover %}
+{% import "parts/nav.njk" as nav %}
 
 {% block header %}
     <title>Users Index</title>
 {% endblock %}
 {% block content %}
-    {% include "parts/nav.njk" %}
+    {# {% include "parts/nav.njk" %} #}
+    {% call nav.render( session )%}
+    {% endcall %}
 
     <div class="container users">
 

@@ -157,6 +157,7 @@ h1.store {
 
      transition: 400ms;
      opacity: 0;
+     visibility: hidden;
      /* opacity: 1; */
  }
  
@@ -308,6 +309,11 @@ h1.store {
 
    .product-single .price-buy .buy button:hover img {
    } 
+
+
+   /* PRODUCT FORM  */
+
+   
 
 
 

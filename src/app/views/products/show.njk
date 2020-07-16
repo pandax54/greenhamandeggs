@@ -1,11 +1,13 @@
 {% extends "layout.njk" %}
 {% import "parts/header-cover.njk" as cover %}
+{% import "parts/nav.njk" as nav %}
 
 {% block header %}
     <title>Product Page</title>
 {% endblock %}
 {% block content %}
-    {% include "parts/nav.njk" %}
+    {% call nav.render( session )%}
+    {% endcall %}
 
     <section class="card product-single">
         <div class="card-header">
@@ -15,13 +17,14 @@
             <div class="highlight">
                 <div class="gallery">
                     {% if not files[0] %}
-                        <img src="/assets/products/grinch_60_1.jpg"/>
+                        {# <img src="/assets/products/grinch_60_1.jpg"/> #}
+                        <img src="{{product.img}}" alt="{{ files[0].name }}" onclick="Lightbox.open()"/>
                     {% else %}
-                        <img src="{{ files[0].src }}" alt="{{ files[0].name }}" onclick="Lightbox.open()"/>
+                        <img src="/assets/products/grinch_60_1.jpg" alt="{{ files[0].name }}" onclick="Lightbox.open()"/>
                     {% endif %}
 
                     <div class="lightbox-target">
-                        <img src="{{ files[0].src }}" alt="{{ files[0].name }}">
+                        <img src="/assets/products/grinch_60_1.jpg" alt="{{ files[0].name }}">
                         <a href="#" class="lightbox-close" onclick="Lightbox.close()">
                             <i class="material-icons">close</i>
                         </a>
@@ -30,30 +33,31 @@
                 </div>
                 <div class="gallery-preview">
                     {% for image in files %}
-                        <img src="/assets/products/grinch_60_1.jpg" alt="{{image.name}}" {% if loop.index0 == 0 %} class="active" {% endif %} onclick="ImageGallery.setImage(event)"/>
+                        <img src="{{image.src}}" alt="{{image.name}}" {% if loop.index0 == 0 %} class="active" {% endif %} onclick="ImageGallery.setImage(event)"/>
                     {% endfor %}
                 </div>
 
             </div>
 
             <div class="product-info">
-                <h1>HOW THE GRINCH STOLE CHRISTMAS! - BOOK COVER</h1>
+                <h1>{{product.title}}</h1>
                 <div class="purchase-info">
                     International Purchases: Prices are shown in US Dollars only and do not reflect local exchange rates. Local taxes, import duties or shipping & handling are not included. Please contact a gallery for local pricing.
                 </div>
                 <div class="description">
-                    Image Size: 14” x 11” Paper Size: 17.5” x 14”
+                    {{product.description}}
                 </div>
                 <div class="product-description">
-                    <p>Limited Edition of 2500 Arabic Numbers 99 Patrons’ Collection 155 Collaborators’ Proofs</p>
-                    <p>Adapted posthumously from the illustration for the 1957 book, How The Grinch Stole Christmas!</p>
-                    <p>Dr. Seuss came up with the idea for The Grinch the day after Christmas when he looked in the mirror and saw a rather Grinch-ish look on his face. “Something had gone awfully wrong with Christmas or maybe with me,” he said. Weary of the over-commercialization of Christmas and sensing that the meaning of the holiday was being lost in the wrappings and ribbons, boxes and bows, Ted Geisel sat down and wrote How The Grinch Stole Christmas! when he was 53 years old.</p>
+                    {% for info in product.information %}
+                        <p>{{info}}</p>
+                    {% endfor %}
 
                 </div>
 
                 <div class="price-buy">
                     <div class="price">
-                        395.00 USD
+                        {{product.formattedPrice}}
+                        {# USD #}
                     </div>
 
                     <div class="buy">

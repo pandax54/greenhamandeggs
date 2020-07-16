@@ -75,12 +75,13 @@ CREATE TABLE "product_image" (
 CREATE TABLE "products" (
   "id" SERIAL PRIMARY KEY,
   "category_id" int UNIQUE,
-  "name" text NOT NULL,
+  "title" text NOT NULL,
   "description" text NOT NULL,
-  "old_price" int,
+  "information" text[],
   "price" int NOT NULL,
-  "quantity" int DEFAULT 0,
-  "status" int DEFAULT 1,
+  "quantity" int DEFAULT 1,
+  "available" BOOLEAN NOT NULL DEFAULT true,
+  "sale" int DEFAULT 1,
   "created_at" timestamp DEFAULT (now()),
   "updated_at" timestamp DEFAULT (now())
 );
@@ -93,7 +94,7 @@ CREATE TABLE "orders" (
   "price" int NOT NULL,
   "quantity" int DEFAULT 0,
   "total" int NOT NULL,
-  "status" text DEFAULT "open" NOT NULL,
+  "status" text DEFAULT 'open' NOT NULL,
   "created_at" timestamp DEFAULT (now()),
   "update_at" timestamp DEFAULT (now())
 );
@@ -102,7 +103,7 @@ CREATE TABLE "orders" (
 ALTER TABLE "files" ADD FOREIGN KEY ("recipe_id") REFERENCES "recipes" ("id");
 ALTER TABLE "product_image" ADD FOREIGN KEY ("product_id") REFERENCES "products" ("id");
 ALTER TABLE "products" ADD FOREIGN KEY ("category_id") REFERENCES "categories" ("id");
-ALTER TABLE "orders" ADD FOREIGN KEY ("buyer_id") REFERENCES "users" ("id");
+ALTER TABLE "orders" ADD FOREIGN KEY ("user_id") REFERENCES "users" ("id");
 ALTER TABLE "orders" ADD FOREIGN KEY ("product_id") REFERENCES "products" ("id");
 ALTER TABLE "recipes" ADD FOREIGN KEY ("user_id") REFERENCES "users" ("id");
 ALTER TABLE "recipes" ADD FOREIGN KEY ("difficulty_id") REFERENCES "difficulties" ("id");

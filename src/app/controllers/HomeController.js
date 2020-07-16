@@ -3,6 +3,7 @@ const Difficulties = require('../models/Difficulty')
 const dietRestriction = require('../models/dietRestriction')
 const mealType = require('../models/mealType')
 const worldCuisine = require('../models/worldCuisine')
+const Category = require('../models/Category')
 
 module.exports = {
 
@@ -14,10 +15,15 @@ module.exports = {
             const meal_type = await mealType.findAll()
             const world_cuisine = await worldCuisine.findAll()
 
+            const categories = await Category.findAll()
+
             req.session.difficulties = difficulties
             req.session.diet_restriction = diet_restriction
             req.session.meal_type = meal_type
             req.session.world_cuisine = world_cuisine
+            req.session.categories = categories
+            req.session.admin = req.session.user.is_admin ? true : false
+            console.log(req.session.admin)
 
             let recipes = await LoadRecipeService.load('recipes')
 

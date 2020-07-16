@@ -64,15 +64,20 @@ div.header--menu--links {
 
 div.header--menu--links li {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  z-index: 2;
 }
 
 
 div.header--menu--links li:hover::before {
   color: #234A59;
   position: absolute;
-  top: -8px;
-  left: 35%;
-  width: 90px;
+  /* top: -8px; */
+  /* left: 20px; */
+  width: 100px;
   height: 32px;
   border: 2px solid rgba(0,0,0,0.1);
   border-radius: 50%;
@@ -283,14 +288,14 @@ i.material-icons {
  }
 
 
-@media (max-width: 1300px) {
+@media (max-width: 1320px) {
   .search input {
     display: none;
   }
 
 
   header {
-    min-width: 900px;
+    min-width: 1070px;
   }
 
   .cover-info h1, .cover-info h3 {
@@ -309,7 +314,7 @@ footer {
 
 }
 
-@media (max-width: 980px) {
+@media (max-width: 1079px) {
   nav.primary ul#menu-desktop {
     display: none;
   }

@@ -131,7 +131,6 @@ module.exports = {
             // meal_type
             // world_cuisine
 
-            console.log("this is query", req.query)
 
             const search = {
                 term: req.query.filter,

@@ -23,10 +23,10 @@ function isLogged(req, res, next) {
 }
 
 function onlyAdmin(req, res, next) {
-    if (!req.session.userId) return res.redirect("/admin/login");
+    if (!req.session.userId) return res.redirect("/session/login");
 
     if (req.session.userId && req.session.admin == false) {
-        return res.redirect("/admin/profile");
+        return res.redirect("/");
     }
 
     next();
@@ -46,12 +46,13 @@ async function posterAdmin(req, res, next) {
         user != req.session.userId &&
         req.session.admin == false
     )
-        return res.redirect(`/admin/recipes/${id}`);
+        return res.redirect(`/`);
 
     next();
 }
 
 module.exports = {
     onlyUsers,
-    isLogged
+    isLogged,
+    onlyAdmin
 }

@@ -79,7 +79,18 @@ div.recipe-card {
 }
 
 .most-popular .recipe-container {
-    display: flex;
+    /* display: flex;
     flex-wrap: wrap;
-    margin-left: 15%;
+    margin-left: 15%; */
+    display: grid;
+    /* https://stackoverflow.com/questions/43129360/css-grid-wrapping */
+    grid-template-columns: repeat(auto-fill, 400px);
+    grid-gap: 30px;
+    margin: 50px auto;
+    margin-left: 80px;
 }
+
+@media (max-width: 1079px) {
+
+
+  }

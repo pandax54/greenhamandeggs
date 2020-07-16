@@ -1,6 +1,7 @@
 {% extends "layout.njk" %}
 {% import "../parts/header-cover.njk" as cover %}
 {% import "../parts/form-card.njk" as form %}
+{% import "parts/nav.njk" as nav %}
 
 {% block header %}
     <title>Recipes</title>
@@ -9,7 +10,7 @@
 {# {%include "parts/header.njk"%} #}
 
 {% block content %}
-    {# {% call cover.render('show recipe', '','recipe ingredients-show-card', '','http://lorempixel.com/640/480/food' )%}
+    {# {% call cover.render('show recipe', '','recipe ingredients-show-card', '','http://lorempixel.com/640/480/food',  )%}
     {% endcall %} #}
     <header>
 
@@ -17,7 +18,9 @@
 
             <div class="img-cover" style="background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url('{{recipe.files[0].src}}'); background-repeat: no-repeat; background-size: cover;">
 
-                {% include "parts/nav.njk" %}
+                {# {% include "parts/nav.njk" %} #}
+                {% call nav.render( session )%}
+                {% endcall %}
 
                 <div class="cover-info recipe-show">
                     <div class="recipe-title">

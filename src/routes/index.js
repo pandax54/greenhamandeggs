@@ -12,6 +12,9 @@ routes.use("/recipes", recipes)
 const products = require('./products')
 routes.use("/products", products)
 
+const admin = require('./admin')
+routes.use('/admin', admin)
+
 
 
 // Home

@@ -1,11 +1,14 @@
 {% extends "layout.njk" %}
 {% import "parts/header-cover.njk" as cover %}
+{% import "parts/nav.njk" as nav %}
 
 {% block header %}
     <title>User profile</title>
 {% endblock %}
 {% block content %}
-    {% include "parts/nav.njk" %}
+    {# {% include "parts/nav.njk" %} #}
+    {% call nav.render( session )%}
+    {% endcall %}
 
     <div class="user-profile">
         <div class="header user-profile">

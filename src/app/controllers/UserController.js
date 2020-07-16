@@ -50,7 +50,7 @@ module.exports = {
         }
 
         // user.profileImage = user.profile_image.replace(/(.*)(\/images.*)/, '$2')
-        console.log("this is the recipe", user.recipes[0])
+        // console.log("this is the recipe", user.recipes[0])
 
 
         // return res.json(user)

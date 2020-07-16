@@ -21,6 +21,12 @@
                     <a href="/users">
                         <li>Chefs</li>
                     </a>
+                    <a href="/users/user/{{session.userId}}">
+                        <li>Account</li>
+                    </a>
+                    <a href="/users/settings">
+                        <li>Settings</li>
+                    </a>
                     {# <a href="https://erikterwan.com/" target="_blank">
                     <li>Login</li> #}
                     {# </a>
@@ -102,6 +108,14 @@
                                 <li class="dropdown-item">
                                     <a href="/users/settings">Settings</a>
                                 </li>
+                                {% if session.user.is_admin %}
+                                    <li class="dropdown-item">
+                                        <a href="/admin/add-product">Add product</a>
+                                    </li>
+                                    <li class="dropdown-item">
+                                        <a href="/admin/list-product">product list</a>
+                                    </li>
+                                {% endif %}
                                 <li class="dropdown-item logout">
                                     <form action="/users/logout" method="POST">
                                         <button>Logout</button>

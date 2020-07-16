@@ -1,0 +1,78 @@
+{% extends 'layout.njk' %}
+{% import "parts/card.njk" as cards %}
+
+{% block content %}
+
+    {% if (cart.items) and (cart.items.length < 1) %}
+        {% call cards.render('Carrinho vazio', 'cart-empty container')%}
+        {# <p>Carrinho vazio</p> #}
+        <a class="button" href="/products/search">Comprar</a>
+        {% endcall %}
+
+    {% else %}
+        {% call cards.render('Carrinho', 'cart container')%}
+        <div class="header">
+            <p>Produto</p>
+            <p>Preço</p>
+            <p>Qtd.</p>
+        </div>
+        <div class="items">
+            {% for item in cart.items %}
+                <div class="item">
+                    <a href="/products/{{item.product.id}}">
+                        <img src="{{item.product.img}}" alt="product img">
+                        <span class="title">{{ item.product.name }}</span>
+                    </a>
+
+                    <span class="price">{{ item.product.formattedPrice }}</span>
+                    <div class="quantity-control">
+                        <form action="/cart/{{ item.product.id}}/remove-one" method="POST">
+                            <button class="white">
+                                <i class="material-icons">remove_circle_outline</i>
+                            </button>
+                        </form>
+
+                        <span class="quantity">{{item.quantity}}</span>
+
+                        <form action="/cart/{{ item.product.id}}/add-one" method="POST">
+                            <button class="white">
+                                <i class="material-icons">add_circle_outline</i>
+                            </button>
+                        </form>
+                    </div>
+
+                    <form class="trash" action="/cart/{{ item.product.id}}/delete" method="POST">
+                        <button class="white delete">
+                            <i class="material-icons">delete</i>
+                        </button>
+                    </form>
+                </div>
+            {% endfor %}
+
+            <div class="total">
+                <p>Total:
+                </p>
+                <span>{{ cart.total.formattedPrice}}</span>
+            </div>
+
+            <div class="actions">
+                <a class="button shop" href="/products/search">Continuar comprando</a>
+                <form action="/orders" method="POST">
+                    <button type="submit" class="button orders">
+                        Realizar Pedido
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        {% endcall %}
+
+    {% endif %}
+
+{% endblock content %}
+
+{% block script %}
+
+    <script src="/js/scripts.js"></script>
+
+{% endblock %}

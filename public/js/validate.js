@@ -131,3 +131,40 @@ const Validate = {
         }
     }
 }
+
+console.log('hey')
+
+const Mask = {
+    apply(input, func) {
+
+        setTimeout(() => {
+
+            input.value = Mask[func](input.value)
+
+        }, 1)
+
+    },
+    formatPreparation(value) {
+
+        value = value.replace(/(.*\.)[a-zA-Z0-9,.!? ]*$/, '$1@')
+        return value
+    },
+    formatUSD(value) {
+
+        value = value.replace(/\D/g, "");
+
+        return Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD'
+        }).format(value / 100)
+    },
+    formatBRL(value) {
+
+        value = value.replace(/\D/g, "");
+
+        return Intl.NumberFormat('pt-BR', {
+            style: 'currency',
+            currency: 'BRL'
+        }).format(value / 100)
+    },
+}

@@ -1,0 +1,30 @@
+{% extends "layout.njk" %}
+{% import "../parts/header-cover.njk" as cover %}
+{% import "../parts/form-card.njk" as form %}
+
+{% block header %}
+    <title>Product Form</title>
+{% endblock %}
+
+{# {%include "parts/header.njk"%} #}
+
+{% block content %}
+    {% call cover.render('NEW PRODUCT','', 'recipe form', '', '../assets/about2.png', session )%}
+    {% endcall %}
+
+    <form action="/admin/form" enctype="multipart/form-data" method="POST">
+        {% include "admin/fields.njk" %}
+        <div class="form-btn">
+            <button type="submit" class="post-btn">Salvar</button>
+            <a class="cancel-btn" href="/">Cancel</a>
+        </div>
+    </form>
+
+{% endblock %}
+
+{% block script %}
+    {# <script src="/js/script.js"></script> #}
+    <script src="/js/validate.js"></script>
+    <script src="/js/product.js"></script>
+    <script src="/js/img-upload.js"></script>
+{% endblock %}

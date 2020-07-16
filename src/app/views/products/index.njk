@@ -13,50 +13,17 @@
 
     <div class="products-store">
 
-        <a href="#" class="product-container">
-            <img src="/assets/products/grinch_60_1.jpg" alt="">
-            <div class="product-info">
-                <h2>THE GRINCH 60TH ANNIVERSARY</h2>
-                <p>Image and Paper Size: 29" x 26"</p>
-                <span>1,695 USD - Unframed</span>
-            </div>
-        </a>
+        {% for product in products %}
+            <a href="#" class="product-container">
+                <img src="{{product.img}}" style="object-fit: cover" alt="">
+                <div class="product-info">
+                    <h2>{{product.title}}</h2>
+                    <p>{{product.description}}</p>
+                    <span>{{product.formattedPrice}}</span>
+                </div>
+            </a>
 
-        <a href="#" class="product-container">
-            <img src="/assets/products/grinch_60_1.jpg" alt="">
-            <div class="product-info">
-                <h2>THE GRINCH 60TH ANNIVERSARY</h2>
-                <p>Image and Paper Size: 29" x 26"</p>
-                <span>1,695 USD - Unframed</span>
-            </div>
-        </a>
-
-        <a href="#" class="product-container">
-            <img src="/assets/products/grinch_60_1.jpg" alt="">
-            <div class="product-info">
-                <h2>THE GRINCH 60TH ANNIVERSARY</h2>
-                <p>Image and Paper Size: 29" x 26"</p>
-                <span>1,695 USD - Unframed</span>
-            </div>
-        </a>
-
-        <a href="#" class="product-container">
-            <img src="/assets/products/grinch_60_1.jpg" alt="">
-            <div class="product-info">
-                <h2>THE GRINCH 60TH ANNIVERSARY</h2>
-                <p>Image and Paper Size: 29" x 26"</p>
-                <span>1,695 USD - Unframed</span>
-            </div>
-        </a>
-
-        <a href="#" class="product-container">
-            <img src="/assets/products/grinch_60_1.jpg" alt="">
-            <div class="product-info">
-                <h2>THE GRINCH 60TH ANNIVERSARY</h2>
-                <p>Image and Paper Size: 29" x 26"</p>
-                <span>1,695 USD - Unframed</span>
-            </div>
-        </a>
+        {% endfor %}
 
     </div>
 

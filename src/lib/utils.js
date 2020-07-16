@@ -56,4 +56,18 @@ module.exports = {
             currency: 'BRL'
         }).format(price / 100)
     },
+    formatUSD(price) {
+
+        return Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD'
+        }).format(price / 100)
+    },
+    formatBRL(price) {
+
+        return Intl.NumberFormat('pt-BR', {
+            style: 'currency',
+            currency: 'BRL'
+        }).format(price / 100)
+    },
 };
