@@ -55,7 +55,8 @@
                     {{recipe.difficulties.name}}</h3>
             </div>
 
-            {% if session.userId == recipe.user_id %}
+            {% if (session.userId == recipe.user_id) 
+                or(session.admin) %}
                 <div class="edit-btn">
                     <a class="edit-btn round-btn" href="/recipes/recipe-edit/{{recipe.id}}"><img src="/assets/icons-recipe-show/icon.svg" alt=""></a>
                 </div>

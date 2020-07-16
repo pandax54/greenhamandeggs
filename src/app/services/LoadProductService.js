@@ -38,6 +38,9 @@ async function format(product) {
 
 
     product.infos = product.information.join('').split('@')
+    product.sale_price = formatUSD(product.price * product.sale)
+    product.discount = Math.ceil((1 - product.sale) * 100)
+    // recipe.steps = recipe.preparation.join('').split('@')
 
     // product.user.profileImage = recipe.user.profile_image.replace(/(.*)(\/images.*)/, '$2')
 

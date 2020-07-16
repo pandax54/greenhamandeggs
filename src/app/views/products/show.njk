@@ -16,11 +16,11 @@
         <div class="card-content">
             <div class="highlight">
                 <div class="gallery">
-                    {% if not files[0] %}
+                    {% if not product.files[0] %}
                         {# <img src="/assets/products/grinch_60_1.jpg"/> #}
-                        <img src="{{product.img}}" alt="{{ files[0].name }}" onclick="Lightbox.open()"/>
+                        <img src="" alt="no image" onclick="Lightbox.open()"/>
                     {% else %}
-                        <img src="/assets/products/grinch_60_1.jpg" alt="{{ files[0].name }}" onclick="Lightbox.open()"/>
+                        <img src="{{product.img}}" alt="{{ files[0].name }}" onclick="Lightbox.open()"/>
                     {% endif %}
 
                     <div class="lightbox-target">
@@ -32,7 +32,7 @@
 
                 </div>
                 <div class="gallery-preview">
-                    {% for image in files %}
+                    {% for image in product.files %}
                         <img src="{{image.src}}" alt="{{image.name}}" {% if loop.index0 == 0 %} class="active" {% endif %} onclick="ImageGallery.setImage(event)"/>
                     {% endfor %}
                 </div>
@@ -41,6 +41,10 @@
 
             <div class="product-info">
                 <h1>{{product.title}}</h1>
+                {% if product.sale != 1 %}
+                    <span class="sale-tag">Sale
+                        {{ product.discount }}%</span>
+                {% endif %}
                 <div class="purchase-info">
                     International Purchases: Prices are shown in US Dollars only and do not reflect local exchange rates. Local taxes, import duties or shipping & handling are not included. Please contact a gallery for local pricing.
                 </div>
@@ -48,17 +52,26 @@
                     {{product.description}}
                 </div>
                 <div class="product-description">
-                    {% for info in product.information %}
+                    {% for info in product.infos %}
                         <p>{{info}}</p>
                     {% endfor %}
 
                 </div>
 
                 <div class="price-buy">
-                    <div class="price">
-                        {{product.formattedPrice}}
-                        {# USD #}
-                    </div>
+                    {% if product.sale != 1 %}
+                        <div class="price">
+                            <span class="strike">{{product.formattedPrice}}</span>
+                            {{product.sale_price}}
+                            {# USD #}
+                        </div>
+
+                        {%else%}
+                        <div class="price">
+                            {{product.formattedPrice}}
+                            {# USD #}
+                        </div>
+                    {% endif %}
 
                     <div class="buy">
                         <form action="/cart/{{product.id}}/add-one" method="POST">

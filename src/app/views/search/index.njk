@@ -1,12 +1,12 @@
 {% extends "layout.njk" %}
 {% import "parts/header-cover.njk" as cover %}
+{% import "parts/nav.njk" as nav %}
 
 {% block header %}
     <title>SEARCH PAGE</title>
 {% endblock %}
 
 {% block content %}
-    {# {% macro render(title, classes, image) %} #}
     {# {% call cover.render('HELLO GREEN HAM AND EGGS','Sam never gives up on his quest to get a good recipe', 'home','', 'assets/60th+Green+Eggs+banner.jpg' )%}
     {% endcall %} #}
     <header>
@@ -15,7 +15,8 @@
 
             <div class="img-cover" style="background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url('/assets/60th+Green+Eggs+banner.jpg'); background-repeat: no-repeat; background-size: cover;">
 
-                {% include "parts/nav.njk" %}
+                {% call nav.render( session )%}
+                {% endcall %}
 
                 <div class="cover-info">
                     <h1>HELLO GREEN HAM AND EGGS</h1>

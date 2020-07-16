@@ -17,7 +17,7 @@
         <input type="hidden" name="id" value="{{recipe.id}}">
 
         <div class="form-btn">
-            <button type="submit" class="post-btn" onclick="Validate.allFields(event)">Salvar</button>
+            <button type="submit" class="post-btn">Salvar</button>
         </div>
     </form>
 
@@ -30,6 +30,7 @@
 
 {% block script %}
     <script src="/js/script.js"></script>
+    <script src="/js/validate.js"></script>
     <script src="/js/img-upload.js"></script>
     <script src="/js/deleteConfirm.js"></script>
 {% endblock %}

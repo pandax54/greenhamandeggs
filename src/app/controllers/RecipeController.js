@@ -169,7 +169,7 @@ module.exports = {
 
             if (req.files.length != 0) {
                 const newFilesPromise = req.files.map((file) =>
-                    File.create({ name: file.filename, path: file.path })
+                    File.create({ name: file.filename, path: file.path, recipe_id: req.body.id })
                 );
                 await Promise.all(newFilesPromise)
             }
@@ -213,9 +213,7 @@ module.exports = {
 
             DeleteService.deleteFiles(files);
 
-            return res.render("index", {
-                success: "deletada",
-            });
+            return res.redirect("/");
         } catch (err) {
             console.error(err);
         }

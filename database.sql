@@ -133,6 +133,11 @@ ADD CONSTRAINT files_recipe_id_fkey
 FOREIGN KEY ("recipe_id") REFERENCES "recipes" ("id") 
 ON DELETE CASCADE;
 
+ALTER TABLE "product_image" DROP CONSTRAINT IF EXISTS product_image_product_id_fkey,
+ADD CONSTRAINT product_image_product_id_fkey 
+FOREIGN KEY ("product_id") REFERENCES "products" ("id") 
+ON DELETE CASCADE;
+
 -- procedures
 CREATE FUNCTION trigger_set_timestamp()
 RETURNS TRIGGER AS $$
@@ -240,3 +245,6 @@ INSERT INTO sal_emp
     VALUES ('Carol',
     ARRAY[20000, 25000, 25000, 25000],
     ARRAY[['breakfast', 'consulting'], ['meeting', 'lunch']]);
+
+
+-- https://www.fun.com/the-grinch-in-santa-suit-15-plush.html

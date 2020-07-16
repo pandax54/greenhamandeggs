@@ -32,11 +32,12 @@ module.exports = {
     },
     async show(req, res) {
 
-        let user = await User.findOne({ where: { id: req.params.id } })
+        // let user = await User.findOne({ where: { id: req.params.id } })
+        let user = await LoadUserService.load('user', { where: { id: req.params.id } })
 
         if (!user) return res.send("User not found!")
 
-        user.profileImage = user.profile_image.replace(/(.*)(\/images.*)/, '$2')
+        // user.profileImage = user.profile_image.replace(/(.*)(\/images.*)/, '$2')
 
 
         let recipes = await LoadRecipeService.load('recipes', { where: { user_id: user.id } })

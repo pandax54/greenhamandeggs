@@ -22,8 +22,10 @@ module.exports = {
             req.session.meal_type = meal_type
             req.session.world_cuisine = world_cuisine
             req.session.categories = categories
-            req.session.admin = req.session.user.is_admin ? true : false
-            console.log(req.session.admin)
+            if (req.session.user) {
+                req.session.admin = req.session.user.is_admin ? true : false
+                console.log(req.session.admin)
+            }
 
             let recipes = await LoadRecipeService.load('recipes')
 

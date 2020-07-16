@@ -10,26 +10,28 @@
     {% call cover.render('UPDATE RECIPE FORM','', 'recipe form', '', '../../assets/about2.png', session )%}
     {% endcall %}
 
-    <form action="/recipes/recipe-form?_method=PUT" enctype="multipart/form-data" method="POST">
-        {% include "recipes/fields-update.njk" %}
+    <form action="/admin/form-edit?_method=PUT" enctype="multipart/form-data" method="POST">
+        {% include "admin/fields-update.njk" %}
         {# {% include "recipes/fields.njk" %} #}
 
-        <input type="hidden" name="id" value="{{recipe.id}}">
+        <input type="hidden" name="id" value="{{product.id}}">
 
         <div class="form-btn">
-            <button type="submit" class="post-btn" onclick="Validate.allFields(event)">Salvar</button>
+            <button type="submit" class="post-btn">Salvar</button>
         </div>
     </form>
 
-    <form id="form-delete" action="/recipes/recipe-form?_method=DELETE" method="POST">
-        <input type="hidden" name="id" value="{{recipe.id}}">
+    <form id="form-delete" action="/admin/form?_method=DELETE" method="POST">
+        <input type="hidden" name="id" value="{{product.id}}">
         <button class="cancel-btn delete" type="submit">Deletar</button>
     </form>
 
 {% endblock %}
 
 {% block script %}
-    <script src="/js/script.js"></script>
+    {# <script src="/js/script.js"></script> #}
+    <script src="/js/product.js"></script>
+    <script src="/js/validate.js"></script>
     <script src="/js/img-upload.js"></script>
     <script src="/js/deleteConfirm.js"></script>
 {% endblock %}

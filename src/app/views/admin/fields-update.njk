@@ -1,0 +1,166 @@
+{% call form.render("basic infos", "recipe-form basic-info chef-form") %}
+
+<div class="row-1">
+    <label class="label-form" for="title">
+        <img src="../../assets/recipe-icons-form/Group-4.png" alt="chef">
+        <h2>Title</h2>
+    </label>
+    <input name="title" value="{{product.title}}" placeholder="Name of the product" type="text">
+</div>
+
+<div class="row-1 less-margin">
+    <label class="label-form" for="description">
+        <img src="../../assets/products-form-icons-red/Group-3.svg" alt="chef">
+        <h2>Description</h2>
+    </label>
+    <input name="description" value="{{product.description}}" placeholder="Image Size: 14” x 11” Paper Size: 17.5” x 14”" type="text">
+</div>
+
+<div class="row-2">
+    <div class="social-media email">
+        <label class="label-form" for="price">
+            <img src="../../assets/products-form-icons-red/Group-15.svg" alt="chef">
+            <h2>Price</h2>
+        </label>
+        <input id="price" type="text" name="price" placeholder="90,00" value="{{product.price}}" onkeydown="Mask.apply(this,'formatUSD')">
+        {# <input value="{{product.price}}" name="price" placeholder="90,00" type="text"> #}
+    </div>
+    <div class="social-media instagram">
+        <label class="label-form" for="quantity">
+            {# <img src="../assets/chefs-icons/Group-1.png" alt="chef"> #}
+            <img src="../../assets/products-form-icons-red/Group-14.svg" alt="chef">
+            <h2>Quantity</h2>
+        </label>
+        <input value="{{product.quantity}}" name="quantity" placeholder="20" type="text">
+    </div>
+    <div class="social-media twitter">
+        <label class="label-form" for="sale">
+            <img src="../../assets/products-form-icons-red/Group-19.svg" alt="chef">
+            <h2>Sale</h2>
+        </label>
+        <select name="sale" id="sale">
+            <option value="1" selected="selected">No discount</option>
+            <option value="0.9">10%</option>
+            <option value="0.8">20%</option>
+            <option value="0.7">30%</option>
+            <option value="0.6">40%</option>
+            <option value="0.5">50%</option>
+            <option value="0.4">60%</option>
+            <option value="0.3">70%</option>
+            <option value="0.2">80%</option>
+            <option value="0.1">90%</option>
+        </select>
+    </div>
+
+</div>
+
+<div class="row-2 margin-top">
+    <div class="social-media twitter">
+        <label class="label-form" for="available">
+            <img src="../../assets/products-form-icons-red/Group-21.svg" alt="chef">
+            <h2>Availability</h2>
+        </label>
+        <select name="available" id="available">
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+
+        </select>
+    </div>
+    <div class="social-media twitter">
+        <label class="label-form" for="category_id">
+            <img src="../../assets/products-form-icons-red/Group-1.svg" alt="chef">
+            <h2>Category</h2>
+        </label>
+        <select name="category_id" id="category_id">
+            <option value="0">Select the category</option>
+            {% for item in session.categories %}
+                {% if item.id == product.category_id %}
+                    <option value="{{item.id}}" selected="selected">{{item.name}}</option>
+                    {%else%}
+                    <option value="{{item.id}}">{{item.name}}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+    </div>
+</div>
+
+</div>
+
+{% endcall %}
+
+{% call form.render("preparation", "recipe form instructions chef-form") %}
+
+<div>
+
+<div class="row-1 ingredients instructions-container" id="instructions">
+    {% if product %}
+        {% for info in product.infos %}
+            {% if info == "" %}
+                {%else%}
+                <div class="row-1 ingredients instructions-container" id="instructions">
+
+                    <label class="label-form ingredients preparation" for="name">
+                        <img src="../../assets/recipe-icons-form/olive-oil.png" alt="chef">
+                    </label>
+
+                    <div class="preparation">
+                        <input onblur="Mask.apply(this, 'formatPreparation')" type="text" name="information[]" value="{{info}}" placeholder="Add some info about the product..."/>
+                        <button onclick="remove(event)" type="button" class="close-field">
+                            <img src="../../assets/Icons/Medium/icon-close.svg" alt="">
+                        </button>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        <div class="row-1 ingredients instructions-container" id="instructions">
+
+            <label class="label-form ingredients preparation" for="name">
+                <img src="../../assets/recipe-icons-form/olive-oil.png" alt="chef">
+            </label>
+
+            <div class="preparation">
+                <input type="text" name="information[]" value="{{info}}" placeholder="Add some info about the product..."/>
+                <button onclick="remove(event)" type="button" class="close-field">
+                    <img src="../../assets/Icons/Medium/icon-close.svg" alt="">
+                </button>
+            </div>
+        </div>
+    {% endif %}
+</div>
+<button type="button" class="add add-instructions">Add information</button>
+
+</div>
+
+{% endcall %}
+
+{% call form.render("Ingredients", "recipe form photos chef-form") %}
+
+<div class="row-1">
+
+<div class="upload recipe">
+    <div class="upload-img recipe-images" id="photos-upload">
+        <input class="input-files input-big" id="photos" name="photos" type="file" accept="image/*" multiple="multiple" onchange="photoUpload.handleUploadPhoto(event)">
+        <label class="label-form" for="upload">
+            <img src="../../assets/recipe-icons-form/download.png" alt="chef">
+            <h2>DRAG AND DROP IMAGE</h2>
+            <p>(maximu of 6 photos)</p>
+        </label>
+    </div>
+
+    <div id="photos-preview">
+        {% if product.files %}
+            {% for image in product.files %}
+                <div class="photo" id="{{ image.id }}">
+                    <img src="{{ image.src}}" alt="{{ image.name }}">
+                    <i class="material-icons" onclick="photoUpload.removeOldPhoto(event)">
+                        close</i>
+                </div>
+            {% endfor %}
+            {# toda vez que eu deletar uma foto o id dela vem para cá #}
+            <input type="hidden" name="removed_files">
+        {% endif %}
+    </div>
+
+</div>
+{% endcall %}

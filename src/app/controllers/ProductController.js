@@ -14,8 +14,6 @@ module.exports = {
 
         if (!products) return res.send("Products not found!")
 
-        console.log(products)
-
         return res.render("products/index", { products })
 
     },

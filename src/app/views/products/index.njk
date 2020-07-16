@@ -14,14 +14,32 @@
     <div class="products-store">
 
         {% for product in products %}
-            <a href="#" class="product-container">
-                <img src="{{product.img}}" style="object-fit: cover" alt="">
-                <div class="product-info">
-                    <h2>{{product.title}}</h2>
-                    <p>{{product.description}}</p>
-                    <span>{{product.formattedPrice}}</span>
-                </div>
-            </a>
+            <div class="product-container">
+                <a href="/products/{{product.id}}" class="product">
+                    <img src="{{product.img}}" alt="">
+                    {% if product.discount %}
+                        <span class="sale-target">{{product.discount}}%</span>
+                    {% endif %}
+                    <div class="product-info">
+                        <h2>{{product.title}}</h2>
+                        <p>{{product.description}}</p>
+                        <div>
+                            {% if product.sale != 1 %}
+                                <span class="black discount">
+                                    {{product.formattedPrice}}
+                                </span>
+                                <span class="red">{{product.sale_price}}</span>
+
+                                {%else%}
+                                <span class="black">
+                                    {{product.formattedPrice}}
+                                </span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </a>
+                <a href="/admin/form-edit/{{product.id}}" class="button">Editar</a>
+            </div>
 
         {% endfor %}
 

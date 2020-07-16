@@ -7,10 +7,13 @@ const fieldsValidator = require('../app/validators/product');
 
 routes.get("/", AdminController.index)
 
-routes.get("/form", AdminController.create)
-routes.post("/form", onlyUsers, multer.array("photos", 6), fieldsValidator.post, AdminController.post)
-///admin/add-product
-///admin/list-product
-///admin/form-product
+routes.get("/form", onlyAdmin, AdminController.create)
+routes.post("/form", onlyAdmin, multer.array("photos", 6), fieldsValidator.post, AdminController.post)
+
+
+routes.get("/form-edit/:id", onlyAdmin, AdminController.edit)
+routes.put("/form-edit", onlyAdmin, multer.array("photos", 6), fieldsValidator.put, AdminController.put)
+
+routes.delete("/form", onlyAdmin, AdminController.delete);
 
 module.exports = routes  

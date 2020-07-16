@@ -5,6 +5,7 @@ const Difficulties = require('../models/Difficulty')
 const dietRestriction = require('../models/dietRestriction')
 const mealType = require('../models/mealType')
 const worldCuisine = require('../models/worldCuisine')
+const LoadUserService = require('./LoadUserService')
 
 // agora pegar as imagens usando o product id
 async function getImages(recipeId) {
@@ -32,7 +33,8 @@ async function format(recipe) {
         recipe.files = files
     }
 
-    const user = await User.findOne({ where: { id: recipe.user_id } })
+    // const user = await User.findOne({ where: { id: recipe.user_id } })
+    const user = await LoadUserService.load('user', { where: { id: recipe.user_id } })
 
     recipe.user = user
 
@@ -59,7 +61,7 @@ async function format(recipe) {
 
     recipe.steps = recipe.preparation.join('').split('@')
 
-    recipe.user.profileImage = recipe.user.profile_image.replace(/(.*)(\/images.*)/, '$2')
+    // recipe.user.profileImage = recipe.user.profile_image.replace(/(.*)(\/images.*)/, '$2')
 
     return recipe
 }
@@ -94,8 +96,7 @@ const LoadRecipeService = {
         } catch (error) {
             console.error(error)
         }
-    },
-    format
+    }
 }
 
 module.exports = LoadRecipeService 

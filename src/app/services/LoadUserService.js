@@ -1,22 +1,21 @@
 
 const Recipe = require('../models/Recipe');
 const User = require('../models/User')
-const LoadRecipeService = require('../services/LoadRecipeService')
+const LoadRecipeService = require('./LoadRecipeService')
 
 
 
 async function format(user) {
 
-    console.log(user.profile_image)
 
-    let profileImage = user.profile_image.includes('http') ? user.profile_image : user.profile_image.replace(/(.*)(\/images.*)/, '$2')
+    let profileImage = user.profile_image.includes('https') ? user.profile_image : user.profile_image.replace(/(.*)(\/images.*)/, '$2')
 
-    const recipes = await LoadRecipeService.load('recipes', { where: { user_id: user.id } })
+
+    // const recipes = await LoadRecipeService.load('recipes', { where: { user_id: user.id } })
 
     user = {
         ...user,
-        profileImage,
-        recipes
+        profileImage
     }
 
     return user
