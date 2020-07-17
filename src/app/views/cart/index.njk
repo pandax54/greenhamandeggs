@@ -1,78 +1,83 @@
 {% extends 'layout.njk' %}
 {% import "parts/card.njk" as cards %}
 
+{% extends "../layout.njk" %}
+{% import "../parts/header-cover.njk" as cover %}
+{% import "../parts/form-card.njk" as form %}
+
+{% block header %}
+    <title>Users Index</title>
+{% endblock %}
 {% block content %}
+    {% call cover.render('Think and wonder, wonder and think.','', 'about', '', '/assets/products-cover.jpg', session )%}
+    {% endcall %}
+    {% call form.render("CART", "cart chef register_form") %}
+    <form class="shopping_cart" method="POST" action="/users/login">
 
-    {% if (cart.items) and (cart.items.length < 1) %}
-        {% call cards.render('Carrinho vazio', 'cart-empty container')%}
-        {# <p>Carrinho vazio</p> #}
-        <a class="button" href="/products/search">Comprar</a>
-        {% endcall %}
+        <h1>Shopping Cart</h1>
 
-    {% else %}
-        {% call cards.render('Carrinho', 'cart container')%}
-        <div class="header">
-            <p>Produto</p>
-            <p>Preço</p>
-            <p>Qtd.</p>
-        </div>
-        <div class="items">
-            {% for item in cart.items %}
+        <div class="row-1">
+            <div class="items">
                 <div class="item">
-                    <a href="/products/{{item.product.id}}">
-                        <img src="{{item.product.img}}" alt="product img">
-                        <span class="title">{{ item.product.name }}</span>
+                    <a class="product-info-cart" href="/products/{{item.product.id}}">
+                        <img src="images/1594921064129-loungefly-the-grinch-faux-leather-mini-backpack.jpg" alt="product img">
+                        <div class="product-cart-name">
+                            <p class="title">Loungefly The Grinch Mini Faux Leather Backpack</p>
+                            <p class="category">Accessory</p>
+                        </div>
                     </a>
 
-                    <span class="price">{{ item.product.formattedPrice }}</span>
                     <div class="quantity-control">
-                        <form action="/cart/{{ item.product.id}}/remove-one" method="POST">
-                            <button class="white">
-                                <i class="material-icons">remove_circle_outline</i>
+                        <form action="/cart/1/remove-one" method="POST">
+                            <button style="background-color: white;" class="cart">
+                                <i id="minus" class="material-icons cart-icons">remove</i>
                             </button>
                         </form>
 
-                        <span class="quantity">{{item.quantity}}</span>
+                        <span class="quantity">
+                            <p>0</p>
+                        </span>
 
-                        <form action="/cart/{{ item.product.id}}/add-one" method="POST">
-                            <button class="white">
-                                <i class="material-icons">add_circle_outline</i>
+                        <form action="/cart/1/add-one" method="POST">
+                            <button class="cart">
+                                <i id="plus" class="material-icons cart-icons">add</i>
                             </button>
                         </form>
                     </div>
 
-                    <form class="trash" action="/cart/{{ item.product.id}}/delete" method="POST">
-                        <button class="white delete">
-                            <i class="material-icons">delete</i>
+                    <form class="price-delete" action="/cart/1/delete" method="POST">
+                        <span class="price">$79,99</span>
+                        <button style="background-color: white;" class="cart">
+                            <i class="material-icons cart-icons">close</i>
                         </button>
                     </form>
                 </div>
-            {% endfor %}
 
-            <div class="total">
-                <p>Total:
-                </p>
-                <span>{{ cart.total.formattedPrice}}</span>
-            </div>
-
-            <div class="actions">
-                <a class="button shop" href="/products/search">Continuar comprando</a>
-                <form action="/orders" method="POST">
-                    <button type="submit" class="button orders">
-                        Realizar Pedido
-                    </button>
-                </form>
+                <div class="actions">
+                    <a class="button shop" href="/products">
+                        <i class="material-icons cart-icons">arrow_back</i>
+                        <p>Continue Shopping</p>
+                    </a>
+                    <form action="/orders" method="POST">
+                        <div class="total">
+                            <p>Total:
+                            </p>
+                            <span>{{ cart.total.formattedPrice}}</span>
+                        </div>
+                        <button class="checkout-button" type="submit">
+                            Check Out
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
 
-        {% endcall %}
+    </div>
 
-    {% endif %}
+</div>
+
+</form>
+
+{% endcall %}
 
 {% endblock content %}
-
-{% block script %}
-
-    <script src="/js/scripts.js"></script>
-
-{% endblock %}

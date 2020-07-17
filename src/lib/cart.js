@@ -1,4 +1,4 @@
-const { formatBRL } = require('./utils');
+const { formatUSD } = require('./utils');
 // o carrinho fica guardado na sessão (req.session) assim ele ficará acessível por toda a aplicacao
 const Cart = {
     init(oldCart) {
@@ -11,7 +11,7 @@ const Cart = {
             this.total = {
                 quantity: 0,
                 price: 0,
-                formattedPrice: formatBRL(0)
+                formattedPrice: formatUSD(0)
             }
         }
         return this
@@ -22,15 +22,16 @@ const Cart = {
         let inCart = this.items.find(item => item.product.id == product.id)
 
         // se nao existe, adicionar o produto
+        // primeiramente a quantidade será zero porque iremos adicionar em uma lógica posterior
         if (!inCart) {
             inCart = {
                 product: {
                     ...product,
-                    formattedPrice: formatBRL(product.price)
+                    formattedPrice: formatUSD(product.price)
                 },
                 quantity: 0,
                 price: 0,
-                formattedPrice: formatBRL(0)
+                formattedPrice: formatUSD(0)
             }
 
             this.items.push(inCart)
@@ -41,12 +42,12 @@ const Cart = {
         // update item
         inCart.quantity++
         inCart.price = inCart.product.price * inCart.quantity
-        inCart.formattedPrice = formatBRL(inCart.price)
+        inCart.formattedPrice = formatUSD(inCart.price)
 
         // update cart
         this.total.quantity++
         this.total.price += inCart.product.price
-        this.total.formattedPrice = formatBRL(this.total.price)
+        this.total.formattedPrice = formatUSD(this.total.price)
 
         return this
 
@@ -65,23 +66,25 @@ const Cart = {
         // inCart.quantity = inCart.quantity - 1
         inCart.quantity--
         inCart.price = inCart.product.price * inCart.quantity
-        inCart.formattedPrice = formatBRL(inCart.price)
+        inCart.formattedPrice = formatUSD(inCart.price)
 
         // atualizar o carrinho
         this.total.quantity--
         this.total.price -= inCart.product.price
-        this.total.formattedPrice = formatBRL(this.total.price)
+        this.total.formattedPrice = formatUSD(this.total.price)
 
         // se a quantidade do produto no carrinho for 0 entao removê-lo
         if (inCart.quantity < 1) {
             const itemIndex = this.items.indexOf(inCart)
-            // pegar todos os items que nao sao o produto em questao
+
 
             // ALTERNATIVE FORM
             // const filteredItems = this.items.filter(item => item.product.id != inCart.product.id)
             // this.items = filteredItems
+            // podemos fazer direto também
             // this.items = this.items.filter(item => item.product.id != inCart.product.id)
 
+            // pegar todos os items que nao sao o produto em questao
             this.items.splice(itemIndex, 1)
             return this
         }
@@ -96,7 +99,7 @@ const Cart = {
 
             this.total.quantity -= inCart.quantity
             this.total.price -= inCart.price
-            this.total.formattedPrice = formatBRL(this.total.price)
+            this.total.formattedPrice = formatUSD(this.total.price)
 
         }
         this.items = this.items.filter(item => item.product.id != inCart.product.id)

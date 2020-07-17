@@ -4,11 +4,12 @@
     font-family: Futura PT;
     font-style: normal;
     font-weight: normal;
-    font-size: 32px;
+    font-size: 28px;
     line-height: 135%;
     letter-spacing: 0.04em;
     text-transform: uppercase;
     color: #FF370A;
+    opacity: 0.5;
     margin-bottom: 60px;
 }
 
@@ -32,6 +33,10 @@
     color: #FFFFFF;
     top: 0;
     left: 0;
+}
+
+.form-container.cart::after {
+    /* content: "Shopping Cart"; */
 }
 
 div.form-input-container.register_form {

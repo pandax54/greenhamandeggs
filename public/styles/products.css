@@ -210,7 +210,7 @@ a.product {
      overflow: hidden;
      z-index: 5;
 
-     /* top: -100; */
+     /* top: -100%; */
      top: -100px;
      left: 0;
 
