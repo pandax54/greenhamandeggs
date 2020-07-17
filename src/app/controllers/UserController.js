@@ -132,14 +132,14 @@ module.exports = {
             console.error(err)
             return res.render("users/settings", {
                 user,
-                error: "Algum erro aconteceu"
+                error: "Something wrong has happened"
             })
         }
 
 
         return res.render(`users/user/${id}`, {
             user: req.body,
-            success: "Conta atualizada com sucesso"
+            success: "Account updated"
         })
     },
     async delete(req, res) {
@@ -178,14 +178,14 @@ module.exports = {
             unlinkSync(profileImage)
 
             return res.render("session/login", {
-                success: "Conta deletada com sucesso!"
+                success: "Account deleted!"
             })
 
         } catch (error) {
             console.error(error)
             return res.render("users/settings", {
                 user,
-                error: "Erro ao tentar deletar sua conta"
+                error: "Something has happened! Account couldnt been deleted"
             })
         }
     }

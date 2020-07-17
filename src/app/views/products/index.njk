@@ -20,6 +20,11 @@
                     {% if product.discount %}
                         <span class="sale-target">{{product.discount}}%</span>
                     {% endif %}
+                    {% if product.quantity <= 10 %}
+                        <span class="last-item-target">Last
+                            {{product.quantity}}
+                            items</span>
+                    {% endif %}
                     <div class="product-info">
                         <h2>{{product.title}}</h2>
                         <p>{{product.description}}</p>

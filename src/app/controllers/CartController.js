@@ -16,12 +16,17 @@ module.exports = {
 
             // gerenciador de carrinho que criamos na lib
             cart = Cart.init(cart)
-            // const product = await LoadProductService.load('product', { where: { id: 1 } })
-            // const product2 = await LoadProductService.load('product', { where: { id: 2 } })
+            // const product = await LoadProductService.load('product', { where: { "products.id": 9 } })
+            // const product2 = await LoadProductService.load('product', { where: { "products.id": 5 } })
+            // cart.addOne(product)
             // cart.addOne(product)
             // cart.addOne(product2)
 
+            console.log(cart)
+            // console.log(product)
+
             return res.render("cart/index", { cart })
+            // return res.render("cart/index")
 
         } catch (error) {
             console.error(error)
@@ -33,7 +38,7 @@ module.exports = {
         const { id } = req.params
 
         // pegar o produto
-        const product = await LoadProductService.load('product', { where: { id } })
+        const product = await LoadProductService.load('product', { where: { "products.id": id } })
 
 
         // pegar o carrinho da sessão

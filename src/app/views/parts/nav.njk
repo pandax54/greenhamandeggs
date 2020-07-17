@@ -125,8 +125,8 @@
                                 </ul>
                             {% endif %}
 
-                        <li >
-                            <a href="/cart">
+                        <li>
+                            <a class="cart-link" href="/cart">
                                 <i class="material-icons">shopping_cart</i>
                                 {% if (session.cart) and (session.cart.total.quantity > 0) %}
                                     <span id="cart-status-info">{{ session.cart.total.quantity}}</span>

@@ -16,67 +16,98 @@
 
         <h1>Shopping Cart</h1>
 
-        <div class="row-1">
-            <div class="items">
-                <div class="item">
-                    <a class="product-info-cart" href="/products/{{item.product.id}}">
-                        <img src="images/1594921064129-loungefly-the-grinch-faux-leather-mini-backpack.jpg" alt="product img">
-                        <div class="product-cart-name">
-                            <p class="title">Loungefly The Grinch Mini Faux Leather Backpack</p>
-                            <p class="category">Accessory</p>
+        {% if (cart.items) and (cart.items.length < 1) %}
+            {# {% if not cart %} #}
+            <div class="row-1 empty-cart">
+                <div class="empty-tag">
+                    <p>Empty cart</p>
+                    <img src="/assets/cart-icons/tabua.svg" alt="">
+                </div>
+                <a class="button go-shop" href="/products">
+                    <i class="material-icons cart-icons">arrow_back</i>
+                    <p>Go Shopping</p>
+                </a>
+            </div>
+
+        {% else %}
+
+            <div class="row-1">
+                <div class="items">
+                    {% for item in cart.items %}
+                        <div class="item">
+                            <a class="product-info-cart" href="/products/{{item.product.id}}">
+                                <img src="{{ item.product.img }}" alt="product img">
+                                <div class="product-cart-name">
+                                    <p class="title">{{ item.product.title }}</p>
+                                    <p class="category">{{ item.product.category.name }}</p>
+                                    {% if item.quantity == item.product.quantity %}
+                                        <p class="alert">Out of Stock</p>
+                                        <p class="alert">Stock limit:
+                                            {{ item.product.quantity }}</p>
+                                    {% endif %}
+                                </div>
+                            </a>
+
+                            <div class="middle-column">
+                                <div class="quantity-control">
+                                    <form action="/cart/{{item.product.id}}/remove-one" method="POST">
+                                        <button style="background-color: white;" class="cart">
+                                            <i id="minus" class="material-icons cart-icons">remove</i>
+                                        </button>
+                                    </form>
+
+                                    <span class="quantity">
+                                        <p>{{ item.quantity }}</p>
+                                    </span>
+
+                                    <form action="/cart/{{item.product.id}}/add-one" method="POST">
+                                        <button class="cart">
+                                            <i id="plus" class="material-icons cart-icons">add</i>
+                                        </button>
+                                    </form>
+                                </div>
+                                {# {% if item.quantity == item.product.quantity %}
+                                    <p class="alert">Stock limit:
+                                        {{ item.product.quantity }}</p>
+                                {% endif %} #}
+                            </div>
+
+                            <form class="price-delete" action="/cart/{{item.product.id}}/delete" method="POST">
+                                <span class="price">{{ item.formattedPrice }}</span>
+                                <button style="background-color: white;" class="cart">
+                                    <i class="material-icons cart-icons">close</i>
+                                </button>
+                            </form>
+
                         </div>
-                    </a>
+                    {% endfor %}
 
-                    <div class="quantity-control">
-                        <form action="/cart/1/remove-one" method="POST">
-                            <button style="background-color: white;" class="cart">
-                                <i id="minus" class="material-icons cart-icons">remove</i>
-                            </button>
-                        </form>
-
-                        <span class="quantity">
-                            <p>0</p>
-                        </span>
-
-                        <form action="/cart/1/add-one" method="POST">
-                            <button class="cart">
-                                <i id="plus" class="material-icons cart-icons">add</i>
+                    <div class="actions">
+                        <a class="button shop" href="/products">
+                            <i class="material-icons cart-icons">arrow_back</i>
+                            <p>Continue Shopping</p>
+                        </a>
+                        <form action="/orders" method="POST">
+                            <div class="total">
+                                <p>Total:
+                                </p>
+                                <span>{{ cart.total.formattedPrice}}</span>
+                            </div>
+                            <button class="checkout-button" type="submit">
+                                Check Out
                             </button>
                         </form>
                     </div>
-
-                    <form class="price-delete" action="/cart/1/delete" method="POST">
-                        <span class="price">$79,99</span>
-                        <button style="background-color: white;" class="cart">
-                            <i class="material-icons cart-icons">close</i>
-                        </button>
-                    </form>
-                </div>
-
-                <div class="actions">
-                    <a class="button shop" href="/products">
-                        <i class="material-icons cart-icons">arrow_back</i>
-                        <p>Continue Shopping</p>
-                    </a>
-                    <form action="/orders" method="POST">
-                        <div class="total">
-                            <p>Total:
-                            </p>
-                            <span>{{ cart.total.formattedPrice}}</span>
-                        </div>
-                        <button class="checkout-button" type="submit">
-                            Check Out
-                        </button>
-                    </form>
                 </div>
             </div>
+
         </div>
 
     </div>
 
-</div>
-
 </form>
+
+{% endif %}
 
 {% endcall %}
 

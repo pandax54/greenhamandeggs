@@ -79,6 +79,17 @@ a.product {
     color: white;
 }
 
+.product span.last-item-target {
+    /* background-color: tomato; */
+    background-color: rgba(62, 158, 206, 0.5);
+    width: 100%;
+    padding: 8px 10px;
+    letter-spacing: 0.6px;
+    font-weight: bold;
+    /* color: white; */
+    color: #333;
+}
+
 .product-info {
     position: relative;
     display: flex;

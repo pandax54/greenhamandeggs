@@ -137,7 +137,7 @@ module.exports = {
             await Promise.all(filesPromise);
 
             return res.render('recipes/form', {
-                success: "receita criada"
+                success: "Recipe has been created"
             });
 
 
@@ -194,14 +194,14 @@ module.exports = {
 
 
             return res.render('recipes/update-form', {
-                success: "receita atualizada"
+                success: "Recipe has been updated"
             });
         } catch (err) {
             console.error(err)
             return res.redirect("recipes/update-form",
                 {
                     recipe: req.body,
-                    error: "Algum erro aconteceu"
+                    error: "Something wrong has happened"
                 })
         }
     },
