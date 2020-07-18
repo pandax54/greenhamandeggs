@@ -51,6 +51,7 @@
                             <div class="middle-column">
                                 <div class="quantity-control">
 
+                                    {# por algum motivo no loop ele nao coloca o form nesse primeiro entao eu coloquei um segundo e dei desable nesse  #}
                                     <form class="removed" action="/cart/{{item.product.id}}/remove-one" method="POST">
                                         <button disabled="disabled" class="cart removed">
                                             <i id="minus" class="material-icons cart-icons">remove</i>

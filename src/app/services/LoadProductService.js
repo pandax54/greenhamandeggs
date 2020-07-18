@@ -37,7 +37,12 @@ async function format(product) {
     // product.formattedPrice = formatBRL(product.price)
 
 
-    product.infos = product.information.join('').split('@')
+    // product.infos = product.information.join('').split('@')
+
+    // testing new split - uppercase letter
+    // product.infos = product.information.join('').split(/(?=[A-Z])/)
+    product.infos = product.information.join('').split(';')
+
     product.sale_price = formatUSD(product.price * product.sale)
     product.discount = Math.ceil((1 - product.sale) * 100)
     // recipe.steps = recipe.preparation.join('').split('@')
