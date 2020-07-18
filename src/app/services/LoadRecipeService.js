@@ -59,7 +59,11 @@ async function format(recipe) {
     recipe.meal_type = meal_type
     recipe.world_cuisine = world_cuisine
 
-    recipe.steps = recipe.preparation.join('').split('@')
+    // !!!!!!!!!!!!!!!
+    // recipe.steps = recipe.preparation.join('').split('@')
+
+    // testing new split - uppercase letter
+    recipe.steps = recipe.preparation.join('').split(/(?=[A-Z])/)
 
     // recipe.user.profileImage = recipe.user.profile_image.replace(/(.*)(\/images.*)/, '$2')
 

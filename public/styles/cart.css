@@ -52,7 +52,7 @@ a.product-info-cart .product-cart-name p.category {
 
 p.alert {
     color: red;
-    font-size: 14px;
+    font-size: 12px;
     letter-spacing: 0.6px;
     margin-top: 5px;
     /* text-align: center; */
@@ -65,9 +65,21 @@ p.alert {
     align-items: center;
 }
 
+form.removed {
+    opacity: 0;
+    visibility: hidden;
+    cursor: none;
+    z-index: -1;
+    
+}
+
+button.removed {
+    opacity: 0;
+}
+
 .quantity-control {
    display: grid;
-   grid-template-columns: 1fr 2fr 1fr;
+   grid-template-columns: 10px 1fr 2fr 1fr;
    align-items: center;
    padding-left: 20px;
    padding-right: 40px;
@@ -166,7 +178,7 @@ form.price-delete i {
 }
 
 .actions a.button.shop i {
-    font-size: 14px;
+    font-size: 16px;
     margin-right: 5px;
     padding-bottom: 5px;
 }
@@ -189,8 +201,10 @@ button.checkout-button {
     text-transform: uppercase;
     color: #FFFFFF;
     margin-top: 20px;
-    
-    
+}
+
+button.checkout-button:hover {
+    background: rgba(255, 135, 108, 1);
 }
 
 

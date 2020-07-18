@@ -50,8 +50,15 @@
 
                             <div class="middle-column">
                                 <div class="quantity-control">
+
+                                    <form class="removed" action="/cart/{{item.product.id}}/remove-one" method="POST">
+                                        <button disabled="disabled" class="cart removed">
+                                            <i id="minus" class="material-icons cart-icons">remove</i>
+                                        </button>
+                                    </form>
+
                                     <form action="/cart/{{item.product.id}}/remove-one" method="POST">
-                                        <button style="background-color: white;" class="cart">
+                                        <button style="background-color: white" class="cart">
                                             <i id="minus" class="material-icons cart-icons">remove</i>
                                         </button>
                                     </form>
@@ -65,11 +72,8 @@
                                             <i id="plus" class="material-icons cart-icons">add</i>
                                         </button>
                                     </form>
+
                                 </div>
-                                {# {% if item.quantity == item.product.quantity %}
-                                    <p class="alert">Stock limit:
-                                        {{ item.product.quantity }}</p>
-                                {% endif %} #}
                             </div>
 
                             <form class="price-delete" action="/cart/{{item.product.id}}/delete" method="POST">

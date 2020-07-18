@@ -145,9 +145,10 @@ const Mask = {
 
     },
     formatPreparation(value) {
-
-        value = value.replace(/(.*\.)[a-zA-Z0-9,.!? ]*$/, '$1@')
+        // value = value.replace(/(.*\.)[a-zA-Z0-9,.!? ]*$/, '$1@')
+        value = value[0].toUpperCase() + value.slice(1)
         return value
+
     },
     formatUSD(value) {
 

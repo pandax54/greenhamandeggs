@@ -74,14 +74,15 @@ a.product {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 0 10px;
+    padding: 1px 10px;
+    letter-spacing: 0.6px;
     background-color: tomato;
     color: white;
 }
 
 .product span.last-item-target {
     /* background-color: tomato; */
-    background-color: rgba(62, 158, 206, 0.5);
+    background-color: rgba(62, 158, 206, 0.3);
     width: 100%;
     padding: 8px 10px;
     letter-spacing: 0.6px;
