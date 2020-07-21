@@ -18,6 +18,9 @@ routes.use('/admin', admin)
 const cart = require('./cart')
 routes.use('/cart', cart)
 
+const order = require('./order')
+routes.use('/orders', order)
+
 
 
 // Home

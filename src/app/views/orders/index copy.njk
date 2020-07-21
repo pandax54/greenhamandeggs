@@ -1,0 +1,84 @@
+{% extends 'layout.njk' %}
+{% import "parts/card.njk" as cards %}
+
+{% extends "../layout.njk" %}
+{% import "../parts/header-cover.njk" as cover %}
+{% import "../parts/form-card.njk" as form %}
+
+{% block header %}
+    <title>Users Index</title>
+{% endblock %}
+{% block content %}
+    {% call cover.render('It’s not about what it is, it’s about what it can become.','', 'about', '', '/assets/specialcollections.jpg', session )%}
+    {% endcall %}
+    {% call form.render("CART", "cart chef register_form") %}
+    <form class="shopping_cart" method="POST" action="/users/login">
+
+        <h1>Orders</h1>
+
+        {% if orders == "" %}
+            <div class="row-1 empty-cart">
+                <div class="empty-tag">
+                    <p>No orders</p>
+                    <img src="/assets/cart-icons/tabua-1.svg" alt="">
+                </div>
+                <a class="button go-shop" href="/products">
+                    <i class="material-icons cart-icons">arrow_back</i>
+                    <p>Go Shopping</p>
+                </a>
+            </div>
+
+        {% else %}
+
+            <div class="row-1">
+                <div class="items">
+                    {% for item in cart.items %}
+                        <div class="item">
+                            <a class="product-info-cart" href="/products/{{item.product.id}}">
+                                <img src="{{ item.product.img }}" alt="product img">
+                                <div class="product-cart-name">
+                                    <p class="title">{{ item.product.title }}</p>
+                                    <p class="category">{{ item.product.category.name }}</p>
+                                    {% if item.quantity == item.product.quantity %}
+                                        <p class="alert">Out of Stock</p>
+                                        <p class="alert">Stock limit:
+                                            {{ item.product.quantity }}</p>
+                                    {% endif %}
+                                </div>
+                            </a>
+
+                            <div class="middle-column">
+                                <div class="quantity-control">
+
+                                    <span class="quantity">
+                                        <p>1 quto</p>
+                                    </span>
+
+                                </div>
+                            </div>
+
+                            <form class="price-delete" action="/cart/{{item.product.id}}/delete" method="POST">
+                                <span class="price">{{ item.formattedPrice }}</span>
+                                <button style="background-color: white;" class="cart">
+                                    <i class="material-icons cart-icons">close</i>
+                                </button>
+                            </form>
+
+                        </div>
+                    {% endfor %}
+
+                    <div class="actions"></div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</form>
+
+{% endif %}
+
+{% endcall %}
+
+{% endblock content %}
