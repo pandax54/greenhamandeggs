@@ -9,37 +9,18 @@ const LoadProductService = require('./LoadProductService')
 async function format(order) {
 
     // alterar a tabela de products para 'productWithDeleted', pois o histórico dos pedidos permanecem mesmo que posteriormente os produtos sejam deletados
-    order.product = await LoadProductService.load("productWithDeleted", {
+    order.product = await LoadProductService.load("product", {
         where: { id: order.product_id }
     })
-    console.log(order.product)
+
     // detalhes do comprador
-    order.buyer = await User.findOne({
-        where: { id: order.buyer_id }
+    order.user = await User.findOne({
+        where: { id: order.user_id }
     })
-    // detalhes do vendedor
-    order.seller = await User.findOne({
-        where: { id: order.seller_id }
-    })
+
     // formatação de preços
-    order.formattedPrice = formatBRL(order.price)
-    order.formattedTotal = formatBRL(order.total)
-
-    // formatação do status ("open")
-    const allStatus = {
-        open: "Aberto",
-        sold: "Vendido",
-        canceled: "Cancelado"
-    }
-    order.formattedStatus = allStatus[order.status]
-    // formatação de atualização em...
-    order.updatedAt = date(order.updated_at)
-    order.formattedUpdatedAt = `${order.formattedStatus} em ${order.updatedAt.day}/${order.updatedAt.month}/${order.updatedAt.year}`
-
-    if (order.product.deleted_at) {
-        order.deletedAt = date(order.product.deleted_at)
-        order.formattedDeleted_at = `Produto deletado em ${order.deletedAt.day}/${order.deletedAt.month}/${order.deletedAt.year}`
-    }
+    order.formattedPrice = formatPrice(order.price)
+    order.formattedTotal = formatPrice(order.total)
 
     return order
 }

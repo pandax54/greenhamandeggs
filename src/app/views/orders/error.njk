@@ -1,38 +1,54 @@
 {% extends 'layout.njk' %}
 {% import "parts/card.njk" as cards %}
 
-{% block content %}
+{% extends "../layout.njk" %}
+{% import "../parts/header-cover.njk" as cover %}
+{% import "../parts/form-card.njk" as form %}
 
-    {% call cards.render('', 'order container')%}
+{% block header %}
+    <title>Users Index</title>
+{% endblock %}
+{% block content %}
+    {% call cover.render('It’s not about what it is, it’s about what it can become.','', 'about', '', '/assets/specialcollections.jpg', session )%}
+    {% endcall %}
+
+    {% call form.render("CART", "cart chef register_form") %}
+
     <div class="error-lottie"></div>
     <div class="error-info">
-        <h2>Desculpe!</h2>
+        <h1>Oh No!</h1>
         <p>
-            Não conseguimos processar seu pedido...
+            Something went wrong with your order.
         </p>
-        <a class="error" href="/products/search" onclick="history.back()">Tente novamente</a>
-    </div>
-    {% endcall %}
+
+        <a class="error" href="/products/search" onclick="history.back()">
+            {# <i class="material-icons cart-icons">arrow_back</i> #}
+            <p>Please try again!</p>
+        </a>
+
+    </a>
+</div>
+{% endcall %}
 
 {% endblock content %}
 
 {% block script %}
 
-    <script src="/js/deleteAccount.js"></script>
-    <script src="/js/scripts.js"></script>
-    <script src="/js/lottie.min.js"></script>
+<script src="/js/deleteAccount.js"></script>
+<script src="/js/scripts.js"></script>
+<script src="/js/lottie.min.js"></script>
 
-    <script>
+<script>
 
-        const element = document.querySelector('.error-lottie')
+    const element = document.querySelector('.error-lottie')
 
-        lottie.loadAnimation({
-            container: element, // the dom element that will contain the animation
-            renderer: 'svg',
-            loop: false,
-            autoplay: true,
-            path: '/animation/10448-payment-failed-error.json' // the path to the animation json
-        });
-    </script>
+    lottie.loadAnimation({
+        container: element, // the dom element that will contain the animation
+        renderer: 'svg',
+        loop: false,
+        autoplay: true,
+        path: '/animation/10448-payment-failed-error.json' // the path to the animation json
+    });
+</script>
 
 {% endblock %}

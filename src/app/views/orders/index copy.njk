@@ -6,17 +6,19 @@
 {% import "../parts/form-card.njk" as form %}
 
 {% block header %}
-    <title>Users Index</title>
+    <title>Invoice</title>
 {% endblock %}
 {% block content %}
     {% call cover.render('It’s not about what it is, it’s about what it can become.','', 'about', '', '/assets/specialcollections.jpg', session )%}
     {% endcall %}
+
     {% call form.render("CART", "cart chef register_form") %}
-    <form class="shopping_cart" method="POST" action="/users/login">
 
-        <h1>Orders</h1>
+    <h1>My Invoices</h1>
 
-        {% if orders == "" %}
+    <div class="order-container">
+
+        {% if invoice == "" %}
             <div class="row-1 empty-cart">
                 <div class="empty-tag">
                     <p>No orders</p>
@@ -32,50 +34,66 @@
 
             <div class="row-1">
                 <div class="items">
-                    {% for item in cart.items %}
+                    {% for order in orders %}
                         <div class="item">
-                            <a class="product-info-cart" href="/products/{{item.product.id}}">
-                                <img src="{{ item.product.img }}" alt="product img">
-                                <div class="product-cart-name">
-                                    <p class="title">{{ item.product.title }}</p>
-                                    <p class="category">{{ item.product.category.name }}</p>
-                                    {% if item.quantity == item.product.quantity %}
-                                        <p class="alert">Out of Stock</p>
-                                        <p class="alert">Stock limit:
-                                            {{ item.product.quantity }}</p>
-                                    {% endif %}
+                            <a class="product-info-order" href="/products/{{item.product.id}}">
+                                <img src="{{order.product[0].img}}" alt="product img">
+                                <div class="product-order-name">
+                                    <p class="title">{{order.product[0].title}}</p>
+                                    <p class="unit-price">Unit:
+                                        {{order.product[0].formattedPrice}}</p>
+                                    <p class="order-date">Data: 10/09/2020</p>
                                 </div>
                             </a>
 
-                            <div class="middle-column">
-                                <div class="quantity-control">
+                            <div class="order-qt-price">
+                                <div class="quantity-container">
 
                                     <span class="quantity">
-                                        <p>1 quto</p>
+                                        <p>Qtd. 1</p>
+                                    </span>
+                                    <span class="quantity">
+                                        <p>$29,00</p>
                                     </span>
 
                                 </div>
                             </div>
-
-                            <form class="price-delete" action="/cart/{{item.product.id}}/delete" method="POST">
-                                <span class="price">{{ item.formattedPrice }}</span>
-                                <button style="background-color: white;" class="cart">
-                                    <i class="material-icons cart-icons">close</i>
-                                </button>
-                            </form>
-
+                            <div {% if order.status == "canceled" %} class="status" style="background-color: tomato;">
+                                <p>Canceled</p>
+                            {%elif order.status == "open" %}
+                                class="status" style="background-color: rgb(226 142 7);">
+                                <p>Open</p>
+                            {%elif order.status == "completed" %}
+                                class="status" style="background-color: rgb(226 142 7);">
+                                <p>Completed</p>
+                            {% endif %}
                         </div>
-                    {% endfor %}
 
-                    <div class="actions"></div>
-                </div>
+                        <div class="actions dropdown-container">
+                            Ações
+                            <i class="material-icons">arrow_drop_down</i>
+                            <ul class="dropdown-order">
+                                <li>
+                                    <a href="/orders/{{order.id}}">Details</a>
+                                </li>
+                                <li>Payment</li>
+                                <li class="cancel">
+                                    <form action="/orders/{{order.id}}/cancel" method="POST">
+                                        <button class="actions canceled">Cancel Purchase</button>
+                                    </form>
+                                </li>
+                                {# {%endif%} #}
+                            </ul>
+                        </div>
+                    </div>
+
+                {% endfor %}
             </div>
 
+            <div class="actions"></div>
         </div>
-
     </div>
-
-</form>
+</div>
 
 {% endif %}
 

@@ -6,76 +6,87 @@
 {% import "../parts/form-card.njk" as form %}
 
 {% block header %}
-    <title>Users Index</title>
+    <title>Invoice</title>
 {% endblock %}
 {% block content %}
     {% call cover.render('It’s not about what it is, it’s about what it can become.','', 'about', '', '/assets/specialcollections.jpg', session )%}
     {% endcall %}
+
     {% call form.render("CART", "cart chef register_form") %}
 
-    <h1>Orders</h1>
+    <h1>My Invoices</h1>
 
-    <div class="order-container">
+    <div class="invoice-container">
 
-        <div class="row-1">
-            <div class="items">
-                {# {% for item in cart.items %} #}
-                <div class="item">
-                    <a class="product-info-order" href="/products/{{item.product.id}}">
-                        <img src="/images/1594921687287-dr-seuss-cat-in-the-hat-oval-ceramic-mug.jpg" alt="product img">
-                        <div class="product-order-name">
-                            <p class="title">Dr. Seuss Cat in the Hat Oval Ceramic Mug</p>
-                            <p class="unit-price">Unit: $29,00</p>
-                            <p class="order-date">Data: 10/09/2020</p>
-                        </div>
-                    </a>
-
-                    <div class="order-qt-price">
-                        <div class="quantity-container">
-
-                            <span class="quantity">
-                                <p>Qtd. 1</p>
-                            </span>
-                            <span class="quantity">
-                                <p>$29,00</p>
-                            </span>
-
-                        </div>
-                    </div>
-
-                    <div class="status" style="background-color: tomato;">
-                        <p>Open</p>
-                    </div>
-
-                    <div class="actions dropdown-container">
-                        Ações
-                        <i class="material-icons">arrow_drop_down</i>
-                        <ul class="dropdown-order">
-                            <li>
-                                <a href="/orders/{{order.id}}">Details</a>
-                            </li>
-                            <li>Payment</li>
-                            <li class="cancel">
-                                <form action="/orders/{{order.id}}/cancel" method="POST">
-                                    <button class="actions canceled">Cancel Purchase</button>
-                                </form>
-                            </li>
-                            {# {%endif%} #}
-                        </ul>
-                    </div>
+        {% if invoice == "" %}
+            <div class="row-1 empty-cart">
+                <div class="empty-tag">
+                    <p>No orders</p>
+                    <img src="/assets/cart-icons/tabua-1.svg" alt="">
                 </div>
-
+                <a class="button go-shop" href="/products">
+                    <i class="material-icons cart-icons">arrow_back</i>
+                    <p>Go Shopping</p>
+                </a>
             </div>
-            {# {% endfor %} #}
+
+        {% else %}
+
+            <div class="row-1">
+                <div class="items">
+                    {% for invoice in invoices %}
+                        <div class="item invoice">
+                            <a class="product-info-order" href="/orders/{{invoice.id}}">
+                                <div class="product-order-name">
+                                    <p class="title">Order Nº
+                                        {{invoice.id}}</p>
+                                    <p class="unit-price">Tracking number: IW34754553455</p>
+                                    <p class="order-date">{{invoice.formattedcreatedAt}}</p>
+                                </div>
+                            </a>
+
+                            <div class="invoice-qt-price">
+                                <div class="quantity-container">
+
+                                    <span class="quantity">
+                                        <p>Quantity:
+                                            <strong>{{invoice.quantity}}</strong>
+                                        </p>
+                                    </span>
+                                    <span class="quantity">
+                                        <p>Total Amount:
+                                            <strong>{{invoice.totalAmountFormatted}}</strong>
+                                        </p>
+                                    </span>
+
+                                </div>
+                            </div>
+                            <div {% if order.status == "canceled" %} class="status" style="background-color: tomato;">
+                                <p>Canceled</p>
+                            {%elif order.status == "open" %}
+                                class="status" style="background-color: rgb(226 142 7);">
+                                <p>Open</p>
+                            {%elif order.status == "completed" %}
+                                class="status" style="background-color: rgb(226 142 7);">
+                                <p>Completed</p>
+                            {% endif %}
+                        </div>
+
+                        <div class="order-detail">
+                            <a href="/orders/{{invoice.id}}">Details</a>
+                        </div>
+
+                    </div>
+
+                {% endfor %}
+            </div>
 
             <div class="actions"></div>
         </div>
     </div>
-
 </div>
 
-</div>
-</div>
+{% endif %}
 
 {% endcall %}
 

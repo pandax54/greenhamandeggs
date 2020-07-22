@@ -1,49 +1,104 @@
-{% extends "layout.njk" %}
+{% extends 'layout.njk' %}
+{% import "parts/card.njk" as cards %}
 
-{% import "parts/card.njk" as card %}
+{% extends "../layout.njk" %}
+{% import "../parts/header-cover.njk" as cover %}
+{% import "../parts/form-card.njk" as form %}
 
+{% block header %}
+    <title>Invoice</title>
+{% endblock %}
 {% block content %}
-    {% call card.render(order.cardTitle, 'order-detail container') %}
+    {% call cover.render('It’s not about what it is, it’s about what it can become.','', 'about', '', '/assets/specialcollections.jpg', session )%}
+    {% endcall %}
 
-    <div class="info">
-        <div class="buyer">
-            <h4>Comprador</h4>
-            <div class="name">{{order.buyer.name}}</div>
-            <div class="email">{{order.buyer.email}}</div>
-            <div class="address">{{order.buyer.address}}</div>
-            <div class="cep">{{order.buyer.cep}}</div>
-        </div>
+    {% call form.render("CART", "cart chef register_form") %}
 
-        <div class="seller">
-            <h4>Vendedor</h4>
-            <div class="name">{{order.seller.name}}</div>
-            <div class="email">{{order.seller.email}}</div>
-            <div class="address">{{order.seller.address}}</div>
-            <div class="cep">{{order.seller.cep}}</div>
-        </div>
+    <h1>Invoice Nº
+        {{invoice.id}}</h1>
 
-        <div class="status {{order.status}}">
-            <h2>{{order.formattedStatus}}</h2>
-            <p>{{order.formattedUpdatedAt}}</p>
-            {% if order.product.deleted_at %}
-                <p>{{ order.formattedDeleted_at }}</p>
-                {%endif%}
+    <div class="order-container">
+
+        {% if invoice == "" %}
+            <div class="row-1 empty-cart">
+                <div class="empty-tag">
+                    <p>No orders</p>
+                    <img src="/assets/cart-icons/tabua-1.svg" alt="">
+                </div>
+                <a class="button go-shop" href="/products">
+                    <i class="material-icons cart-icons">arrow_back</i>
+                    <p>Go Shopping</p>
+                </a>
             </div>
+
+        {% else %}
+
+            <div class="row-1">
+                <div class="items">
+                    {% for order in invoice.orders %}
+                        <div class="item">
+                            <a class="product-info-order" href="/products/{{order.productInfo.id}}">
+                                <img src="{{order.productInfo.img}}" alt="product img">
+                                <div class="product-order-name">
+                                    <p class="title">{{order.productInfo.title}}</p>
+                                    <p class="unit-price">Unit:
+                                        {{order.productInfo.formattedPrice}}</p>
+                                    <p class="order-date">{{invoice.formattedcreatedAt}}</p>
+                                </div>
+                            </a>
+
+                            <div class="order-qt-price">
+                                <div class="quantity-container">
+
+                                    <span class="quantity">
+                                        <p>Qtd.
+                                            {{order.quantity}}</p>
+                                    </span>
+                                    <span class="quantity">
+                                        <p>{{order.formattedPrice}}</p>
+                                    </span>
+
+                                </div>
+                            </div>
+                            <div {% if order.status == "canceled" %} class="status" style="background-color: tomato;">
+                                <p>Canceled</p>
+                            {%elif order.status == "open" %}
+                                class="status" style="background-color: rgb(226 142 7);">
+                                <p>Open</p>
+                            {%elif order.status == "completed" %}
+                                class="status" style="background-color: rgb(226 142 7);">
+                                <p>Completed</p>
+                            {% endif %}
+                        </div>
+
+                        <div class="actions dropdown-container">
+                            Actions
+                            <i class="material-icons">arrow_drop_down</i>
+                            <ul class="dropdown-order">
+                                {# <li>
+                                    <a href="/orders/{{order.id}}">Details</a>
+                                </li> #}
+                                <li>Payment</li>
+                                <li class="cancel">
+                                    <form action="/orders/{{order.id}}/cancel" method="POST">
+                                        <button class="actions canceled">Cancel Purchase</button>
+                                    </form>
+                                </li>
+                                {# {%endif%} #}
+                            </ul>
+                        </div>
+                    </div>
+
+                {% endfor %}
+            </div>
+
+            <div class="actions"></div>
         </div>
+    </div>
+</div>
 
-        <div class="product">
-            <img src="{{order.product.img}}" alt="Imagem do produto {{order.product.name}}">
-            <p class="name">{{order.product.name}}</p>
-            <p class="price">
-                {{order.formattedPrice}}
-                <br/>
-                <span class="quantity">x{{order.quantity}}</span>
-            </p>
-        </div>
+{% endif %}
 
-        <div class="total">
-            <span>Total</span>
-            {{order.formattedTotal}}</div>
+{% endcall %}
 
-        {%endcall%}
-        {%endblock%}
+{% endblock content %}

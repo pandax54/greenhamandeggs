@@ -12,7 +12,7 @@ module.exports = {
             let { cart } = req.session
             // https://flaviocopes.com/express-sessions/
 
-            console.log("this is req.session: ", req.session)
+            // console.log("this is req.session: ", req.session)
 
             // gerenciador de carrinho que criamos na lib
             cart = Cart.init(cart)
@@ -24,6 +24,8 @@ module.exports = {
 
             console.log(cart)
             // console.log(product)
+
+            console.log("the items", cart.items)
 
             return res.render("cart/index", { cart })
             // return res.render("cart/index")

@@ -1,16 +1,29 @@
 {% extends 'layout.njk' %}
 {% import "parts/card.njk" as cards %}
 
-{% block content %}
+{% extends "../layout.njk" %}
+{% import "../parts/header-cover.njk" as cover %}
+{% import "../parts/form-card.njk" as form %}
 
-    {% call cards.render('', 'order container')%}
+{% block header %}
+    <title>Users Index</title>
+{% endblock %}
+{% block content %}
+    {% call cover.render('It’s not about what it is, it’s about what it can become.','', 'about', '', '/assets/specialcollections.jpg', session )%}
+    {% endcall %}
+
+    {% call form.render("CART", "cart chef register_form") %}
+
     <div class="success-lottie"></div>
     <div class="success-info">
-        <h2>Pedido Realizado com sucesso!</h2>
+        <h1>Thank you for your Order!</h1>
         <p>
-            Aguarde a resposta do vendedor no seu e-mail cadastrado.
+            We've sent a confirmation email to fernanda.panda@gmail.com with order details and a link to track it's progress
         </p>
-        <a class="success" href="/products/search">Continuar comprando</a>
+        <a class="button go-shop" href="/products">
+            <i class="material-icons cart-icons">arrow_back</i>
+            <p>Continue Shopping</p>
+        </a>
     </div>
     {% endcall %}
 

@@ -83,6 +83,23 @@ const Product = {
 
         const results = await db.query(query)
         return results.rows
+    },
+    quantity(id, quantity) {
+
+        try {
+
+            let query = `
+            UPDATE ${this.table} SET
+            quantity=${quantity} WHERE id = ${id}
+                `
+
+            return db.query(query)
+
+
+        } catch (err) {
+            console.error(err)
+        }
+
     }
 }
 

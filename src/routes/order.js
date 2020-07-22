@@ -8,14 +8,10 @@ const { isLogged, onlyUsers } = require('../app/middlewares/session')
 
 routes.get('/', onlyUsers, OrderController.index)
 
-// routes.get('/:id', onlyUsers, OrderController.show)
-
-// routes.post('/:id/:action', OrderController.status)
+routes.get('/:id', onlyUsers, OrderController.show)
 
 
-// routes.post('/', onlyUsers, OrderController.post)
-
-
+routes.post('/', onlyUsers, OrderController.post)
 
 
 // routes.get('/orders', onlyUsers, (req, res) => {

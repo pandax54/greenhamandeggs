@@ -123,6 +123,16 @@ button, .dot {
 
 /* VALIDATOR MESSAGES  */
 
+div.error-info p {
+  text-align: center;
+}
+
+a.error p {
+  color: #FF370A;
+  text-decoration: underline;
+  margin-top: 50px;
+}
+
 /* ANIMAÇÃO PARA A MESSAGE SUMIR DA TELA DEPOIS DE UM TEMPO  */
 @keyframes hidemessages {
     to {

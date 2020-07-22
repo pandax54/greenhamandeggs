@@ -71,6 +71,15 @@ CREATE TABLE "product_image" (
   "product_id" int
 );
 
+CREATE TABLE "invoice" (
+  "id" SERIAL PRIMARY KEY,
+  "orders_id" integer[],
+  "user_id" int
+)
+
+ALTER TABLE invoice
+ADD "created_at" timestamp DEFAULT (now());
+
 -- just admin can create an product
 CREATE TABLE "products" (
   "id" SERIAL PRIMARY KEY,

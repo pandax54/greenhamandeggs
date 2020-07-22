@@ -413,7 +413,15 @@ a.product {
         padding: 32px 5px;
     } 
     span.sale-tag {
-        top: 105px;
+        top: 10px;
+        left: 15px;
 
+    }
+    .product-single .price-buy {
+        display: flex;
+        flex-direction: column;
+    }
+    div.price {
+        margin-bottom: 15px;
     }
    }

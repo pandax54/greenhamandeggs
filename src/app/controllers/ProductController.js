@@ -25,7 +25,7 @@ module.exports = {
 
             if (!product) return res.send("Product not found!")
 
-            console.log(product)
+            // console.log(product)
 
 
             // return res.render('products/show', { product, files: product.files })
@@ -44,7 +44,7 @@ module.exports = {
 
             if (!product) return res.send("Product not found!")
 
-            console.log(product)
+            // console.log(product)
 
 
             // return res.render('products/show', { product, files: product.files })
@@ -53,7 +53,7 @@ module.exports = {
         } catch (error) {
             console.error(error)
         }
-    }
+    },
 
     // async create(req, res) {
 
@@ -129,64 +129,64 @@ module.exports = {
     //     }
 
     // },
-    // async put(req, res) {
+    async put(req, res) {
 
-    //     try {
+        try {
 
-    //         // verificar se imagens foram adicionadas, e se foram iremos criar um array de promesas
-    //         if (req.files.length != 0) {
-    //             const newFilesPromise = req.files.map(file => {
-    //                 File.create({ name: file.filename, path: file.path, product_id: req.body.id })
-    //             })
-    //             await Promise.all(newFilesPromise)
-    //         }
+            // verificar se imagens foram adicionadas, e se foram iremos criar um array de promesas
+            if (req.files.length != 0) {
+                const newFilesPromise = req.files.map(file => {
+                    File.create({ name: file.filename, path: file.path, product_id: req.body.id })
+                })
+                await Promise.all(newFilesPromise)
+            }
 
-    //         if (req.body.removed_files) {
-    //             const removedfiles = req.body.removed_files.split(',')  // [1,2,3,] --> porém ele virá com um item vazio no array
-    //             // pare remover esse item vazio pegaremos o index do último elemento
-    //             const lastIndex = removedfiles.length - 1
-    //             removedfiles.splice(lastIndex, 1) // pegar o index do último elemento e remover apenas 1 ==> [1,2,3]
+            if (req.body.removed_files) {
+                const removedfiles = req.body.removed_files.split(',')  // [1,2,3,] --> porém ele virá com um item vazio no array
+                // pare remover esse item vazio pegaremos o index do último elemento
+                const lastIndex = removedfiles.length - 1
+                removedfiles.splice(lastIndex, 1) // pegar o index do último elemento e remover apenas 1 ==> [1,2,3]
 
-    //             // precisaremos fazer um array de promises
-    //             const removedfilesPromise = removedfiles.map(id => File.delete(id))
+                // precisaremos fazer um array de promises
+                const removedfilesPromise = removedfiles.map(id => File.delete(id))
 
-    //             await Promise.all(removedfilesPromise)
-    //         }
+                await Promise.all(removedfilesPromise)
+            }
 
-    //         req.body.price = req.body.price.replace(/\D/g, "")
+            req.body.price = req.body.price.replace(/\D/g, "")
 
-    //         // get the old price and save it in the update
-    //         if (req.body.old_price != req.body.price) {
-    //             let oldProduct = await Product.find(req.body.id)
-    //             req.body.old_price = oldProduct.price
-    //         }
+            // get the old price and save it in the update
+            if (req.body.old_price != req.body.price) {
+                let oldProduct = await Product.find(req.body.id)
+                req.body.old_price = oldProduct.price
+            }
 
-    //         const productId = req.body.id
-    //         // aqui iremos fazer a lógica de salvar essa imagens - criação do Model - File.js
-    //         // map -> retorna um array 
-    //         // iremos criar um array de promises
-    //         const filesPromise = req.files.map(file => {
-    //             File.update({ name: file.filename, path: file.path, product_id: productId })
-    //         })
-    //         // depois de criarmos um array de promessas, passaremos elas para o Promise.all()
-    //         await Promise.all(filesPromise)
+            const productId = req.body.id
+            // aqui iremos fazer a lógica de salvar essa imagens - criação do Model - File.js
+            // map -> retorna um array 
+            // iremos criar um array de promises
+            const filesPromise = req.files.map(file => {
+                File.update({ name: file.filename, path: file.path, product_id: productId })
+            })
+            // depois de criarmos um array de promessas, passaremos elas para o Promise.all()
+            await Promise.all(filesPromise)
 
-    //         await Product.update(req.body.id, {
-    //             category_id: req.body.category_id,
-    //             name: req.body.name,
-    //             description: req.body.description,
-    //             price: req.body.price,
-    //             old_price: req.body.old_price,
-    //             quantity: req.body.quantity,
-    //             status: req.body.status
-    //         })
+            await Product.update(req.body.id, {
+                category_id: req.body.category_id,
+                name: req.body.name,
+                description: req.body.description,
+                price: req.body.price,
+                old_price: req.body.old_price,
+                quantity: req.body.quantity,
+                status: req.body.status
+            })
 
-    //         return res.redirect(`/products/${productId}`)
+            return res.redirect(`/products/${productId}`)
 
-    //     } catch (error) {
-    //         console.error(error)
-    //     }
-    // },
+        } catch (error) {
+            console.error(error)
+        }
+    },
     // async delete(req, res) {
 
     //     let files = await Product.files(req.body.id)
