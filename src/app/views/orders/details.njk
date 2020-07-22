@@ -66,7 +66,7 @@
                                 class="status" style="background-color: rgb(226 142 7);">
                                 <p>Open</p>
                             {%elif order.status == "completed" %}
-                                class="status" style="background-color: rgb(226 142 7);">
+                                class="status" style="background-color: rgb(0 150 136);;">
                                 <p>Completed</p>
                             {% endif %}
                         </div>
@@ -78,7 +78,11 @@
                                 {# <li>
                                     <a href="/orders/{{order.id}}">Details</a>
                                 </li> #}
-                                <li>Payment</li>
+                                <li class="close">
+                                    <form action="/orders/{{order.id}}/close" method="POST">
+                                        <button class="actions close">Payment</button>
+                                    </form>
+                                </li>
                                 <li class="cancel">
                                     <form action="/orders/{{order.id}}/cancel" method="POST">
                                         <button class="actions canceled">Cancel Purchase</button>

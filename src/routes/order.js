@@ -10,8 +10,12 @@ routes.get('/', onlyUsers, OrderController.index)
 
 routes.get('/:id', onlyUsers, OrderController.show)
 
+routes.post('/:id/:action', OrderController.status)
+
 
 routes.post('/', onlyUsers, OrderController.post)
+
+
 
 
 // routes.get('/orders', onlyUsers, (req, res) => {

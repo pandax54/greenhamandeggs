@@ -76,6 +76,10 @@
                             <a href="/orders/{{invoice.id}}">Details</a>
                         </div>
 
+                        <div class="statusOrder">
+                            <p {% if invoice.orderStatus == "In Progress" %} style="color: rgb(226 142 7);" {% elif invoice.orderStatus == "Delivered" %} {%elif invoice.orderStatus == "Order Canceled" %} {% endif %}>{{invoice.orderStatus}}</p>
+                        </div>
+
                     </div>
 
                 {% endfor %}

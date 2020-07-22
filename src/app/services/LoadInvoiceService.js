@@ -12,6 +12,8 @@ async function format(invoice) {
 
     let totalAmount = 0
 
+    let status = []
+
     const OrdersPromise = invoice.orders_id.map(async id => {
 
         const order = await Order.findOne({ Where: { id } })
@@ -22,6 +24,8 @@ async function format(invoice) {
         totalAmount += order.price
 
         order.formattedPrice = formatUSD(order.total)
+
+        status.push(order.status)
 
         return order
 
@@ -39,6 +43,7 @@ async function format(invoice) {
         quantity,
         totalAmount,
         totalAmountFormatted,
+        status,
         orders
     })
 
@@ -86,6 +91,8 @@ const LoadInvoiceService = {
 
                 let totalAmount = 0
 
+                let status = []
+
                 const promiseOrders = ordersId.map(async id => {
                     const order = await Order.findOne({ Where: { id } })
                     order.productInfo = await LoadProductService.load('product', { where: { "products.id": order.product_id } })
@@ -95,6 +102,8 @@ const LoadInvoiceService = {
                     totalAmount += order.price
 
                     order.formattedPrice = formatUSD(order.total)
+
+                    status.push(order.status)
 
                     return order
                 })
@@ -108,11 +117,28 @@ const LoadInvoiceService = {
 
                 // const trackingNumber = await hash(id, 8)
 
+                let orderStatus = status.every(status => status == "completed")
+
+                if (orderStatus == false) {
+                    orderStatus = status.every(status => status == "canceled")
+
+                    if (orderStatus == false) {
+                        orderStatus = 'In Progress'
+                    } else {
+                        orderStatus = 'Order Canceled'
+                    }
+                } else {
+                    orderStatus = "Delivered"
+                }
+                console.log("is completed??", orderStatus)
+
                 return ({
                     ...invoice,
                     quantity,
                     totalAmount,
                     totalAmountFormatted,
+                    status,
+                    orderStatus,
                     orders
                 })
             })

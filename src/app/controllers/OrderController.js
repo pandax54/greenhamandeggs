@@ -117,6 +117,39 @@ module.exports = {
         console.log(invoice)
 
         return res.render("orders/details", { invoice })
+    },
+    async status(req, res) {
+
+        try {
+            const { id, action } = req.params
+
+            const acceptedActions = ["cancel", "close"]
+
+            if (!acceptedActions.includes(action)) return res.send("can't do this action")
+
+            const order = await LoadOrder.load('order', { where: { id } })
+            if (!order) return res.send("Can't find this order")
+
+            if (order.status != "open") return res.send("Other actions are not possible")
+
+
+            const allStatus = {
+                "cancel": "canceled",
+                "close": "completed"
+            }
+
+            order.status = allStatus[action]
+
+            await Order.update(id, {
+                status: order.status
+            })
+
+            return res.redirect(`/orders`)
+
+        } catch (error) {
+            console.error(error)
+        }
+
     }
 
 }
