@@ -63,3 +63,4 @@ You can find more images examples of the layout inside the "UI design" folder.
 
 ---
 ###### Developed on Launchbase from [RocketSeat](https://rocketseat.com.br) :rocket:. 
+
