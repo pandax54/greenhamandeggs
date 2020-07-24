@@ -1,0 +1,30 @@
+<div class="row-1">
+    <label class="label-form" for="email">
+        <img src="../assets/chefs-icons/Vector.png" alt="chef">
+        <h2>E-mail</h2>
+    </label>
+    <input name="email" placeholder="Juliane Hale" type="text" value="{{user.email}}" onblur="Validate.apply(this, 'isEmail')">
+</div>
+
+<div class="row-1">
+    <div class="social-media email">
+        <label class="label-form" for="password">
+            <img src="../assets/chefs-icons/Vector.png" alt="chef">
+            <h2>Password</h2>
+        </label>
+        <input name="password" placeholder="Put your password" type="password">
+    </div>
+</div>
+
+<div class="row-2">
+    <div class="social-media email">
+        <label class="label-form" for="passwordRepeat">
+            <img src="../assets/chefs-icons/Vector.png" alt="chef">
+            <h2>Repeat the Password</h2>
+        </label>
+        <input name="passwordRepeat" placeholder="Confirm password" type="password">
+    </div>
+    {# <input type="file" name="img" accept="image/*"> #}
+</div>
+
+<input type="hidden" name="token" value="{{token}}">

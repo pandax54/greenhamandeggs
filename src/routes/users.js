@@ -35,6 +35,33 @@ routes.post("/login", SessionValidator.login, SessionController.login);
 routes.post("/logout", onlyUsers, SessionController.logout);
 
 
+//================ reset and recover passwords ==============
+
+// reset password/forgot SessionController.js
+//-- forgot password form - preencher para pedir novo password
+routes.get('/forgot-password', SessionController.forgotForm)
+//-- forgot password form executa a ação para envio do token
+routes.post('/forgot-password', SessionValidator.forgot, SessionController.forgot)
+
+//-- formulário para escolher novo password
+routes.get('/password-reset', SessionController.resetForm)
+//-- executar a ação do form
+routes.post('/password-reset', SessionValidator.reset, SessionController.reset)
+
+
+routes.get('/', onlyUsers, UserValidator.show, UserController.show)
+routes.put('/', UserValidator.update, UserController.update)
+routes.delete('/', UserController.delete)
+
+
+
+// test lottie animation
+routes.get('/orders/success', onlyUsers, (req, res) => {
+    res.render('orders/success')
+})
+routes.get('/orders/error', onlyUsers, (req, res) => {
+    res.render('orders/error')
+})
 
 
 

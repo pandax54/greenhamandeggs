@@ -14,9 +14,9 @@
 
     {% call form.render("CART", "cart chef register_form") %}
 
-    <div class="success-lottie"></div>
     <div class="success-info">
         <h1>Thank you for your Order!</h1>
+        <div class="success-lottie"></div>
         <p>
             We've sent a confirmation email to fernanda.panda@gmail.com with order details and a link to track it's progress
         </p>
@@ -45,9 +45,9 @@
                 renderer: 'svg',
                 loop: false,
                 autoplay: true,
-                path: '/animation/10447-payment-success.json' // the path to the animation json
+                path: '/assets/lottie/27713-hot-tea-in-yellow-teacup-with-tea-bag.json' // the path to the animation json
             })
-            .setSpeed(.5)
+            .setSpeed(1)
     </script>
 
 {% endblock %}

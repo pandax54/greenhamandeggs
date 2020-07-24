@@ -14,14 +14,14 @@
 
     {% call form.render("CART", "cart chef register_form") %}
 
-    <div class="error-lottie"></div>
     <div class="error-info">
         <h1>Oh No!</h1>
+        <div class="error-lottie"></div>
         <p>
             Something went wrong with your order.
         </p>
 
-        <a class="error" href="/products/search" onclick="history.back()">
+        <a class="error" onclick="history.back()">
             {# <i class="material-icons cart-icons">arrow_back</i> #}
             <p>Please try again!</p>
         </a>
@@ -47,7 +47,7 @@
         renderer: 'svg',
         loop: false,
         autoplay: true,
-        path: '/animation/10448-payment-failed-error.json' // the path to the animation json
+        path: '/assets/lottie/27709-onion-with-smell.json' // the path to the animation json
     });
 </script>
 
