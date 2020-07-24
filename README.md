@@ -65,7 +65,7 @@
 - [x] Routes with Validators.
 - [x] Nodemailer to reset and recover passwords.
 - [x] Users, Recipes and Images seeds available thanks to Faker.js. 
-<!-- - [x] Feedback animations powered by Lottie. -->
+- [x] Feedback animations powered by Lottie.
 - [x] Store and cart functionalities.
 - [x] Invoice and orders details pages for users.
 
